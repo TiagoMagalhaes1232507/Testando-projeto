@@ -7,7 +7,7 @@ title System Sequence Diagram (SSD) - Alternative One
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor "User" as Employee
 participant ":System" as System
 
 activate Employee

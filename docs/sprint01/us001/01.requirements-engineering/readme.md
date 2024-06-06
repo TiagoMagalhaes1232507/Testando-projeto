@@ -6,8 +6,8 @@
 ### 1.1. User Story Description
 
 
-As an organization employee, I want to create a new task in order to be further published.
-
+As an non registraded user......
+Como utilizador não registado quero registrar-me na aplicação(join)
 
 
 ### 1.2. Customer Specifications and Clarifications 
