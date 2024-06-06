@@ -5,17 +5,15 @@
 
 ### 1.1. User Story Description
 
-
-As an organization employee, I want to create a new task in order to be further published.
-
-
+As a user, i want to reply to a comment to take part in the discussion.
+	
 
 ### 1.2. Customer Specifications and Clarifications 
 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category. 
+>	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category.
 
 
 >	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
@@ -37,15 +35,18 @@ As an organization employee, I want to create a new task in order to be further 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
-* **AC2:** Task reference must have at least 5 alphanumeric chars.
-* **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
+* **AC1:** The user must be logged in.  
+* **AC2:** There must be an open discussion posted.
+* **AC3:** The text box must have the minimum number of characters present: 
+	. If so, the system accepts and displays a success message (pop-up) and publishes the comment. 
+	. If not, the system prompts the user (pop-up) to enter a minimum of X characters and does not publish the comment.
 
 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* There is a dependency to "us001" and "us002" since we have the need to be registered and logged in.
+
 
 
 ### 1.5 Input and Output Data
@@ -54,12 +55,10 @@ As an organization employee, I want to create a new task in order to be further 
 **Input Data:**
 
 * Typed data:
-	* a reference, 
-	* a designation, 
-	* an informal description
-	* a technical description
-	* an estimated duration
-	* an estimated cost
+	* username, 
+	* password, 
+	* comment text
+	
 	
 * Selected data:
 	* Classifying task category 
