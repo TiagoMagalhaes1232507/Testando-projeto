@@ -1,11 +1,11 @@
-# US 006 - Reply directly to a comment in a Discussion
+# US 013 - To be able to see the discussion's list
 
 ## 1. Requirements Engineering
 
 
 ### 1.1. User Story Description
 
-As a user, i want to reply to a comment to take part in a Discussion.
+As a user, i want to see all the discussion's list.
 	
 
 ### 1.2. Customer Specifications and Clarifications 
@@ -36,18 +36,14 @@ As a user, i want to reply to a comment to take part in a Discussion.
 
 
 * **AC1:** The user must be logged in.  
-* **AC2:** There must be an open discussion posted.
-* **AC3:** The text box must have the minimum number of characters present: 
-	. If so, the system accepts and displays a success pop-up message and publishes the comment - Pop-up: "Done-zoo 🤠";
-	. If not, the system prompts the user to enter a minimum of 20 to 10000 characters and does not publish the comment - Pop-up: "Yeahhhhh, comments should be 20 to 10000 characters. Yours was 0. 🤠"
-
+* **AC2:** The system should display a list of all available discussions when the user navigates to the discussions page.
+* **AC3:** Each discussion in the list should display key information such as the discussion title, the number of comments, and the date of the last activity.
+* **AC4:** The user should be able to sort the list by date or popularity.
 
 ### 1.4. Found out Dependencies
 
 
 * There is a dependency to "us001" and "us002" since we have the need to be registered and logged in.
-* There is a dependency to "us005" since we need to have a previous commment and discussion topic. 
-
 
 
 ### 1.5 Input and Output Data
@@ -58,7 +54,7 @@ As a user, i want to reply to a comment to take part in a Discussion.
 * Typed data:
 	* username, 
 	* password, 
-	* comment text
+	
 	
 	
 * Selected data:
@@ -68,7 +64,7 @@ As a user, i want to reply to a comment to take part in a Discussion.
 **Output Data:**
 
 * (In)Success of the operation
-* Show the writen comment text
+
 
 ### 1.6. System Sequence Diagram (SSD)
 
