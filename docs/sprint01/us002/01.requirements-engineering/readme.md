@@ -39,14 +39,14 @@ As a user I want/need to login in sistem.
 
 * **AC1:** The user should type their username and password.
 * **AC2:** The sistem must validate username and password and present a message with the outcome 
-	If the result is positive, success. 
-	If result negative, user must type username and password again.
+	If the result is positive, the sistem present a message of success. 
+	If result negative, the sistem present a message of insucess and user must type username and password again.
 
 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US001 xxxx" because the user must be registred to be able to login in API.
+* There is a dependency to "US001 xxxx" due to the user must be registred to be able to login in API.
 
 
 ### 1.5 Input and Output Data
@@ -72,11 +72,11 @@ As a user I want/need to login in sistem.
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us002-system-sequence-diagram-alternative-one.svg)
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative Two](svg/us002-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 

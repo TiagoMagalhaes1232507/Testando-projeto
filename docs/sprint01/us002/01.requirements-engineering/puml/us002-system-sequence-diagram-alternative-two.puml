@@ -3,37 +3,25 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative Two
+title System Sequence Diagram (SSD) - Alternative One
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor "User" as User
 participant ":System" as System
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task
+    User -> System : want to login in system
     activate System
 
-        System --> Employee : shows task category list and asks to select one
-        'System --> Employee : shows task categories list\n and requests data (reference,\ndescription,\ninformation description,\ntechnical description,\nduration, cost)
+        System --> User : requests data
     deactivate System
 
-    Employee -> System : selects a task category
+    User -> System : types incorrect requested data (username, password) and submit
     activate System
 
-        System --> Employee : requests data
+        System --> User :validates data and displays message of insucess
     deactivate System
 
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate System
-
-        System --> Employee : shows selected category and requested data
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : Shows operation success
-    deactivate System
 @enduml
