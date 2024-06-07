@@ -18,6 +18,15 @@ link as suggested below.**
 | UC/US  | Description                                   |                   
 |:-------|:----------------------------------------------|
 | US 001 | [Short Name for US001](../../us001/Readme.md) |
-| ...    | ...                                           |
-| US 006 | [Create Task](../../us006/Readme.md)          |
-| ...    | ...                                           |
+| US 002 | ...                                           |
+| US 003 | []()          |
+| US 004 | []()          |
+| US 005 | []()          |
+| US 006 | [Reply directly to a comment in a Discussion](../../us006/Readme.md)          |
+| US 007 | []()          |
+| US 008 | []()          |
+| US 009 | []()          |
+| US 010 | []()          |
+| US 011 | []()          |
+| US 012 | []()          |
+| US 013 | [To be able to see the discussion list](../../us013/readme.md)          |
