@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 002 - To login in API
 
 ## 1. Requirements Engineering
 
@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As an organization employee, I want to create a new task in order to be further published.
+As a user I want/need to login in sistem.
 
 
 
@@ -37,15 +37,16 @@ As an organization employee, I want to create a new task in order to be further 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
-* **AC2:** Task reference must have at least 5 alphanumeric chars.
-* **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
+* **AC1:** The user should type their username and password.
+* **AC2:** The sistem must validate username and password and present a message with the outcome 
+	If the result is positive, success. 
+	If result negative, user must type username and password again.
 
 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* There is a dependency to "US001 xxxx" because the user must be registred to be able to login in API.
 
 
 ### 1.5 Input and Output Data
@@ -54,20 +55,15 @@ As an organization employee, I want to create a new task in order to be further 
 **Input Data:**
 
 * Typed data:
-	* a reference, 
-	* a designation, 
-	* an informal description
-	* a technical description
-	* an estimated duration
-	* an estimated cost
+	* a username 
+	* a password
 	
 * Selected data:
-	* Classifying task category 
+	* Classifying task category ??????
 
 
 **Output Data:**
 
-* List of existing task categories
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
