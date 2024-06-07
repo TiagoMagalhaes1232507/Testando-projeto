@@ -16,23 +16,26 @@ As an unregistered user, I want to register on the application.
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category. 
+>	The registration form includes mandatory fields: username (unique), password (minimum length), and valid email address.
 
 
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+>	Upon successful registration, users will receive a confirmation message and then be redirected to a specific page.
+
+
+>	The registration process will provide informative error messages for failed attempts, such as "Yeahhhhh, want to try that again with a valid email?" or "Yeahhhhh, ypur password should be at least 6 chars."
 
 
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** What specific information is required to register (username, password, email, etc.)?
 >  
-> **Answer:** Duration is estimated in days.
+> **Answer:** Registration requires a username, a password and a valid email.
 
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:** Are there any minimum character lengths for password?
 >  
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
+> **Answer:** The password should be at least 6 characters.
 
 
 ### 1.3. Acceptance Criteria
@@ -58,21 +61,15 @@ This form should capture essential information for user accounts, such as email 
 **Input Data:**
 
 * Typed data:
-	* a reference, 
-	* a designation, 
-	* an informal description
-	* a technical description
-	* an estimated duration
-	* an estimated cost
-	
-* Selected data:
-	* Classifying task category 
-
+	* an username, 
+	* a password, 
+	* an email address.
+		
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* (In)Success of the registration
+* Creating (or not) the user's account
 
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -80,11 +77,11 @@ This form should capture essential information for user accounts, such as email 
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us001-system-sequence-diagram-alternative-one.svg)
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative Two](svg/us001-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 
