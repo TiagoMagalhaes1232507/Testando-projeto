@@ -20,7 +20,7 @@ The team consists of students identified in the following table.
 | Student Number | Name              |
 |----------------|-------------------|
 | **1XXXXXX**    | Name of student 1 |
-| **1XXXXXX**    | Name of student 2 |
+| **1232493**    | Ana Rita Ramos    |
 | **1XXXXXX**    | Name of student 3 |
 | **1XXXXXX**    | Name of student 4 |
 | **1XXXXXX**    | Name of student 5 |
@@ -40,7 +40,19 @@ was carried out as described in the following table.
 | Glossary                    | [all](sprintA/global-artifacts/01.requirements-engineering/glossary.md)                    | [all](sprintB/global-artifacts/00.engineering-requirements/glossary.md)                    |
 | Use Case Diagram (UCD)      | [all](sprintA/global-artifacts/01.requirements-engineering/use-case-diagram.md)            | [all](sprintB/global-artifacts/00.engineering-requirements/use-case-diagram.md)            |
 | Supplementary Specification | [all](sprintA/global-artifacts/01.requirements-engineering/supplementary-specification.md) | [all](sprintB/global-artifacts/00.engineering-requirements/supplementary-specification.md) |
-| US 001 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |                                                                                            |
+| US 001 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 002 (SDP Activities)     | [1232493](sprintA/us006/readme.md)
+| US 003 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 004 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 005 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 006 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 007 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 008 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 009 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 010 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 011 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 012 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 013 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |                                                                                            |
 | ...                         | ...                                                                                        | ...                                                                                        |
 
 ## 3. Sprints
