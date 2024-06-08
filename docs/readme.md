@@ -12,18 +12,17 @@ Remarks: it works for Linux and MacOS. For Windows, you have to adapt the script
 $ bin/generate-plantuml-diagrams.sh
 ```
 
-
 ## 1. Team Members
 
 The team consists of students identified in the following table.
 
 | Student Number | Name              |
-|----------------|-------------------|
+| -------------- | ----------------- |
 | **1XXXXXX**    | Name of student 1 |
 | **1232493**    | Ana Rita Ramos    |
 | **1XXXXXX**    | Name of student 3 |
 | **1XXXXXX**    | Name of student 4 |
-| **1XXXXXX**    | Name of student 5 |
+| **1232497**    | Roberta Lucena    |
 | **1XXXXXX**    | Name of student 6 |
 | **1XXXXXX**    | Name of student 7 |
 
@@ -35,23 +34,23 @@ was carried out as described in the following table.
 **Keep this table must always up-to-date.**
 
 | Task                        | [Sprint A](sprintA/readme.md)                                                              | [Sprint B](sprintB/readme.md)                                                              |
-|-----------------------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| Architecture                | [all](sprintA/global-artifacts/00.architecture/architecture.md)                            | [all](sprintB/global-artifacts/00.architecture/architecture.md)                    |
+| --------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| Architecture                | [all](sprintA/global-artifacts/00.architecture/architecture.md)                            | [all](sprintB/global-artifacts/00.architecture/architecture.md)                            |
 | Glossary                    | [all](sprintA/global-artifacts/01.requirements-engineering/glossary.md)                    | [all](sprintB/global-artifacts/00.engineering-requirements/glossary.md)                    |
 | Use Case Diagram (UCD)      | [all](sprintA/global-artifacts/01.requirements-engineering/use-case-diagram.md)            | [all](sprintB/global-artifacts/00.engineering-requirements/use-case-diagram.md)            |
 | Supplementary Specification | [all](sprintA/global-artifacts/01.requirements-engineering/supplementary-specification.md) | [all](sprintB/global-artifacts/00.engineering-requirements/supplementary-specification.md) |
-| US 001 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 002 (SDP Activities)     | [1232493](sprintA/us006/readme.md)
-| US 003 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 004 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 005 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 006 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 007 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 008 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 009 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 010 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 011 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
-| US 012 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)
+| US 001 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 002 (SDP Activities)     | [1232493](sprintA/us006/readme.md)                                                         |
+| US 003 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 004 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 005 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 006 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 007 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 008 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 009 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 010 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 011 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 012 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 013 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |                                                                                            |
 | ...                         | ...                                                                                        | ...                                                                                        |
 
@@ -67,9 +66,7 @@ was carried out as described in the following table.
 
 The specificcation should follow the templates, as presented here and in the referenced links.
 
-The Specification should include:
-    - User Stories (~Use Cases)
-    - Tests
+The Specification should include: - User Stories (~Use Cases) - Tests
 
 ### 3.2 Sprint B
 
@@ -77,12 +74,7 @@ The Specification should include:
 
 **User Story:** As a project manager, I want the team to specify (document) the API and implement API tests
 
-The specification of the API should include for each route:
-    - the action (GET, POST, etc.)
-    - a small description
-    - parameters
-    - possible response codes and results
-    - reference to related use cases and acceptance criteria
+The specification of the API should include for each route: - the action (GET, POST, etc.) - a small description - parameters - possible response codes and results - reference to related use cases and acceptance criteria
 
 You should place the API specification in the **docs/sprintB/api** folder. Inside this folder, you should create a file for each route. The file name should be the route name, with the extension **.md**. For example, the route **/api/v1/users** should be documented in the file **docs/sprintB/api/users.md**.
 

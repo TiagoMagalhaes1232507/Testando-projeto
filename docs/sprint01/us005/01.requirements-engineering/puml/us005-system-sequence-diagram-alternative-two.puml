@@ -13,7 +13,7 @@ participant ":System" as System
 activate Employee
 
     Employee -> System : asks to create a new task
-    activate System
+    activate System 
 
         System --> Employee : shows task category list and asks to select one
         'System --> Employee : shows task categories list\n and requests data (reference,\ndescription,\ninformation description,\ntechnical description,\nduration, cost)

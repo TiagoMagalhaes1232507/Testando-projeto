@@ -45,26 +45,33 @@ CA13: Se o usuário quiser deletar um comentário postado por ele deve clicar no
 
 ### 1.4. Found out Dependencies
 
-- There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+- US001
+- US002
+- US004
+
+- Existe uma dependência da US001 'Registro na aplicação', pois o usuário precisa estar registrado na aplicação.
+
+- Existe uma dependência da US002 'Fazer login', pois o usuário precisa estar logado na aplicação.
+
+- Existe uma dependência da US004 'Criar uma discussion', pois discussions precisam existir para serem comentadas.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 
 - Typed data:
-  - a reference,
-  - a designation,
-  - an informal description
-  - a technical description
-  - an estimated duration
-  - an estimated cost
+  - Email
+  - Password
+  - Discussion
+  - Texto do comentário
 - Selected data:
   - Classifying task category
 
 **Output Data:**
 
-- List of existing task categories
-- (In)Success of the operation
+- Sistema informa mensagem de sucesso confirmando a postagem do comentário.
+
+- A discussion é atualizada com data e hora do comentário. (timestamp).
 
 ### 1.6. System Sequence Diagram (SSD)
 
