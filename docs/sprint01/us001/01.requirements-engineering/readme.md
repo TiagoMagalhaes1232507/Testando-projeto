@@ -85,4 +85,8 @@ This form should capture essential information for user accounts, such as email 
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* To ensure a secure registration process and prevent fraudulent accounts, robust validation, spam prevention, brute-force protection, and potential account verification should be implemented.
+
+* For a smooth user experience, the registration process should be a concise and intuitive form with clear instructions, real-time validation, informative feedback, and a user-friendly interface that seamlessly integrates with external systems if applicable.
+
+* Several open issues remain regarding user registration, including data validation rules, email sending mechanisms, error handling, personalization options, and compliance with data privacy regulations.
