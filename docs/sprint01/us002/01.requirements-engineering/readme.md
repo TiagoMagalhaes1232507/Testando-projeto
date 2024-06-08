@@ -1,4 +1,4 @@
-# US 002 - To login in API
+# US 002 - To login in System
 
 ## 1. Requirements Engineering
 
@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As a user I want/need to login in sistem.
+As a user I want/need to login in system.
 
 
 
@@ -15,23 +15,12 @@ As a user I want/need to login in sistem.
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category. 
-
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
-
+>	There's no customer specifications about document.
 
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
->  
-> **Answer:** Duration is estimated in days.
-
-
-> **Question:** Monetary data is expressed in any particular currency?
->  
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
+> There's no client clarifications about this project.
 
 
 ### 1.3. Acceptance Criteria
@@ -46,7 +35,7 @@ As a user I want/need to login in sistem.
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US001 xxxx" due to the user must be registred to be able to login in API.
+* There is a dependency to "US001 xxxx" due to the user must be registred to be able to login in System.
 
 
 ### 1.5 Input and Output Data
@@ -55,7 +44,7 @@ As a user I want/need to login in sistem.
 **Input Data:**
 
 * Typed data:
-	* a username 
+	* an username 
 	* a password
 	
 * Selected data:
@@ -80,4 +69,5 @@ As a user I want/need to login in sistem.
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* The created task stays in a "not published" state in order to distinguish from "published" tasks. ????
+If operation is unsucessful

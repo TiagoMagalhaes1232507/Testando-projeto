@@ -2,8 +2,9 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
+skinparam actorStyle awesome
 
-title System Sequence Diagram (SSD) - Alternative One
+title SSD US002: TO LOGIN IN SYSTEM - Alternative One
 
 autonumber
 

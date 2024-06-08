@@ -37,7 +37,7 @@ As a user, i want to see all the discussion's list.
 
 * **AC1:** The user must be logged in.  
 * **AC2:** The system should display a list of all available discussions when the user navigates to the discussions page.
-* **AC3:** Each discussion in the list should display key information such as the discussion title, the number of comments, and the date of the last activity.
+* **AC3:** Each discussion in the list should display key information such as the discussion title, the number of comments and creation date.
 * **AC4:** The user should be able to sort the list by date or popularity.
 
 ### 1.4. Found out Dependencies
