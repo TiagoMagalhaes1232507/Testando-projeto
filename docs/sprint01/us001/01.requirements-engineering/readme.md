@@ -46,7 +46,7 @@ This form should capture essential information for user accounts, such as email 
 * **AC2:** The system should validate the user-provided information during registration. This includes validating the email address format (e.g., presence of "@" and "."). The system should check for duplicate email addresses to ensure uniqueness.
 * **AC3:** Upon successful registration, the system should create a new user account. The account should be associated with the provided email address and password.
 * **AC4:** The system should provide feedback to the user after registration. A success/insucess message would be displayed on the screen. 
-* **AC5:** After successful registration, the user should be able to log in to the application using their credentials (email and password).
+
 
 
 ### 1.4. Found out Dependencies

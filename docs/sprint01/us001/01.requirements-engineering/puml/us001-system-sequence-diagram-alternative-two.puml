@@ -7,33 +7,31 @@ title System Sequence Diagram (SSD) - Alternative Two
 
 autonumber
 
-actor "Organization Employee" as Employee
-participant ":System" as System
+actor "Unregistered User" as User
+participant ":Registration System" as System
+participant ":Data Base" as Database
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task
+    User -> System : submitRegistration (username, password, email)
     activate System
 
-        System --> Employee : shows task category list and asks to select one
-        'System --> Employee : shows task categories list\n and requests data (reference,\ndescription,\ninformation description,\ntechnical description,\nduration, cost)
-    deactivate System
+    alt Valid Credentials
 
-    Employee -> System : selects a task category
-    activate System
+        System --> User : Validate User Credentials (Valid Credentials)
+    
+        System -> Database: createUserAccount 
+    activate Database
+    deactivate Database
 
-        System --> Employee : requests data
-    deactivate System
+        System --> User: displayConfirmationMessage()
+    
+    else Invalid Credentials
 
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate System
+        System --> User: Validate User Credentials (Invalid Credentials) 
 
-        System --> Employee : shows selected category and requested data
-    deactivate System
+        System --> User: displayErrorMessage()
+  
 
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : Shows operation success
     deactivate System
 @enduml

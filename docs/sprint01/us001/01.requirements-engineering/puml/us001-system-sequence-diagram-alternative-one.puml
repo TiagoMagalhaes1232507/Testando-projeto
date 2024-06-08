@@ -1,4 +1,4 @@
-@startuml
+@startuml 
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
@@ -7,33 +7,21 @@ title System Sequence Diagram (SSD) - Alternative One
 
 autonumber
 
-actor "Organization Employee" as Employee
-participant ":System" as System
+actor "Unregistered User" as User
+participant ":Registration System" as System
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task
+    User -> System : submitRegistration (username, password, email)
     activate System
 
-        System --> Employee : requests data
+        System --> User : Validate User Credentials
+    
+        System --> User : Create User Account (Validate Credentials)
+    
+        System --> User : Display Confirmation Message (Valid Credentials)
+    
+        System --> User : Display Error Message (Invalid Credentials)
+    
     deactivate System
-
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate System
-
-        System --> Employee : shows task category list and asks to select one
-    deactivate System
-
-    Employee -> System : selects a task category
-    activate System
-
-        System --> Employee : shows selected category
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : displays operation success
-    deactivate System
-
 @enduml
