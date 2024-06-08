@@ -2,8 +2,10 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
+skinparam actorStyle awesome
 
-title System Sequence Diagram (SSD) - Alternative One
+
+title SSD US002: TO LOGIN IN SYSTEM - Alternative Two
 
 autonumber
 
@@ -12,13 +14,13 @@ participant ":System" as System
 
 activate User
 
-    User -> System : want to login in system
+    User -> System : wants to login in system
     activate System
 
         System --> User : requests data
     deactivate System
 
-    User -> System : types incorrect requested data (username, password) and submit
+    User -> System : types incorrect username and submit
     activate System
 
         System --> User :validates data and displays message of insucess
