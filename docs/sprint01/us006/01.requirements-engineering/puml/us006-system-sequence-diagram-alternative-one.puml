@@ -1,1 +1,31 @@
-w
+@startuml Reply to a Comment
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+ 
+title Reply to a Comment
+ 
+ 
+autonumber
+ 
+actor "User" as User
+participant ":System" as System
+activate User
+   
+  activate User
+ 
+    User -> System: request to commment (Reply button)
+    activate System
+   
+        System --> User: open new comment page
+    deactivate System
+ 
+   
+    User -> System: Submit comment
+    activate System
+   
+        System --> User: Stores comment in the database
+        System --> User: Update list of comments
+        System --> User: returns success message
+    deactivate System
+@enduml
