@@ -57,7 +57,6 @@ As a user I want/need to login in system.
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
 
 #### Alternative One
 
@@ -66,6 +65,11 @@ As a user I want/need to login in system.
 #### Alternative Two
 
 ![System Sequence Diagram - Alternative Two](svg/us002-system-sequence-diagram-alternative-two.svg)
+
+#### Alternative Three
+
+![System Sequence Diagram - Alternative One](svg/us002-system-sequence-diagram-alternative-three.svg)
+
 
 ### 1.7 Other Relevant Remarks
 

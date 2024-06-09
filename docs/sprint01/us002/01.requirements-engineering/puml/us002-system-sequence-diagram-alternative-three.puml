@@ -5,7 +5,7 @@ skinparam shadowing false
 skinparam actorStyle awesome
 
 
-title SSD US002: TO LOGIN IN SYSTEM - Alternative Two
+title SSD US002: TO LOGIN IN SYSTEM - Alternative Three
 
 autonumber
 
@@ -20,13 +20,13 @@ activate User
         System --> User : requests data (username + password)
     deactivate System
 
-    User -> System : types incorrect username and submit
+    User -> System : types incorrect password and submit
     activate System
 
         System --> User :displays message of insucess
     deactivate System
 
-    User -> System : types correct username and submit
+    User -> System : types correct password and submit
     activate System
 
         System --> User :displays message of sucess
