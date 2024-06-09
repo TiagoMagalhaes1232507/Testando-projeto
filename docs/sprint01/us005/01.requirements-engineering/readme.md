@@ -27,21 +27,33 @@ Como utilizador registado quero comentar uma discussion.
 
 ### 1.3. Acceptance Criteria
 
-CA1: O usuário deve inserir email e senha para fazer login.
-CA2: O sistema deve verificar se o email e senha estão corretos.
-CA3: Se o email e a senha estiverem corretos, o sistema deve conceder acesso ao usuário.
-CA4: Se o email e/ou a senha estiverem incorretos, o sistema deve exibir uma mensagem de erro.
-CA5: Dado que o usuário fez login, deve visualizar as discussões postadas no fórum.
-CA6: Então o usuário deve ver uma caixa de texto vazia para inserir um comentário.
-CA7: Quando o usuário digitar um comentário na caixa de texto, o comprimento mínimo do texto deve ter 20 caracteres.
-CA8: Se o usuário digite menos de 20 caracteres na caixa de texto, o sistema deve exibir uma mensagem de erro indicando a quantidade de caracteres permitida.
-CA9: Após o usuário digitar o comentário deve clicar no botão "Post comment" o comentário deve ser salvo e exibido abaixo da discussão.  
-CA10: Se o usuário tentar enviar um comentário vazio, o sistema deve exibir uma mensagem de erro indicando que o comentário não pode ser vazio.
-CA11: Quando um novo comentário for adicionado na mesma discussão, deve ser exibido em ordem cronológica do mais antigo para o mais recente.
+**AC1:** O usuário deve inserir email e senha para fazer login. / The user must enter email and password to log in.
+
+**AC2:** O sistema deve verificar se o email e senha estão corretos. / The system must check whether the email and password are correct.
+
+**AC3:** Se o email e a senha estiverem corretos, o sistema deve conceder acesso ao usuário. / If the email and password are correct, the system should grant access to the user.
+
+**AC4:** Se o email e/ou a senha estiverem incorretos, o sistema deve exibir uma mensagem de erro. / If the email and/or password are incorrect, the system should display an error message.
+
+**AC5:** Dado que o usuário fez login, deve visualizar as discussões postadas no fórum. / Once the user is logged in, they should view the discussions posted on the forum.
+
+**AC6:** O sistema deve exibir ao usuário uma caixa de texto vazia para inserir um comentário. / The system must display an empty text box to the user to enter a comment.
+
+**AC7:** Quando o usuário digitar um comentário na caixa de texto, o comprimento mínimo do texto deve ter 20 caracteres./ When the user types a comment in the text box, the minimum text length must be 20 characters.
+
+**AC8:** Se o usuário digitar menos de 20 caracteres na caixa de texto, o sistema deve exibir uma mensagem de erro indicando a quantidade de caracteres permitida. / If the user types less than 20 characters in the text box, the system should display an error message indicating the number of characters allowed.
+
+**AC9:** Após o usuário digitar o comentário deve clicar no botão "Post comment" o comentário deve ser salvo e exibido abaixo da discussão. / After the user types the comment, they must click on the "Post comment" button, the comment must be saved and displayed below the discussion.
+
+**AC10:** Se o usuário tentar enviar um comentário vazio, o sistema deve exibir uma mensagem de erro indicando que o comentário não pode ser vazio. / If the user tries to send an empty comment, the system should display an error message indicating that the comment cannot be empty.
+
+**AC11:** Quando um novo comentário for adicionado na mesma discussão, deve ser exibido em ordem cronológica do mais antigo para o mais recente. / When a new comment is added to the same thread, it should be displayed in chronological order from oldest to newest.
 
 OBS:
-CA12: Se o usuário quiser editar um comentário postado por ele deve clicar no botão editar próximo ao comentário.
-CA13: Se o usuário quiser deletar um comentário postado por ele deve clicar no botão deletar próximo ao comentário.
+
+**AC12:** Se o usuário quiser editar um comentário postado por ele deve clicar no botão editar próximo ao comentário.
+
+**AC13:** Se o usuário quiser deletar um comentário postado por ele deve clicar no botão deletar próximo ao comentário.
 
 ### 1.4. Found out Dependencies
 
@@ -49,29 +61,31 @@ CA13: Se o usuário quiser deletar um comentário postado por ele deve clicar no
 - US002
 - US004
 
-- Existe uma dependência da US001 'Registro na aplicação', pois o usuário precisa estar registrado na aplicação.
+- Existe uma dependência da US001 'Registro na aplicação', pois o usuário precisa estar registrado na aplicação. / There is a dependency on US001 'Application registration', as the user needs to be registered in the application.
 
-- Existe uma dependência da US002 'Fazer login', pois o usuário precisa estar logado na aplicação.
+- Existe uma dependência da US002 'Fazer login', pois o usuário precisa estar logado na aplicação./ There is a dependency on US002 'Log in', as the user needs to be logged in to the application.
 
-- Existe uma dependência da US004 'Criar uma discussion', pois discussions precisam existir para serem comentadas.
+- Existe uma dependência da US004 'Criar uma discussion', pois discussions precisam existir para serem comentadas./ There is a dependency on US004 'Create a discussion', as discussions need to exist to be commented on.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
 
 - Typed data:
+
   - Email
   - Password
   - Discussion
-  - Texto do comentário
+  - Comment text
+
 - Selected data:
-  - Classifying task category
+  - Classifying task category ??????
 
 **Output Data:**
 
-- Sistema informa mensagem de sucesso confirmando a postagem do comentário.
+- Sistema informa mensagem de sucesso confirmando a postagem do comentário./ System informs a success message confirming the posting of the comment.
 
-- A discussion é atualizada com data e hora do comentário. (timestamp).
+- A discussion é atualizada com data e hora do comentário. (timestamp). / The discussion is updated with the date and time of the comment. (timestamp).
 
 ### 1.6. System Sequence Diagram (SSD)
 
