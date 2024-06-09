@@ -2,38 +2,30 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
+skinparam style strictuml
 
-title System Sequence Diagram (SSD) - Alternative One
+title As a registered user, I want to create a discussion
 
 autonumber
 
-actor "Organization Employee" as Employee
-participant ":System" as System
+actor "User" as Employee
+participant "System" as System
 
 activate Employee
 
-    Employee -> System : asks to create a new task
-    activate System
+Employee -> System : asks to create a new discussion
+System --> Employee : requests data (title, text)
 
-        System --> Employee : requests data
-    deactivate System
-
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate System
-
-        System --> Employee : shows task category list and asks to select one
-    deactivate System
-
-    Employee -> System : selects a task category
-    activate System
-
-        System --> Employee : shows selected category
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : displays operation success
-    deactivate System
+Employee -> System : provides requested data (title, text)
+Employee -> System : submits discussion
+System --> Employee : displays operation success or insuccess
 
 @enduml
+
+
+
+
+
+
+
+

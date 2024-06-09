@@ -2,38 +2,29 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
+skinparam style strictuml
 
-title System Sequence Diagram (SSD) - Alternative Two
+actor "Domain-Driven Designers" as User
+participant System as System
 
-autonumber
+User -> System: request to create a new post
+activate System
+System -> User: opens new window to enter data (title, text)
+User -> System: provides requested data (title, text) in new window
+User -> System: clicks on submit button in new window
+System -> System: validates data
+alt Data is valid
+    System -> User: displays operation success in new window
+    System --> User: closes new window
+else Data is invalid
+    System -> User: displays operation failure in new window
+end
 
-actor "Organization Employee" as Employee
-participant ":System" as System
-
-activate Employee
-
-    Employee -> System : asks to create a new task
-    activate System
-
-        System --> Employee : shows task category list and asks to select one
-        'System --> Employee : shows task categories list\n and requests data (reference,\ndescription,\ninformation description,\ntechnical description,\nduration, cost)
-    deactivate System
-
-    Employee -> System : selects a task category
-    activate System
-
-        System --> Employee : requests data
-    deactivate System
-
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate System
-
-        System --> Employee : shows selected category and requested data
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : Shows operation success
-    deactivate System
 @enduml
+
+
+
+
+
+
+
