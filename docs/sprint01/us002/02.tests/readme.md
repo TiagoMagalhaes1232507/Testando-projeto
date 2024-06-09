@@ -2,12 +2,14 @@
 
 # 1. Tests 
 
-**Test 1:** Check that it is not possible to create an instance of the Task class with null values. 
+**Test 1:** (AC1) Check that if there's sucess login with correct username and password. Confirm message presented by system.
 
-**Test 2:** Check that it is not possible to create an instance of the Task class with a reference containing less than five chars - AC2. 
+**Test 2:** (AC2) Check that if there's insucess login with incorrect username and correct password. Confirm message presented by system.
 
+**Test 3:** (AC2) Check that if there's insucess login with correct username and incorrect password. Confirm message presented by system.
 
-*It is also recommended to organize this content by subsections.* 
+**Test 4:** Check that if there's insucess login with no data in username/login. Confirm message presented by system.
+
 
 
 
