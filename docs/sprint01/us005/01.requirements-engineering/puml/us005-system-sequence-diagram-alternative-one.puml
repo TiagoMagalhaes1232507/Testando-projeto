@@ -13,7 +13,7 @@ participant ":System" as System
 activate Employee
 
     Employee -> System : asks to create a new task 
-    activate System 
+    activate System
 
         System --> Employee : requests data
     deactivate System

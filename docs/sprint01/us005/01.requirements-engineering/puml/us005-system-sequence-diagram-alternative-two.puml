@@ -36,9 +36,4 @@ activate Employee
 
         System --> Employee : Save comment and shows below discussion
 
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : Shows operation success
-    deactivate System
 @enduml
