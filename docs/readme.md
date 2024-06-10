@@ -18,7 +18,7 @@ The team consists of students identified in the following table.
 
 | Student Number | Name              |
 | -------------- | ----------------- |
-| **1XXXXXX**    | Name of student 1 |
+| **1181731**    | Tiago Martins |
 | **1232493**    | Ana Rita Ramos    |
 | **1XXXXXX**    | Name of student 3 |
 | **1XXXXXX**    | Name of student 4 |
@@ -45,7 +45,7 @@ was carried out as described in the following table.
 | US 004 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 005 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 006 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
-| US 007 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
+| US 007 (SDP Activities)     | [1XXXXXX](sprint01/us007/readme.md)                                                        |
 | US 008 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 009 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 010 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
