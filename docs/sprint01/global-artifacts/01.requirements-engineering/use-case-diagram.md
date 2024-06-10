@@ -29,4 +29,5 @@ link as suggested below.**
 | US 010 | []()          |
 | US 011 | []()          |
 | US 012 | []()          |
-| US 013 | [To be able to see the discussion list](../../us013/readme.md)          |
+| US 013 | [To be able to see the discussion's list ordered by date](../../us013/readme.md)          |
+| US 014 | [To be able to see the discussion's list sorted by popularity](../../us014/readme.md)          |

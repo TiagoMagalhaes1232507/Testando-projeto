@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam actorStyle awesome
+
+title SSD US014 - To be able to see the discussion's list sorted by popularity
+
+autonumber
+
+actor "UnregisteredUser" as User
+participant ":System" as System
+
+activate User
+
+    User -> System : starts the application
+    activate System
+
+        User --> System : requests data
+    deactivate System
+
+    System -> User : Displays homepage (Discussion List sorted by popularty);
+      
+activate System
+@enduml
