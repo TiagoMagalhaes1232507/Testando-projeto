@@ -1,4 +1,4 @@
-# Switch-QA Project for the 1st Semester 2023
+# Switch-QA Project for the 1st Semester 2024
 
 ## How to generate the svg files
 
