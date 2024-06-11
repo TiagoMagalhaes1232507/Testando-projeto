@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 009 - To formar my posts and comments
 
 ## 1. Requirements Engineering
 
@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As an organization employee, I want to create a new task in order to be further published.
+As a user, I need to format my post/comment.
 
 
 
@@ -37,7 +37,7 @@ As an organization employee, I want to create a new task in order to be further 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
+* **AC1:** User must be logged-in.
 * **AC2:** Task reference must have at least 5 alphanumeric chars.
 * **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
 
@@ -45,7 +45,7 @@ As an organization employee, I want to create a new task in order to be further 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* There is a dependency to "US002 To " since at least a task category must exist to classify the task being created.
 
 
 ### 1.5 Input and Output Data

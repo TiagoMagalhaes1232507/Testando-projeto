@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As a user I want/need to login in system.
+As a user I want to login in system.
 
 
 
@@ -27,15 +27,15 @@ As a user I want/need to login in system.
 
 
 * **AC1:** The user should type their username and password.
-* **AC2:** The sistem must validate username and password and present a message with the outcome 
-	If the result is positive, the sistem present a message of success. 
-	If result negative, the sistem present a message of insucess and user must type username and password again.
+* **AC2:** The sistem must validate username and password in database and present a message with the outcome.
+* **AC3:** If validation username and passoword is positive, the sistem present a message of success and permit access to user.
+* **AC4:**	If validation username or password is negative, the sistem present a message of insucess and user must type username and password again.
 
 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US001 xxxx" due to the user must be registred to be able to login in System.
+* There is a dependency to "US001 User Registration" due to the user must be registred to be able to login in System.
 
 
 ### 1.5 Input and Output Data
@@ -47,8 +47,6 @@ As a user I want/need to login in system.
 	* an username 
 	* a password
 	
-* Selected data:
-	* Classifying task category ??????
 
 
 **Output Data:**
@@ -68,10 +66,10 @@ As a user I want/need to login in system.
 
 #### Alternative Three
 
-![System Sequence Diagram - Alternative One](svg/us002-system-sequence-diagram-alternative-three.svg)
+![System Sequence Diagram - Alternative Three](svg/us002-system-sequence-diagram-alternative-three.svg)
 
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks. ????
-If operation is unsucessful
+* It should be a "Forgot Password?" checkbox to allow user to retrieve their account.
+* It should be able to see 

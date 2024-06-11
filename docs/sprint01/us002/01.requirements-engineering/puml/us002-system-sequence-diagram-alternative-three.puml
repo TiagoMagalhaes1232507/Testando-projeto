@@ -2,15 +2,16 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
-skinparam actorStyle awesome
+
 
 
 title SSD US002: TO LOGIN IN SYSTEM - Alternative Three
 
 autonumber
 
-actor "User" as User
+actor "Registred User" as User
 participant ":System" as System
+database ":Database" as Database
 
 activate User
 
@@ -23,13 +24,15 @@ activate User
     User -> System : types incorrect password and submit
     activate System
 
+        System -> Database : verifies data in DB
+    activate System
+
+       Database --> System : no match
+    activate System
+
         System --> User :displays message of insucess
     deactivate System
 
-    User -> System : types correct password and submit
-    activate System
 
-        System --> User :displays message of sucess
-    deactivate System
 
 @enduml

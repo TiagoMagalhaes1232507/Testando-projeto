@@ -2,27 +2,34 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
-skinparam actorStyle awesome
+
 
 title SSD US002: TO LOGIN IN SYSTEM - Alternative One
 
 autonumber
 
-actor "User" as User
+actor "Registred User" as User
 participant ":System" as System
+database ":Database" as Database
 
 activate User
 
     User -> System : wants to login in system
     activate System
 
-        System --> User : requests data
+        System --> User : requests data (username, password)
     deactivate System
 
     User -> System : types correct requested data  (username, password) and submit
     activate System
 
-        System --> User : validates data and displays message of sucess
+        System -> Database : Check username and password in DB
+    activate System
+
+        Database --> System : validates data
+    activate System
+
+        System --> User : Displays message of success
     deactivate System
 
 @enduml
