@@ -25,9 +25,6 @@ activate Employee
         System --> Employee : Shows discussions that contain a link
     activate System
 
-        System --> Employee : requests data
-    deactivate System
-
     Employee -> System : Click on the link
     activate System
 
