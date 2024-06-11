@@ -2,38 +2,30 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
+skinparam actorStyle awesome
 
-title System Sequence Diagram (SSD) - Alternative Two
+title SSD US 013 - To be able to see the discussion's list ordered by date
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor "UnregisteredUser" as User
 participant ":System" as System
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task
-    activate System
+  User -> System: starts the application
+  activate System
 
-        System --> Employee : shows task category list and asks to select one
-        'System --> Employee : shows task categories list\n and requests data (reference,\ndescription,\ninformation description,\ntechnical description,\nduration, cost)
-    deactivate System
+    User --> System: requests data (solid line - synchronous)
+  deactivate System
 
-    Employee -> System : selects a task category
-    activate System
+  System -> User: Displays homepage (Discussions list sorted by popularity)
+  activate System
 
-        System --> Employee : requests data
-    deactivate System
+  User --> System: Requests data organized by date (solid line - synchronous)
+deactivate System
 
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate System
+  System -> User: Displays homepage (Discussions list sorted by date (newest->oldest))
+activate System
 
-        System --> Employee : shows selected category and requested data
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : Shows operation success
-    deactivate System
 @enduml

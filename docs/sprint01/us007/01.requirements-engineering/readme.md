@@ -1,52 +1,39 @@
-# US 006 - To create a Task 
+# US 007 - Post with a link 
 
 ## 1. Requirements Engineering
 
 
 ### 1.1. User Story Description
 
-
-As an organization employee, I want to create a new task in order to be further published.
-
-
+As a registered user, I want to submit a new post with a link so that I can share content with the community.
 
 ### 1.2. Customer Specifications and Clarifications 
 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category. 
-
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
-
+>	Each post must have a title and a valid URL.
 
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** Are there any restrictions on the types of links that can be submitted?
 >  
-> **Answer:** Duration is estimated in days.
-
-
-> **Question:** Monetary data is expressed in any particular currency?
->  
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
+> **Answer:** There are no restrictions on the types of links that can be submitted, as long as they are valid URLs starting with HTTP, HTTPS, or FTP.
 
 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
-* **AC2:** Task reference must have at least 5 alphanumeric chars.
-* **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
-
+* **AC1:** All required fields (title and link) must be filled in.
+* **AC2:** The title must have a minimum of 2 characters and a maximum of 85 characters. If the title length is invalid, the system must reject the submission and present a message of failure.
+* **AC3:** The link must have a minimum of 8 characters and a maximum of 500 characters. If the link length is invalid, the system must reject the submission and present a message of failure.
+* **AC3:** The link must be a valid URL starting with HTTP, HTTPS, or FTP. If the link url is invalid, the system must reject the submission and present a message of insucess.
 
 ### 1.4. Found out Dependencies
 
-
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
-
+* There is a dependency on "US001 User Registration" since only registered users can submit posts.
+* There is a dependency on "US002 To login in System" since only logged users can submit posts.
 
 ### 1.5 Input and Output Data
 
@@ -54,12 +41,8 @@ As an organization employee, I want to create a new task in order to be further 
 **Input Data:**
 
 * Typed data:
-	* a reference, 
-	* a designation, 
-	* an informal description
-	* a technical description
-	* an estimated duration
-	* an estimated cost
+	* Title 
+	* Link 
 	
 * Selected data:
 	* Classifying task category 
@@ -67,8 +50,8 @@ As an organization employee, I want to create a new task in order to be further 
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* Confirmation of successful post submission
+* Error messages in case of validation failures
 
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -76,12 +59,11 @@ As an organization employee, I want to create a new task in order to be further 
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
-
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative One](svg/us007-system-sequence-diagram-alternative-one.svg)
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* The submitted post must be immediately visible to all users if it passes validation.
+* Implementing a preview feature before final submission could enhance user experience.
+* The current system accepts HTTP, HTTPS, and FTP links without validating them. Future updates may include proper URL validation to enhance security and usability.
+* Error messages should be clear, concise, and professional. For example, instead of "Yeahhhhh, link posts should be 8 to 500 characters. Yours was 0," a more professional message would be: "Error: The link must be between 8 and 500 characters. Please enter a valid link."

@@ -10,6 +10,10 @@ _Specifies functionalities that:_
 
 (fill in here)
 
+Printing example: max-width: 800px; font-family: monospace;(tiago emanuel)
+Language: English (tiago emanuel)
+
+
 
 ## Usability 
 
