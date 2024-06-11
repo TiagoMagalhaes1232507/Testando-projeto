@@ -2,38 +2,27 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
+skinparam style strictuml
 
-title System Sequence Diagram (SSD) - Alternative One
+title As a user I want to logout 
 
 autonumber
 
-actor "Organization Employee" as Employee
-participant ":System" as System
+actor "User" as RegisteredUser
+participant "System" as System
 
-activate Employee
+activate RegisteredUser
 
-    Employee -> System : asks to create a new task
-    activate System
+RegisteredUser -> System : clicks logout button
+activate System
 
-        System --> Employee : requests data
-    deactivate System
+System --> RegisteredUser : displays success message
 
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
-    activate System
+System -> RegisteredUser : confirms logout and ends session
 
-        System --> Employee : shows task category list and asks to select one
-    deactivate System
-
-    Employee -> System : selects a task category
-    activate System
-
-        System --> Employee : shows selected category
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : displays operation success
-    deactivate System
+deactivate System
+deactivate RegisteredUser
 
 @enduml
+
+
