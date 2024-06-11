@@ -1,10 +1,10 @@
-# US 0012 - To create a Task
+# US 0012 - Access a discussion link
 
 ## 1. Requirements Engineering
 
 ### 1.1. User Story Description
 
-Como utilizador quero aceder ao website através de um link presente numa discussion./ As a user, I want to access the website through a link present in a discussion.
+As a user, I want to access the website through a link present in a discussion.
 
 ### 1.2. Customer Specifications and Clarifications
 
@@ -26,21 +26,21 @@ Como utilizador quero aceder ao website através de um link presente numa discus
 
 ### 1.3. Acceptance Criteria
 
-**AC1:** O usuário deve inserir email e senha para fazer login./ The user must enter email and password to log in.
+**AC1:** The user must enter email and password to log in.
 
-**AC2:** O sistema deve verificar se o email e senha estão corretos./ The system must check whether the email and password are correct.
+**AC2:** The system must check whether the email and password are correct.
 
-**AC3:** Se o email e a senha estiverem corretos, o sistema deve conceder acesso ao usuário./ If the email and password are correct, the system should grant access to the user.
+**AC3:** If the email and password are correct, the system should grant access to the user.
 
-**AC4:** Se o email e/ou a senha estiverem incorretos, o sistema deve exibir uma mensagem de erro./ If the email and/or password are incorrect, the system should display an error message.
+**AC4:** If the email and/or password are incorrect, the system should display an error message.
 
-**AC5:** Dado que o usuário fez login, deve visualizar as discussões postadas no fórum./ Once the user is logged in, they should view the discussions posted on the forum.
+**AC5:** Once the user is logged in, they should view the discussions posted on the forum.
 
-**AC6:** Se uma discussão postada no fórum contém um link, então este link deve ser exibido como hiperlink em uma cor ou formatacão diferente do resto do texto e deve ser clicável./ If a discussion posted to the forum contains a link, then this link must be displayed as a hyperlink in a different color or formatting than the rest of the text and must be clickable.
+**AC6:** If a discussion posted to the forum contains a link, then this link must be displayed as a hyperlink in a different color or formatting than the rest of the text and must be clickable.
 
-**AC7:** Quando o usuário clicar no link deve ser aberta uma nova aba navegador com a página correspondente ao link./ When the user clicks on the link, a new browser tab must open with the page corresponding to the link.
+**AC7:** When the user clicks on the link, a new browser tab must open with the page corresponding to the link.
 
-**AC8:** Só deve ser considerado link as urls que começarem com https:// Only urls that begin with https:// should be considered links.
+**AC8:** Only urls that begin with https:// should be considered links.
 
 ### 1.4. Found out Dependencies
 
@@ -90,4 +90,4 @@ Como utilizador quero aceder ao website através de um link presente numa discus
 
 ### 1.7 Other Relevant Remarks
 
-- The created task stays in a "not published" state in order to distinguish from "published" tasks.
+- The URL must be checked to ensure it does not lead to a malicious website to improve the user experience.

@@ -1,11 +1,10 @@
-# US 005 - To create a Task
+# US 005 - Create a comment
 
 ## 1. Requirements Engineering
 
 ### 1.1. User Story Description
 
 As a registered user I want to comment on a discussion.
-Como utilizador registado quero comentar uma discussion.
 
 ### 1.2. Customer Specifications and Clarifications
 
@@ -27,33 +26,27 @@ Como utilizador registado quero comentar uma discussion.
 
 ### 1.3. Acceptance Criteria
 
-**AC1:** O usuário deve inserir email e senha para fazer login. / The user must enter email and password to log in.
+**AC1:** The user must enter email and password to log in.
 
-**AC2:** O sistema deve verificar se o email e senha estão corretos. / The system must check whether the email and password are correct.
+**AC2:** The system must check whether the email and password are correct.
 
-**AC3:** Se o email e a senha estiverem corretos, o sistema deve conceder acesso ao usuário. / If the email and password are correct, the system should grant access to the user.
+**AC3:** If the email and password are correct, the system should grant access to the user.
 
-**AC4:** Se o email e/ou a senha estiverem incorretos, o sistema deve exibir uma mensagem de erro. / If the email and/or password are incorrect, the system should display an error message.
+**AC4:** If the email and/or password are incorrect, the system should display an error message.
 
-**AC5:** Dado que o usuário fez login, deve visualizar as discussões postadas no fórum. / Once the user is logged in, they should view the discussions posted on the forum.
+**AC5:** Once the user is logged in, they should view the discussions posted on the forum.
 
-**AC6:** Quando o usuário clica em uma discussão. O sistema deve exibir uma caixa de texto vazia para inserir um comentário. / When the user clicked on a discussion. The system must display an empty text box to enter a comment. /
+**AC6:** When the user clicked on a discussion. The system must display an empty text box to enter a comment. /
 
-**AC7:** Quando o usuário digitar um comentário na caixa de texto, o comprimento mínimo do texto deve ter 20 caracteres e o máximo 10 mil./ When the user types a comment in the text box, the minimum text length must be 20 characters and a maximum of 10.000.
+**AC7:** When the user types a comment in the text box, the minimum text length must be 20 characters and a maximum of 10.000.
 
-**AC8:** Caso o usuário digite menos de 20 ou mais de 10.000 caracteres na caixa de texto, o sistema deverá exibir uma mensagem de erro indicando a quantidade de caracteres permitidos. / If the user types less than 20 characters in the text box, the system should display an error message indicating the number of characters allowed.
+**AC8:** If the user types less than 20 characters in the text box, the system should display an error message indicating the number of characters allowed.
 
-**AC9:** Após o usuário digitar o comentário deve clicar no botão "Post comment" o comentário deve ser salvo e exibido abaixo da discussão. / After the user types the comment, they must click on the "Post comment" button, the comment must be saved and displayed below the discussion.
+**AC9:** After the user types the comment, they must click on the "Post comment" button, the comment must be saved and displayed below the discussion.
 
-**AC10:** Se o usuário tentar enviar um comentário vazio, o sistema deve exibir uma mensagem de erro indicando que o comentário não pode ser vazio. / If the user tries to send an empty comment, the system should display an error message indicating that the comment cannot be empty.
+**AC10:** If the user tries to send an empty comment, the system should display an error message indicating that the comment cannot be empty.
 
-**AC11:** Quando um novo comentário for adicionado na mesma discussão, deve ser exibido em ordem cronológica do mais antigo para o mais recente. / When a new comment is added to the same thread, it should be displayed in chronological order from oldest to newest.
-
-OBS:
-
-**AC12:** Se o usuário quiser editar um comentário postado por ele deve clicar no botão editar próximo ao comentário.
-
-**AC13:** Se o usuário quiser deletar um comentário postado por ele deve clicar no botão deletar próximo ao comentário.
+**AC11:** When a new comment is added to the same thread, it should be displayed in chronological order from oldest to newest.
 
 ### 1.4. Found out Dependencies
 
@@ -83,9 +76,9 @@ OBS:
 
 **Output Data:**
 
-- Sistema informa mensagem de sucesso confirmando a postagem do comentário./ System informs a success message confirming the posting of the comment.
+- System informs a success message confirming the posting of the comment.
 
-- A discussion é atualizada com data e hora do comentário. (timestamp). / The discussion is updated with the date and time of the comment. (timestamp).
+- The discussion is updated with the date and time of the comment. (timestamp).
 
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -93,12 +86,14 @@ OBS:
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us005-system-sequence-diagram-alternative-one.svg)
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative Two](svg/us005-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 
-- The created task stays in a "not published" state in order to distinguish from "published" tasks.
+Implementing functionality that allows the user to edit a comment they have posted can improve the user experience.
+
+Implementing a functionality that allows the user to delete a comment they posted can improve the user experience.
