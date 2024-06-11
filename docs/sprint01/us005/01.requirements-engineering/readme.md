@@ -37,11 +37,11 @@ Como utilizador registado quero comentar uma discussion.
 
 **AC5:** Dado que o usuário fez login, deve visualizar as discussões postadas no fórum. / Once the user is logged in, they should view the discussions posted on the forum.
 
-**AC6:** O sistema deve exibir ao usuário uma caixa de texto vazia para inserir um comentário. / The system must display an empty text box to the user to enter a comment.
+**AC6:** Quando o usuário clica em uma discussão. O sistema deve exibir uma caixa de texto vazia para inserir um comentário. / When the user clicked on a discussion. The system must display an empty text box to enter a comment. /
 
 **AC7:** Quando o usuário digitar um comentário na caixa de texto, o comprimento mínimo do texto deve ter 20 caracteres e o máximo 10 mil./ When the user types a comment in the text box, the minimum text length must be 20 characters and a maximum of 10.000.
 
-**AC8:** If the user types less than 20 or more than 10.000 characters in the text box, the system must display an error message indicating the number of characters allowed. / If the user types less than 20 characters in the text box, the system should display an error message indicating the number of characters allowed.
+**AC8:** Caso o usuário digite menos de 20 ou mais de 10.000 caracteres na caixa de texto, o sistema deverá exibir uma mensagem de erro indicando a quantidade de caracteres permitidos. / If the user types less than 20 characters in the text box, the system should display an error message indicating the number of characters allowed.
 
 **AC9:** Após o usuário digitar o comentário deve clicar no botão "Post comment" o comentário deve ser salvo e exibido abaixo da discussão. / After the user types the comment, they must click on the "Post comment" button, the comment must be saved and displayed below the discussion.
 
