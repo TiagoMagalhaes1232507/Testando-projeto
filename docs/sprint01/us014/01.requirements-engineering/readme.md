@@ -1,4 +1,4 @@
-# US 014 - To be able to see the discussion's list ordered by popularity
+# US 014 - Discussion's list ordered by popularity
 
 ## 1. Requirements Engineering
 
