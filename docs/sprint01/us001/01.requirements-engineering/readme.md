@@ -73,7 +73,6 @@ This form should capture essential information for user accounts, such as email 
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
 
 #### Alternative One
 
