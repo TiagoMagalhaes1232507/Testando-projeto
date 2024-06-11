@@ -23,7 +23,7 @@ link as suggested below.**
 | US 004 | []()          |
 | US 005 | []()          |
 | US 006 | [Reply directly to a comment in a Discussion](../../us006/Readme.md)          |
-| US 007 | []()          |
+| US 007 | [Create link post](../../us007/readme.md)          |
 | US 008 | []()          |
 | US 009 | []()          |
 | US 010 | []()          |

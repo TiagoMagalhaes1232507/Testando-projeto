@@ -1,9 +1,9 @@
-@startuml
+@startuml System Sequence Diagram (SSD)
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative One
+title  - US007 - Post with a link - Alternative One
 
 autonumber
 
