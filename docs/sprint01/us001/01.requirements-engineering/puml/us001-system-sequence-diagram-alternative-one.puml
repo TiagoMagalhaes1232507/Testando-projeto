@@ -1,9 +1,9 @@
-@startuml 
+@startuml
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative One
+title SSD US001: User Registration - Alternative One
 
 autonumber
 

@@ -1,0 +1,45 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title SSD US008: To vote on a Discussion - Alternative Two
+
+autonumber
+
+actor "User" as User
+participant ":Application" as System
+participant ":Data Base" as Database
+
+activate User
+
+User -> System: accesses discussion
+activate System
+
+    System -> Database: retrieves discussion data
+activate Database
+deactivate Database
+
+    System --> User: Displays discussion
+deactivate System
+
+User -> System: Selects voting option (upvote/downvote)
+activate System
+
+    System -> System: Checks user eligibility (or validation)
+
+Alt Valid Vote
+
+    System -> Database: Updates vote count in database
+activate Database
+deactivate Database
+
+    System --> User: The vote was registered
+
+Else Invalid Vote
+
+    System --> User: The vote was not registered (Invalid vote selection)
+End Alt
+
+deactivate System
+@enduml
