@@ -11,11 +11,65 @@ rectangle "System Actors" as actors {
     
     actor "User" as User
 }
+rectangle "Use Cases" as usecases{
+    usecase "UC1 - User Registration " as UC1
+    User --> UC1}
 
+rectangle "Use Cases" as usecases{
+    usecase "UC2 - To login in System" as UC2
+    User --> UC2}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC3 - View the discussions list as Unregistered User." as UC3
+    User --> UC3}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC4 - ?????????????????????" as UC4
+    User --> UC4}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC5 - comment on a discussion" as UC5
+    User --> UC5}
 
 rectangle "Use Cases" as usecases{
     usecase "UC6 - Reply directly to a comment in a Discussion" as UC6
-    User --> UC6
+    User --> UC6}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC7 - Post with a link" as UC7
+    User --> UC7}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC8 - To vote on a Discussion" as UC8
+    User --> UC8}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC9 - ???????????????" as UC9
+    User --> UC9}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC10 - To vote on a Discussion" as UC10
+    User --> UC10}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC11 - To logout" as UC11
+    User --> UC11}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC12 - ?????????????" as UC12
+    User --> UC12}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC13 - Discussion's list ordered by date" as UC13
+    User --> UC13}
+
+rectangle "Use Cases" as usecases{
+    usecase "UC14 - Discussion's list ordered by popularity" as UC14
+    User --> UC14}
+
+To be able to see the discussion's list ordered by date
+
+
 }
 
 
