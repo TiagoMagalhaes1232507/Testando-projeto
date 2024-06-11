@@ -1,4 +1,5 @@
-# US 006 - To create a Task 
+# US 008 - To vote on a Discussion
+
 
 ## 1. Requirements Engineering
 
@@ -6,7 +7,7 @@
 ### 1.1. User Story Description
 
 
-As an organization employee, I want to create a new task in order to be further published.
+As a user, I want to vote on a discussion created by another user.
 
 
 
@@ -15,37 +16,66 @@ As an organization employee, I want to create a new task in order to be further 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category. 
+>	The system shall allow registered users to view discussions created by other users.  
 
 
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+>	The system shall provide a clear and accessible mechanism for registered users to cast votes (e.g., upvote, downvote) on discussions created by other users.
+
+
+>	The system shall display the current vote count (e.g., total upvotes, downvotes) for each discussion in a clear and understandable way.
 
 
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
+> **Question:** Who can vote?
 >  
-> **Answer:** Duration is estimated in days.
+> **Answer:** Only registered users can vote.
 
 
-> **Question:** Monetary data is expressed in any particular currency?
+> **Question:** What types of votes are allowed? 
 >  
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
+> **Answer:** The voting options available to users are upvote and downvote.
+
+
+> **Question:** How are votes counted? 
+>  
+> **Answer:** The votes are counted through a simple sum.
+
+
+> **Question:** What happens if a user tries to vote multiple times? 
+>  
+> **Answer:** When a user tries to vote multiple times, an error message appears, and the additional vote is ignored.
+
 
 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
-* **AC2:** Task reference must have at least 5 alphanumeric chars.
-* **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
+* **AC1:** The system must display a vote button on each discussion.
+* **AC2:** The user must be able to click the vote button to cast their vote.
+* **AC3:** The system must display the vote count for each discussion.
+* **AC4:** The user must be able to change their vote at any time.
+* **AC5:** The system must prevent the user from voting on a discussion more than once.  
+* **AC6:** The user must be able to see who voted on a discussion.(additional).
+* **AC7:** The system must prevent the user from voting on their own discussion (additional).
+
+
+
 
 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* The main dependencies of the user story "As a user, I want to vote on a discussion created by another user" are:
+
+	* Logging in to the system (User Story 2: "As a user, I want/need to log in to the system") because users must be logged in to vote.
+	* Viewing the listed discussions (User Story 13: "As a user, I want to be able to see the listed discussions") because users must be able to see the discussions to vote on them.
+
+
+* Indirect dependencies include password recovery and discussion creation, which are necessary to maintain the cycle of user interaction within the forum.
+
+
 
 
 ### 1.5 Input and Output Data
@@ -54,21 +84,20 @@ As an organization employee, I want to create a new task in order to be further 
 **Input Data:**
 
 * Typed data:
-	* a reference, 
-	* a designation, 
-	* an informal description
-	* a technical description
-	* an estimated duration
-	* an estimated cost
+	* User ID 
+	* Discussion ID
+	
 	
 * Selected data:
-	* Classifying task category 
+	* Vote Type 
+	
 
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* Updated Vote Count
+* Updated User Interface
+
 
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -76,12 +105,17 @@ As an organization employee, I want to create a new task in order to be further 
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us008-system-sequence-diagram-alternative-one.svg)
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative Two](svg/us008-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* Implement measures to detect and prevent fraudulent voting behavior,
+
+* Specify how votes will be stored and managed within the system,
+
+* Consider if there are limitations on the impact of votes (e.g., vote caps to prevent abuse).
+

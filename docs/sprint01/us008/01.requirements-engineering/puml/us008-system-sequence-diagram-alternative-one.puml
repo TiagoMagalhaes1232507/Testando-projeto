@@ -1,0 +1,28 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One
+
+autonumber
+
+actor "User" as User
+participant ":Application" as System
+
+activate User
+
+    User -> System : accesses discussion
+    activate System
+
+        System --> User : displays discussion
+    deactivate System
+
+    User -> System : selects voting option (upvote/downvote)
+    activate System
+
+        System --> User : validates vote
+
+        System --> User : Updates vote count (if valid)
+    deactivate System
+@enduml

@@ -31,7 +31,7 @@ activate User
         System --> User: Validate User Credentials (Invalid Credentials) 
 
         System --> User: displayErrorMessage()
-  
-
+    End alt
+    
     deactivate System
 @enduml
