@@ -6,21 +6,10 @@
 
 | **_TEA_** (EN) | **_Description_** (EN)                                                                    |                                       
 |:---------------|:------------------------------------------------------------------------------------------|
-<<<<<<< HEAD
-| **password**      | Secret sequence of characters that allows access to forum (API). |
-| **PWD**        | Acronym for _Password_.                                                                      |
-| **username**      | Sequence of characters that provides uniquely identification an user. |
-| **USN**        | Acronym for _Username_.                                       |
+**password**      | Secret sequence of characters that allows user to access to System. |                                                                   |
+| **username**      | Sequence of characters that provides uniquely identification of an user. |                                      |
 | **Acceptance Criteria**      | xxx |
-| **AC**        | Acronym for _Acceptance Criteria_.                                                                      |
-| **Clerk**      | Person responsible for carrying out various business supporting activities on the system. |
-| **CLK**        | Acronym for _Clerk_.                                                                      |
-| **...**        | ...                                                                                       |
-| **Clerk**      | Person responsible for carrying out various business supporting activities on the system. |
-| **CLK**        | Acronym for _Clerk_.                                                                      |
-| **...**        | ...                                                                                       |
-=======
-| **System** | A collection of interacting or interrelated components that work together to perform a specific function or accomplish a particular goal. "System" refers to the software application or platform being developed, including its backend infrastructure, frontend interface, and various modules or components designed to fulfill user requirements. |
+**System** | A collection of interacting or interrelated components that work together to perform a specific function or accomplish a particular goal. "System" refers to the software application or platform being developed, including its backend infrastructure, frontend interface, and various modules or components designed to fulfill user requirements. |
 | **User** | A person who interacts with the system. |
 | **User Story** | A brief, informal description of a software feature told from the perspective of the person who desires the new capability, usually a user or customer of the system. |
 | **Post** | A piece of content submitted by a user including a title and text or a link to external content. Posts are typically displayed publicly and may be subject to commenting, liking, or disliking by the same user or other users. They serve as a means for users to share information, opinions, or media with a broader audience within the platform's community. |
@@ -29,7 +18,6 @@
 | **URL** | Acronym for _Uniform Resource Locator_, a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. |
 
 
->>>>>>> 529f06d9e4dce86422da313b228ef09de07dc59f
 
 
 
