@@ -16,14 +16,17 @@
 | **Link** | A reference or connection to another resource on the internet, typically accessed by clicking on the text. |
 | **URL** | Acronym for _Uniform Resource Locator_, a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. |
 | **Unregistered User** | An individual who does not yet have an account in the application. |
+| **Registered User** | An individual who has an account in the application. It gives permissions to interact with the application. |
 | **Registration** | The process of creating a new account in the application. |
 | **User Account** | A collection of data associated with a specific individual, allowing them to access and use the application. |
 | **Discussion** | Represents a topic of debate or conversation on the platform, with its attributes such as title and description. |
 | **Vote** | Represents a topic of debate or conversation on the platform, with its attributes such as title and description. |
-
+| **Upvote**|An upvote signifies agreement, approval, or appreciation for the content. Clicking or tapping an "upvote" button increases the content's visibility or ranking within the platform.
+| **Downvote**| A downvote signifies disagreement, disapproval, or dislike for the content. Clicking or tapping a "downvote" button reduces the content's visibility or ranking.
 | **Comment** | Text posted by a user to interact with an initial publication, in this case, a discussion. Comments are used to express opinions, provide additional information, ask questions, offer support, or participate in conversations related to the topic at hand.|
 
 | **Reply** | Text posted by a user in response to a previously published comment. Replies are a form of social interaction where users can actively participate in exchanging ideas and developing the ongoing discussion. |
 
 | **Title**| Represents a topic of debate or conversation on the platform, with its attributes such as title and description. |
 | **Text**| The main body of written content in a document or post, conveying the intended message or information. |
+| **homepage**| The homepage is the main landing page of a website. It's the first page users see when they visit the website's root domain. |
