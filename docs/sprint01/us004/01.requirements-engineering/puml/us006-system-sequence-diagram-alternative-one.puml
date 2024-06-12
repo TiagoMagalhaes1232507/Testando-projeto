@@ -4,7 +4,7 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 skinparam style strictuml
 
-title As a registered user, I want to create a discussion
+title US004- Create a discussion
 
 autonumber
 
@@ -18,7 +18,7 @@ System --> Employee : requests data (title, text)
 
 Employee -> System : provides requested data (title, text)
 Employee -> System : submits discussion
-System --> Employee : displays operation success or insuccess
+System --> Employee : displays success message
 
 @enduml
 
