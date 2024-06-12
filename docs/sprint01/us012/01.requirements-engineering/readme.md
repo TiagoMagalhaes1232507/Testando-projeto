@@ -18,7 +18,7 @@ As a user, I want to access the website through a link present in a discussion.
 
 ### 1.3. Acceptance Criteria
 
-**AC1:** If a discussion posted to the forum contains a link, then this link must be displayed as a hyperlink in a different color or formatting than the rest of the text and must be clickable.
+**AC1:** If a discussion posted to the application contains a link, then this link must be displayed as a hyperlink in a different color or formatting than the rest of the text and must be clickable.
 
 **AC2:** When the user clicks on the link, a button with the phrase 'Click to visit the link at' should be shown.
 
@@ -66,3 +66,4 @@ As a user, I want to access the website through a link present in a discussion.
 ### 1.7 Other Relevant Remarks
 
 - The URL must be checked to ensure it does not lead to a malicious website to improve the user experience.
+- In addition to automatically opening in a new tab, we can provide users with the option to choose whether they want to open the link in the same tab or in a new window. This will increase the flexibility and personalization of users' browsing experience.

@@ -26,7 +26,7 @@ As a registered user I want to comment on a discussion.
 
 **AC4:** If the email and/or password are incorrect, the system should display an error message.
 
-**AC5:** Once the user is logged in, they should view the discussions posted on the forum.
+**AC5:** Once the user is logged in, they should view the discussions posted on the application.
 
 **AC6:** When the user clicked on a discussion. The system must display an empty text box to enter a comment. /
 
@@ -34,11 +34,11 @@ As a registered user I want to comment on a discussion.
 
 **AC8:** If the user types less than 20 characters in the text box, the system should display an error message indicating the number of characters allowed.
 
-After the user types the comment, they must click on the "Post comment" button. The system should save the comment and a success message should be displayed.
+**AC9:** After the user types the comment, they must click on the "Post comment" button. The system should save the comment and a success message should be displayed.
 
 **AC10:** If the user tries to send an empty comment, the system should display an error message indicating that the comment cannot be empty.
 
-**AC11:** When a new comment is added to the same thread, it should be displayed in chronological order from oldest to newest.
+**AC11:** When a new comment is added to the same topic, it should be displayed in chronological order from oldest to newest with the date of its post next to it.
 
 ### 1.4. Found out Dependencies
 
@@ -86,6 +86,6 @@ After the user types the comment, they must click on the "Post comment" button. 
 
 ### 1.7 Other Relevant Remarks
 
-Implementing functionality that allows the user to edit a comment they have posted can improve the user experience.
+- We can implement a notification system to alert users to new comments in discussions they are involved in. This can be done through push notifications, emails, or notification icons in the user interface.
 
-Implementing a functionality that allows the user to delete a comment they posted can improve the user experience.
+- We can allow users to edit or delete their own comments after posting. This will give users more control over their content and help them correct errors or update information.
