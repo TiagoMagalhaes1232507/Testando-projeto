@@ -3,37 +3,29 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative One
+title As a registered user I want to comment on a discussion
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor " Registered User" as User
 participant ":System" as System
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task 
+    User -> System : Click on a discussion
     activate System
 
-        System --> Employee : requests data
+        System --> User : Show page with discussion and an empty text box
     deactivate System
 
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
+    User -> System : Type in the text box 
+    User -> System : Click on button Post comment
     activate System
 
-        System --> Employee : shows task category list and asks to select one
-    deactivate System
-
-    Employee -> System : selects a task category
-    activate System
-
-        System --> Employee : shows selected category
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : displays operation success
-    deactivate System
+        System --> User: Stores comment in the database
+        System --> User: Update list of comments (if applicable)
+        System --> User: Returns success message (if applicable)
+        System --> User: Displays the comment below the Discussion
+    deactivate System 
 
 @enduml

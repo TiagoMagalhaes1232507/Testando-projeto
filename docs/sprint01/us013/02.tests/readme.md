@@ -1,4 +1,4 @@
-# US 013 - To be able to see the discussion's list ordered by date
+# US 013 - Discussion's list ordered by date
 
 # 1. Tests
 

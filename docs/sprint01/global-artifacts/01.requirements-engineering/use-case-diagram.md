@@ -17,17 +17,17 @@ link as suggested below.**
 
 | UC/US  | Description                                   |                   
 |:-------|:----------------------------------------------|
-| US 001 | [Short Name for US001](../../us001/Readme.md) |
-| US 002 | ...                                           |
-| US 003 | []()          |
-| US 004 | []()          |
-| US 005 | []()          |
+| US 001 | [User Registration](../../us001/Readme.md) |
+| US 002 | [To login in System](../../us002/Readme.md) |                       |
+| US 003 | [View the discussions list as Unregistered User ](../../us003/Readme.md)          |
+| US 004 | [Create a discussion](../../us004/Readme.md)          |
+| US 005 | [Create a comment](../../us005/Readme.md)          |
 | US 006 | [Reply directly to a comment in a Discussion](../../us006/Readme.md)          |
-| US 007 | [Create link post](../../us007/readme.md)          |
-| US 008 | []()          |
-| US 009 | []()          |
-| US 010 | []()          |
-| US 011 | []()          |
-| US 012 | []()          |
+| US 007 | [Post with a link](../../us007/readme.md)          |
+| US 008 | [To vote on a Discussion](../../us008/readme.md)          |
+| US 009 | [To format discussions](../../us009/readme.md)          |
+| US 010 | [To vote on a Discussion](../../us010/readme.md)          |
+| US 011 | [To logout](../../us011/readme.md)          |
+| US 012 | [Access a discussion link](../../us012/readme.md)          |
 | US 013 | [To be able to see the discussion's list ordered by date](../../us013/readme.md)          |
 | US 014 | [To be able to see the discussion's list sorted by popularity](../../us014/readme.md)          |

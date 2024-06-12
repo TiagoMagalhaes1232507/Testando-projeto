@@ -12,8 +12,12 @@ Expected result: System displays error message.
 
 **Test 3**: Click on an valid link
 Logged in user clicks on a link with different color and formatting present in a discussion.
-Expected result: Opening of a new tab in the browser with the page corresponding to the link.
+Expected result: A button with the phrase 'Click to visit the link at' should be shown.
 
 **Test 4**: Click on an invalid link
 Logged in user clicks on an invalid link present in a discussion.
 Expected result: Nothing happens, the link is not clickable.
+
+**Test 5**: Click on button 'Click to visit the link at'
+User click on button 'Click to visit the link at'.
+Expected result: Opening of a new tab in the browser with the page corresponding to the link.

@@ -10,12 +10,12 @@ Expected result: Access granted to the user.
 Registered user enter invalid email or password.
 Expected result: System displays error message.
 
-**Test 3**: Valid comment
-User logged in and on the discussion page inserts a comment with more than 20 characters.
+**Test 3**: Valid Comment
+User logged in and on the discussion page inserts a comment with more than 20 characters and less than 10,000 characters.
 Expected result: Comment is saved and displayed below the discussion.
 
-**Test 4**: Invalid comment (less than 20 characters)
-User logged in and on the discussion page inserts a comment with less than 20 characters.
+**Test 4**: Invalid comment
+User logged in and on the discussion page inserts a comment with less than 20 characters or more than 10,000 characters.
 Expected result: System displays an error message indicating the minimum number of characters.
 
 **Test 5**: Attempt to send an empty comment
