@@ -55,8 +55,6 @@ As a registered user, I want to submit a new post with a link so that I can shar
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
-
 #### Alternative One
 
 ![System Sequence Diagram - Alternative One](svg/us007-system-sequence-diagram-alternative-one.svg)
