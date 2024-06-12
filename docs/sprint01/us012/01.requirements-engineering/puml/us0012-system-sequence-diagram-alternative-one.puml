@@ -3,37 +3,25 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative One
+title As a user, I want to access the website through a link present in a discussion.
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor "User" as User
 participant ":System" as System
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task
+    User -> System : View discussions posted in the application
+    User -> System : Click on a link posted in a discussion 
     activate System
 
-        System --> Employee : requests data
+        System --> User : Shows a button with the phrase 'Click to visit the link at'
     deactivate System
-
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
+  
+    User -> System : Click on a button 'Click to visit the link at'
     activate System
 
-        System --> Employee : shows task category list and asks to select one
+        System --> User: Open a new browser tab with the page corresponding to the link
     deactivate System
-
-    Employee -> System : selects a task category
-    activate System
-
-        System --> Employee : shows selected category
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : displays operation success
-    deactivate System
-
 @enduml

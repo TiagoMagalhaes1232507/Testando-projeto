@@ -43,7 +43,7 @@ was carried out as described in the following table.
 | US 002 (SDP Activities)     | [1232493](sprintA/us006/readme.md)                                                         |
 | US 003 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 004 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
-| US 005 (SDP Activities)     | [1232497](sprint1/us005/readme.md)                                                         |
+| US 005 (SDP Activities)     | [1232497](sprint01/us005/readme.md)                                                        |
 | US 006 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 007 (SDP Activities)     | [1XXXXXX](sprint01/us007/readme.md)                                                        |
 | US 008 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |

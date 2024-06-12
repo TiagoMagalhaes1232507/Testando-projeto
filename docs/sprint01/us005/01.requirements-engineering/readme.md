@@ -10,19 +10,11 @@ As a registered user I want to comment on a discussion.
 
 **From the specifications document:**
 
->     Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category.
-
->     As long as it is not published, access to the task is exclusive to the employees of the respective organization.
+>     There's no customer specifications about document.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
->
-> **Answer:** Duration is estimated in days.
-
-> **Question:** Monetary data is expressed in any particular currency?
->
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
+> There's no client clarifications about this project.
 
 ### 1.3. Acceptance Criteria
 
@@ -42,7 +34,7 @@ As a registered user I want to comment on a discussion.
 
 **AC8:** If the user types less than 20 characters in the text box, the system should display an error message indicating the number of characters allowed.
 
-**AC9:** After the user types the comment, they must click on the "Post comment" button, the comment must be saved and displayed below the discussion.
+After the user types the comment, they must click on the "Post comment" button. The system should save the comment and a success message should be displayed.
 
 **AC10:** If the user tries to send an empty comment, the system should display an error message indicating that the comment cannot be empty.
 
@@ -54,11 +46,11 @@ As a registered user I want to comment on a discussion.
 - US002
 - US004
 
-- Existe uma dependência da US001 'Registro na aplicação', pois o usuário precisa estar registrado na aplicação. / There is a dependency on US001 'Application registration', as the user needs to be registered in the application.
+- There is a dependency on US001 'Application registration', as the user needs to be registered in the application.
 
-- Existe uma dependência da US002 'Fazer login', pois o usuário precisa estar logado na aplicação./ There is a dependency on US002 'Log in', as the user needs to be logged in to the application.
+- There is a dependency on US002 'Log in', as the user needs to be logged in to the application.
 
-- Existe uma dependência da US004 'Criar uma discussion', pois discussions precisam existir para serem comentadas./ There is a dependency on US004 'Create a discussion', as discussions need to exist to be commented on.
+- There is a dependency on US004 'Create a discussion', as discussions need to exist to be commented on.
 
 ### 1.5 Input and Output Data
 
