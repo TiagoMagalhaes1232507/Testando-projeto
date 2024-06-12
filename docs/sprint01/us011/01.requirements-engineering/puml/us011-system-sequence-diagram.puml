@@ -2,13 +2,12 @@
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
-skinparam style strictuml
 
-title Us011 - To logout 
+title US011 - To logout
 
 autonumber
 
-actor "User" as RegisteredUser
+actor "Registered User" as RegisteredUser
 participant "System" as System
 
 activate RegisteredUser
@@ -16,10 +15,11 @@ activate RegisteredUser
 RegisteredUser -> System : clicks logout button
 activate System
 
-System --> RegisteredUser : displays success message
+System --> System :logout 
+System -> RegisteredUser : displays success message
 
-System -> RegisteredUser : confirms logout and ends session
 
 deactivate System
 deactivate RegisteredUser
+@enduml
 

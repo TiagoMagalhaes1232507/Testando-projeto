@@ -54,7 +54,7 @@ As a user I want to logout of the application.
 
 
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram ](svg/us011-system-sequence-diagram.svg)
 
 
 ### 1.7 Other Relevant Remarks
