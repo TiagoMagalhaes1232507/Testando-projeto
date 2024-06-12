@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) 
+autonumber
+
+actor "Unregistered user" as User
+participant ":System" as System
+
+activate User
+
+   User -> System : click on topic
+    activate System
+
+        System --> User : displays operation success
+    deactivate System
+
+@enduml
