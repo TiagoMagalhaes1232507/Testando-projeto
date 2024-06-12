@@ -21,7 +21,7 @@ The team consists of students identified in the following table.
 | **1181731**    | Tiago Martins     |
 | **1232493**    | Ana Rita Ramos    |
 | **1130533**    | Rita Semedo       |
-| **1XXXXXX**    | Name of student 4 |
+| **1232500**    | João Pedro Costa  |
 | **1232497**    | Roberta Lucena    |
 | **1XXXXXX**    | Name of student 6 |
 | **1XXXXXX**    | Name of student 7 |
@@ -40,15 +40,10 @@ was carried out as described in the following table.
 | Use Case Diagram (UCD)      | [all](sprintA/global-artifacts/01.requirements-engineering/use-case-diagram.md)            | [all](sprintB/global-artifacts/00.engineering-requirements/use-case-diagram.md)            |
 | Supplementary Specification | [all](sprintA/global-artifacts/01.requirements-engineering/supplementary-specification.md) | [all](sprintB/global-artifacts/00.engineering-requirements/supplementary-specification.md) |
 | US 001 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
-| US 002 (SDP Activities)     | [1232493](sprintA/us006/readme.md)                                                         |
+| US 002 (SDP Activities)     | [1232493](sprint01/us002/readme.md)                                                         |
 | US 003 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
-<<<<<<< HEAD
-| US 004 (SDP Activities)     | [1130533](sprintA/us006/readme.md)                                                         |
+| US 004 (SDP Activities)     | [1130533](sprin01/us004/readme.md)                                                         |
 | US 005 (SDP Activities)     | [1232497](sprint1/us005/readme.md)                                                         |
-=======
-| US 004 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
-| US 005 (SDP Activities)     | [1232497](sprint01/us005/readme.md)                                                        |
->>>>>>> 89d35e2eef1cc3269f2c59c085901e7ac9d22199
 | US 006 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |
 | US 007 (SDP Activities)     | [1XXXXXX](sprint01/us007/readme.md)                                                        |
 | US 008 (SDP Activities)     | [1XXXXXX](sprintA/us006/readme.md)                                                         |

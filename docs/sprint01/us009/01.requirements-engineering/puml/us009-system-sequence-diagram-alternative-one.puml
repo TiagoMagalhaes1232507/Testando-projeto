@@ -3,37 +3,23 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title System Sequence Diagram (SSD) - Alternative One
+
+title SSD US009: TO FORMAT A DISCUSSION - Alternative One
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor "Registred User" as User
 participant ":System" as System
 
-activate Employee
+activate User
 
-    Employee -> System : asks to create a new task
+    User -> System : write a text
     activate System
 
-        System --> Employee : requests data
-    deactivate System
-
-    Employee -> System : types requested data (reference, description, \ninformal description, technical description,\nduration, cost)
+    User -> System : select a format stytle and submit post
     activate System
 
-        System --> Employee : shows task category list and asks to select one
-    deactivate System
-
-    Employee -> System : selects a task category
-    activate System
-
-        System --> Employee : shows selected category
-    deactivate System
-
-    Employee -> System : submits data
-    activate System
-
-        System --> Employee : displays operation success
+    System --> User : Displays message of success
     deactivate System
 
 @enduml
