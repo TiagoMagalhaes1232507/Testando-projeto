@@ -1,5 +1,7 @@
 # Supplementary Specification (FURPS+)
 
+** ????? Other alternatives might exist. ?????**
+
 ## Functionality
 
 _Specifies functionalities that:_
@@ -14,15 +16,14 @@ _Specifies functionalities that:_
 Language: English (tiago emanuel) -->
 
 
-
 ## Usability 
 
 _Evaluates the user interface. It has several subcategories,
 among them: error prevention; interface aesthetics and design; help and
 documentation; consistency and standards._
 
+This application contains an graphic interface;
 
-(fill in here )
 
 ## Reliability
 _Refers to the integrity, compliance and interoperability of the software. The requirements to be considered are: frequency and severity of failure, possibility of recovery, possibility of prediction, accuracy, average time between failures._
@@ -33,8 +34,8 @@ _Refers to the integrity, compliance and interoperability of the software. The r
 ## Performance
 _Evaluates the performance requirements of the software, namely: response time, start-up time, recovery time, memory consumption, CPU usage, load capacity and application availability._
 
+Response time: The user shouldn't experience excessive delays while using the system.
 
-(fill in here )
 
 ## Supportability
 _The supportability requirements gathers several characteristics, such as:
