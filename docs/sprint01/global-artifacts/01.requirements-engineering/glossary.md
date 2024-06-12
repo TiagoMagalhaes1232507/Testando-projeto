@@ -21,8 +21,6 @@
 | **User Account** | A collection of data associated with a specific individual, allowing them to access and use the application. |
 | **Discussion** | Represents a topic of debate or conversation on the platform, with its attributes such as title and description. |
 | **Vote** | Represents a topic of debate or conversation on the platform, with its attributes such as title and description. |
-| **Title**| Represents a topic of debate or conversation on the platform, with its attributes such as title and description. |
-| **Text**| The main body of written content in a document or post, conveying the intended message or information. |
 
 
 
