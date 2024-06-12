@@ -9,17 +9,14 @@ As a registered user, I want to submit a new post with a link so that I can shar
 
 ### 1.2. Customer Specifications and Clarifications 
 
-
 **From the specifications document:**
 
->	Each post must have a title and a valid URL.
+>	There's no customer specifications about document.
 
 
 **From the client clarifications:**
 
-> **Question:** Are there any restrictions on the types of links that can be submitted?
->  
-> **Answer:** There are no restrictions on the types of links that can be submitted, as long as they are valid URLs starting with HTTP, HTTPS, or FTP.
+> There's no client clarifications about this project.
 
 
 ### 1.3. Acceptance Criteria
@@ -37,7 +34,6 @@ As a registered user, I want to submit a new post with a link so that I can shar
 
 ### 1.5 Input and Output Data
 
-
 **Input Data:**
 
 * Typed data:
@@ -47,7 +43,6 @@ As a registered user, I want to submit a new post with a link so that I can shar
 * Selected data:
 	* Classifying task category 
 
-
 **Output Data:**
 
 * Confirmation of successful post submission
@@ -55,9 +50,7 @@ As a registered user, I want to submit a new post with a link so that I can shar
 
 ### 1.6. System Sequence Diagram (SSD)
 
-#### Alternative One
-
-![System Sequence Diagram - Alternative One](svg/us007-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram](svg/us007-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 
