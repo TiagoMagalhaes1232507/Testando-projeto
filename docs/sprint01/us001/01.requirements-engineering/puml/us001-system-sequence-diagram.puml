@@ -3,7 +3,7 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title SSD US001: User Registration - Alternative One
+title SSD US001: User Registration 
 
 autonumber
 
@@ -20,8 +20,6 @@ activate User
         System --> User : Create User Account (Validate Credentials)
     
         System --> User : Display Confirmation Message (Valid Credentials)
-    
-        System --> User : Display Error Message (Invalid Credentials)
-    
+           
     deactivate System
 @enduml

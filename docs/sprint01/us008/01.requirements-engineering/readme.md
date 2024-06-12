@@ -16,36 +16,13 @@ As a user, I want to vote on a discussion created by another user.
 
 **From the specifications document:**
 
->	The system shall allow registered users to view discussions created by other users.  
-
-
->	The system shall provide a clear and accessible mechanism for registered users to cast votes (e.g., upvote, downvote) on discussions created by other users.
-
-
->	The system shall display the current vote count (e.g., total upvotes, downvotes) for each discussion in a clear and understandable way.
+> There's no customer specifications about document.
 
 
 
 **From the client clarifications:**
 
-> **Question:** Who can vote?
->  
-> **Answer:** Only registered users can vote.
-
-
-> **Question:** What types of votes are allowed? 
->  
-> **Answer:** The voting options available to users are upvote and downvote.
-
-
-> **Question:** How are votes counted? 
->  
-> **Answer:** The votes are counted through a simple sum.
-
-
-> **Question:** What happens if a user tries to vote multiple times? 
->  
-> **Answer:** When a user tries to vote multiple times, an error message appears, and the additional vote is ignored.
+> There's no client clarifications about this project.
 
 
 
@@ -57,8 +34,8 @@ As a user, I want to vote on a discussion created by another user.
 * **AC3:** The system must display the vote count for each discussion.
 * **AC4:** The user must be able to change their vote at any time.
 * **AC5:** The system must prevent the user from voting on a discussion more than once.  
-* **AC6:** The user must be able to see who voted on a discussion.(additional).
-* **AC7:** The system must prevent the user from voting on their own discussion (additional).
+* **AC6:** The user must be able to see who voted on a discussion. (additional)
+* **AC7:** The system must prevent the user from voting on their own discussion. (additional)
 
 
 
@@ -84,8 +61,8 @@ As a user, I want to vote on a discussion created by another user.
 **Input Data:**
 
 * Typed data:
-	* User ID 
-	* Discussion ID
+	* an email (Login) 
+	* an password (Login)
 	
 	
 * Selected data:
@@ -101,15 +78,10 @@ As a user, I want to vote on a discussion created by another user.
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
 
-#### Alternative One
+![System Sequence Diagram](svg/us008-system-sequence-diagram.svg)
 
-![System Sequence Diagram - Alternative One](svg/us008-system-sequence-diagram-alternative-one.svg)
 
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg/us008-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 
