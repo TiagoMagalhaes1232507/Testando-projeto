@@ -57,11 +57,11 @@ Data Integrity: User data and content should be stored securely and accurately, 
 
 ### Design Constraints
 
-_Specifies or constraints the system design process. Examples may include: programming languages, software process, mandatory standards/patterns, use of development tools, class library, etc._
-  
-
-(fill in here )
-
+* Programming Languages and Frameworks: Typescript, React, CSS
+* Software Development Process: The project follow the methodology Agile
+* Standards and Patterns: Adherence to industry standards or design patterns can be a constraint.  Following established coding conventions or utilizing pre-built UI components can ensure code quality, maintainability, and consistency.
+* Development Tools: Git, PlantUML, Node 2.9.0, Java.
+* Database Technology:** The choice of database technology can be a constraint. The application might require a specific type of database (e.g., relational database like MySQL) based on data storage needs and performance considerations.
 
 ### Implementation Constraints
 
