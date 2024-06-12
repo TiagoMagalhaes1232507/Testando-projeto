@@ -4,7 +4,7 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 skinparam style strictuml
 
-title As a user I want to logout 
+title Us011 - To logout 
 
 autonumber
 
@@ -22,7 +22,4 @@ System -> RegisteredUser : confirms logout and ends session
 
 deactivate System
 deactivate RegisteredUser
-
-@enduml
-
 
