@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 0010 - Recover Password 
 
 ## 1. Requirements Engineering
 
@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As an organization employee, I want to create a new task in order to be further published.
+As a registered user, I want to recover my password.
 
 
 
@@ -15,10 +15,11 @@ As an organization employee, I want to create a new task in order to be further 
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category. 
+>	User will be redirected to a page where he can place his email adress, where the new passsword settings will be availabe.
 
 
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
+>	Upon successful password recovery, users will receive a confirmation email and then be redirected to a specific page. 
+
 
 
 
@@ -45,7 +46,7 @@ As an organization employee, I want to create a new task in order to be further 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* 
 
 
 ### 1.5 Input and Output Data
