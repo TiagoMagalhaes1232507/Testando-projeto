@@ -52,9 +52,7 @@ As a user I want to logout of the application.
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
 
-#### Alternative One
 
 ![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
 

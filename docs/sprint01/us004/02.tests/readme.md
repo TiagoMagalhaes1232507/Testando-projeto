@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 004 - To Create a discussion 
 
 # 1. Tests 
 
