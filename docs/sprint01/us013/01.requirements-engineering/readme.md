@@ -13,13 +13,11 @@ As a user, i want to see all the discussion's list sorted by date.
 
 **From the specifications document:**
 
->None
-
-
+>	There's no customer specifications about document.
 
 **From the client clarifications:**
 
->None
+There's no customer clarifications about document.
 
 
 ### 1.3. Acceptance Criteria
@@ -43,19 +41,18 @@ As a user, i want to see all the discussion's list sorted by date.
 **Input Data:**
 
 * Typed data:
-	* null, 
+	* None;
 	
 	
 	
 	
 * Selected data:
-	* null
+	* Selected button "NEW".
 
 
 **Output Data:**
 
-* (In)Success of the operation
-* Discussions list sorted by date
+* List sorted by date
 
 
 ### 1.6. System Sequence Diagram (SSD)
@@ -67,8 +64,6 @@ As a user, i want to see all the discussion's list sorted by date.
 ![System Sequence Diagram - Alternative One](svg/us013-system-sequence-diagram-alternative-one.svg)
 
 #### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg/us013-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 

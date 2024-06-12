@@ -13,23 +13,11 @@ As a user, i want to reply to a comment to take part in a Discussion.
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category.
-
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization. 
-
-
+>	There's no customer specifications about document.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
->  
-> **Answer:** Duration is estimated in days.
-
-
-> **Question:** Monetary data is expressed in any particular currency?
->  
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
+There's no customer clarifications about document.
 
 
 ### 1.3. Acceptance Criteria
@@ -57,13 +45,15 @@ As a user, i want to reply to a comment to take part in a Discussion.
 
 * Typed data:
 	* username, 
-	* password, 
+	* password,
 	* comment text
 	
 	
 * Selected data:
-	* Classifying task category 
-
+	* Select a Discussion;
+	* Select a Comment;
+	* Formatting styles(Italic, Bold, Underline, hyperlink,Background Color);
+	* Select "Submitt reply" button
 
 **Output Data:**
 

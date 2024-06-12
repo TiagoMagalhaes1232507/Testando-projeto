@@ -8,7 +8,7 @@ title SSD US 013 - Discussion's list ordered by date
 
 autonumber
 
-actor "RegisteredUser" as User
+actor "RegisteredUser (or UnregisteredUser)" as User
 participant ":System" as System
 
 activate User

@@ -8,7 +8,7 @@ title SSD US014 - Discussion's list sorted by popularity
 
 autonumber
 
-actor "RegisteredUser" as User
+actor "RegisteredUser (or UnregisteredUser)" as User
 participant ":System" as System
 
 activate User
