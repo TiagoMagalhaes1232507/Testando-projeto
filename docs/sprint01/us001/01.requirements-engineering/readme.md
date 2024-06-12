@@ -16,36 +16,23 @@ As an unregistered user, I want to register on the application.
 
 **From the specifications document:**
 
->	The registration form includes mandatory fields: username (unique), password (minimum length), and valid email address.
-
-
->	Upon successful registration, users will receive a confirmation message and then be redirected to a specific page.
-
-
->	The registration process will provide informative error messages for failed attempts, such as "Yeahhhhh, want to try that again with a valid email?" or "Yeahhhhh, ypur password should be at least 6 chars."
+> There's no customer specifications about document.
 
 
 
 **From the client clarifications:**
 
-> **Question:** What specific information is required to register (username, password, email, etc.)?
->  
-> **Answer:** Registration requires a username, a password and a valid email.
+> There's no client clarifications about this project.
 
-
-> **Question:** Are there any minimum character lengths for password?
->  
-> **Answer:** The password should be at least 6 characters.
 
 
 ### 1.3. Acceptance Criteria
 
 
 * **AC1:** The system should provide a registration form for new users.
-This form should capture essential information for user accounts, such as email address, username and password. The form should enforce password complexity requirements. In this case, the password must have a minimum length.
-* **AC2:** The system should validate the user-provided information during registration. This includes validating the email address format (e.g., presence of "@" and "."). The system should check for duplicate email addresses to ensure uniqueness.
-* **AC3:** Upon successful registration, the system should create a new user account. The account should be associated with the provided email address and password.
-* **AC4:** The system should provide feedback to the user after registration. A success/insucess message would be displayed on the screen. 
+* **AC2:** The system should validate the user-provided information during registration. 
+* **AC3:** Upon successful registration, the system should create a new user account. 
+* **AC4:** The system should provide feedback to the user after registration. 
 
 
 
@@ -71,16 +58,14 @@ This form should capture essential information for user accounts, such as email 
 * (In)Success of the registration
 * Creating (or not) the user's account
 
+
+
 ### 1.6. System Sequence Diagram (SSD)
 
 
-#### Alternative One
+![System Sequence Diagram](svg/us001-system-sequence-diagram.svg)
 
-![System Sequence Diagram - Alternative One](svg/us001-system-sequence-diagram-alternative-one.svg)
 
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg/us001-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 
