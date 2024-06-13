@@ -52,7 +52,7 @@ As a registered user, I want to create a discussion.
 **Output Data:**
 
 * Confirmation of successful post submission
-* Error messages in case of validation failures
+* Error messages in case of failure
 
 
 ### 1.6. System Sequence Diagram (SSD)

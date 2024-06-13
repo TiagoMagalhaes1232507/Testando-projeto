@@ -1,17 +1,5 @@
 # Switch-QA Project for the 1st Semester 2024
 
-## How to generate the svg files
-
-These templates use [PlantUML](https://plantuml.com) to generate the diagrams that are displayed in the readme. You may use any tool you choose.
-
-If you want to use PlantUML, on project root folder, run the following script:
-
-Remarks: it works for Linux and MacOS. For Windows, you have to adapt the script.
-
-```shell
-$ bin/generate-plantuml-diagrams.sh
-```
-
 ## 1. Team Members
 
 The team consists of students identified in the following table.
@@ -48,11 +36,13 @@ was carried out as described in the following table.
 | US 007 (Create Link Post)     | [1181731](sprint01/us007/readme.md)                                                      |
 | US 008 (To vote on a discussion)     | [1232512](sprint01/us008/readme.md)                                               |
 | US 009 (To format a discussion)     | [1232493](sprint01/us009/readme.md)                                                |
-| US 010 (To vote on a discussion)     | [1232500](sprint01/us010/readme.md)                                               |
+| US 010 (Discussion's list ordered by popularity)     | [1232507](sprint01/us010/readme.md)                                               |
 | US 011 (To Logout)     | [1130533](sprint01/us011/readme.md)                                                        |
 | US 012 (Access a discussion link)     | [1232497](sprint01/us012/readme.md)                                              |
-| US 013 (Discussion's list ordered by date)     | [1232507](sprint01/us013/readme.md)                                                        |
-| US 014 (Discussion's list ordered by popularity)     | [1232507](sprint01/us014/readme.md)                                                        |
+| US 013 (Discussion's list ordered by date)     | [1232507](sprint01/us013/readme.md)                                   |
+
+
+
 
 ## 3. Sprints
 

@@ -21,10 +21,6 @@ deactivate System
 User -> System : Enter Title, Text and click on "Submit post" 
 activate System
 
-System -> System : Validate Title, Text
-
-System -> System : Save discussion
-
 System --> User : Confirm discussion submission and return to all discussions
 deactivate System
 deactivate User
