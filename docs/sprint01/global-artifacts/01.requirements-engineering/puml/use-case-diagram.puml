@@ -13,10 +13,10 @@ rectangle "System Actors" as actors {
 rectangle "Use Cases" as usecases {
     usecase "UC1 - User Registration" as UC01
     usecase "UC2 - To login in System" as UC02
-    usecase "UC3 - View the discussions list as Unregistered User" as UC3
+    usecase "UC3 - View the discussions list as Unregistered User" as UC03
     usecase "UC4 - Create a discussion" as UC04
     usecase "UC5 - Create a comment" as UC05
-    usecase "UC6 - Reply directly to a post in a discussion" as UC6
+    usecase "UC6 - Reply directly to a post in a discussion" as UC06
     usecase "UC7 - Post with a link" as UC07
     usecase "UC8 - To vote on a Discussion" as UC08
     usecase "UC9 - To format discussions" as UC09

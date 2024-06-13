@@ -22,7 +22,7 @@ link as suggested below.**
 | US 003 | [View the discussions list as Unregistered User ](../../us003/Readme.md)          |
 | US 004 | [Create a discussion](../../us004/Readme.md)          |
 | US 005 | [Create a comment](../../us005/Readme.md)          |
-| US 006 | [Reply directly to a comment in a Discussion](../../us006/Readme.md)          |
+| US 006 | [Reply directly to a comment in a Discussion](/docs/sprint01/us006/readme.md)          |
 | US 007 | [Post with a link](../../us007/readme.md)          |
 | US 008 | [To vote on a Discussion](../../us008/readme.md)          |
 | US 009 | [To format discussions](../../us009/readme.md)          |
