@@ -24,7 +24,7 @@ As a registered user, I want to create a discussion.
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
+* **AC1:** All required fields must be filled in.
 * **AC2:** Title must have beetween 2 and 85 characters.
 * **AC3:** Text post should be 20 to 10000 characters.
 
