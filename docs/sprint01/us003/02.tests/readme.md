@@ -1,13 +1,12 @@
-# US - To create a Task 
+# US 003 - Access to topics from unregistered users
 
 # 1. Tests 
 
-**Test 1:** Check that it is not possible to create an instance of the Task class with null values. 
+**Test 1:** Unregistered user should be granted all access to existing topics - AC1.
 
-**Test 2:** Check that it is not possible to create an instance of the Task class with a reference containing less than five chars - AC2. 
+1. At the main page, click on the topic. The topic opens and allows visualisation of the posts. 
 
 
-*It is also recommended to organize this content by subsections.* 
 
 
 
