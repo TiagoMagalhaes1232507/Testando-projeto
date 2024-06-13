@@ -57,7 +57,7 @@ Data Integrity: User data and content should be stored securely and accurately, 
 
 ### Design Constraints
 
-* Programming Languages and Frameworks: Typescript, React, CSS
+* Programming Languages and Frameworks: Typescript, React, SASS, Redux
 * Software Development Process: The project follow the methodology Agile
 * Standards and Patterns: Adherence to industry standards or design patterns can be a constraint.  Following established coding conventions or utilizing pre-built UI components can ensure code quality, maintainability, and consistency.
 * Development Tools: Git, PlantUML, Node 2.9.0, Java.

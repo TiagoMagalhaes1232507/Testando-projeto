@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 010 - Discussion's list sorted by popularity
 
 [Requirements Engineering](01.requirements-engineering/readme.md)
 

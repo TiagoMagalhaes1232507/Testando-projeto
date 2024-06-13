@@ -2,7 +2,19 @@
 
 
 **Test 1:** Logged-in user tries to reply to a comment - AC1
+    Steps: 
+1. After being logged, after sellecting a discussion from the homepage list, the user sellects the button reply bellow a comment on the Discussion page.
+2. User types a text in the text box.
+    Expected result: 
+        * The system allows te user to enter a reply and reply a successfull message - Pass.
+        * The system answers with a unsuccess message regarding the number of characters - Fail.
+
 **Test 2:** Non-logged-in user tries to reply to a comment - AC1
+    Steps:
+1. The visitor, after sellecting a discussion from the homepage list, sellects the button reply bellow a comment on the Discussion page.
+    Expected result:
+            * The system answers with a unsuccess message regarding the number of characters"Yeahhhhh, comments should be 20 to 10000 characters Yours was 0. " - Fail
+            * The system displays an unseccess message due to lack of login ("Yeahhhhh, No access token provided 🤠")- Fail.
 
 **Test 3:** User tries to reply to a comment in a discussion. - AC2
 

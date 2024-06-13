@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam actorStyle awesome
+
+title SSD US 010 - Discussion's list ordered by popularity - Alternative 2
+
+autonumber
+
+actor "RegisteredUser (or UnregisteredUser)" as User
+participant ":System" as System
+
+activate User
+
+ 
+  System -> User: Displays homepage (Discussions list sorted by date)
+
+  User --> System: requests "discussion list sorted by popularity"
+  System -> User: Displays homepage (Discussions list sorted by popularity)
+
+@enduml

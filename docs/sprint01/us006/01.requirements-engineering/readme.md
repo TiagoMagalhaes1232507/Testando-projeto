@@ -23,7 +23,7 @@ There's no customer clarifications about document.
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** The user must be logged in.  
+* **AC1:** The user must be logged in.
 * **AC2:** There must be an open discussion posted.
 * **AC3:** The text box must have the minimum number of characters present: 
 	. If so, the system accepts and displays a success pop-up message and publishes the comment - Pop-up: "Done-zoo 🤠";
@@ -66,7 +66,7 @@ There's no customer clarifications about document.
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us010-system-sequence-diagram-alternative-one.svg)
 
 
 ### 1.7 Other Relevant Remarks

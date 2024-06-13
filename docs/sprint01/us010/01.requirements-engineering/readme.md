@@ -1,52 +1,35 @@
-# US 0010 - Recover Password 
+# US 010 - Discussion's list ordered by popularity
 
 ## 1. Requirements Engineering
 
 
 ### 1.1. User Story Description
 
-
-As a registered user, I want to recover my password.
-
-
+As a user, i want to see all the discussion's list ordered by popularity.
+	
 
 ### 1.2. Customer Specifications and Clarifications 
 
 
 **From the specifications document:**
 
->	User will be redirected to a page where he can place his email adress, where the new passsword settings will be availabe.
-
-
->	Upon successful password recovery, users will receive a confirmation email and then be redirected to a specific page. 
-
-
-
+>	There's no customer specifications about document.
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
->  
-> **Answer:** Duration is estimated in days.
-
-
-> **Question:** Monetary data is expressed in any particular currency?
->  
-> **Answer:** Monetary data (e.g. estimated cost of a task) is indicated in POTs (virtual currency internal to the platform).
-
+There's no customer clarifications about document.
 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
-* **AC2:** Task reference must have at least 5 alphanumeric chars.
-* **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
-
+* **AC1:** The system should display a list of all available discussions when the user navigates to the discussions page.
+* **AC2:** Each discussion in the list should display key information such as the discussion title, author, the number of comments creation date and upvote/downvote count.
+* **AC3:** The user should be able to sort the list by popularity.
 
 ### 1.4. Found out Dependencies
 
 
-* 
+* There is a dependency to "us001" and "us002" since we have the need to be registered and logged in.
 
 
 ### 1.5 Input and Output Data
@@ -55,21 +38,18 @@ As a registered user, I want to recover my password.
 **Input Data:**
 
 * Typed data:
-	* a reference, 
-	* a designation, 
-	* an informal description
-	* a technical description
-	* an estimated duration
-	* an estimated cost
+	* none (Homepage default page) 
+	note: no action needed. It is presented in the main system page.
+	
 	
 * Selected data:
-	* Classifying task category 
+	* none none (Homepage default page) 
 
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+* List ordered by popularity (Homepage default)
+
 
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -77,12 +57,14 @@ As a registered user, I want to recover my password.
 
 #### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram - Alternative One](svg/us010-system-sequence-diagram-alternative-one.svg)
 
 #### Alternative Two
 
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
+![System Sequence Diagram - Alternative Two](svg/us010-system-sequence-diagram-alternative-two.svg)
+
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* Unrestricted Content Access: Unregistered users can browse and view posts freely.
+Restricted Actions: Upvoting and downvoting functionality is reserved for registered users.
