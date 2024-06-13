@@ -4,13 +4,12 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 
-title SSD US002: TO LOGIN IN SYSTEM - Alternative One
+title SSD US002: TO LOGIN IN SYSTEM
 
 autonumber
 
-actor "Registred User" as User
+actor "Registered User" as User
 participant ":System" as System
-database ":Database" as Database
 
 activate User
 
@@ -23,13 +22,7 @@ activate User
     User -> System : types correct requested data  (username, password) and submit
     activate System
 
-        System -> Database : Check username and password in DB
-    activate System
-
-        Database --> System : validates data
-    activate System
-
-        System --> User : Displays message of success
+        System --> User : displays message of success
     deactivate System
 
 @enduml

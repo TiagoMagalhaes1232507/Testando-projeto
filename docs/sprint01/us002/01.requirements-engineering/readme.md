@@ -25,7 +25,7 @@ As a registred user, I want to login in system.
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** On the registration home, click on "Join" and then "Login".
+* **AC1:** On the registration homepage, click on "Join" and then "Login".
 * **AC2:** The user should type their username and password.
 * **AC3:** The sistem must validate username and password in database and present a message with the outcome.
 * **AC4:** If validation username and passoword is positive, the sistem present a message of success and permit access to user.
@@ -56,9 +56,7 @@ As a registred user, I want to login in system.
 ### 1.6. System Sequence Diagram (SSD)
 
 
-#### Alternative One
-
-![System Sequence Diagram - Alternative One](svg/us002-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram](svg/us002-system-sequence-diagram.svg)
 
 
 ### 1.7 Other Relevant Remarks
