@@ -1,4 +1,4 @@
-@startuml Domain Model Diagram - Group A
+@startuml Domain Model Diagram
 
 title Domain Model for Hackernews-inspired Forum Web App
 
