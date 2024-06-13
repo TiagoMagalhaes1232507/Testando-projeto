@@ -1,32 +1,36 @@
-@startuml Reply to a Comment
+@startuml System Sequence Diagram (SSD)
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
- 
-title Reply to a Comment
- 
- 
-autonumber
- 
-actor "User" as User
-participant ":System" as System
-activate User
-   
-  activate User
- 
-    User -> System: request to commment (Reply button)
-    activate System
-   
-        System --> User: open new comment page
-    deactivate System
- 
-   
-    User -> System: Submit comment
-    activate System
-   
-        System --> User: Stores comment in the database
-        System --> User: Update list of comments
-        System --> User: returns success message
-    deactivate System
-@enduml
 
+title Reply to a Comment
+
+autonumber
+
+actor "Registered User" as User
+participant ":System" as System
+
+activate User
+
+User -> System: Select a specific discussion
+activate System
+
+System --> User: Open discussion page
+deactivate System
+
+User -> System: Click on "reply" button of a specific comment
+activate System
+
+System --> User: Open reply form
+deactivate System
+
+User -> System: Submit reply content (text)
+activate System
+
+System -> System: Validates input text
+System -> System: Stores reply in the database
+System --> User: Returns success message
+System --> User: Redirects to updated discussion page and displays the updated list of replies ordered by date
+deactivate System
+
+@enduml
