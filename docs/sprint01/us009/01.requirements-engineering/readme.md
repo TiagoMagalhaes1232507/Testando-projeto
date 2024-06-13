@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As a user, I want to be able to display a font style (bold, italic, underline).
+As a registred user, I want to be able to change font style (bold, italic, underline).
 
 
 
@@ -26,8 +26,10 @@ As a user, I want to be able to display a font style (bold, italic, underline).
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** User must be logged-in.
-* **AC2:** When writting a discussion, user can select diferent styles fonts.
+* **AC1:** User must be logged-in and submit a discussion.
+* **AC2:** Title must be typed (mininum of 2 characters and maximum of 85). If the lenght of title is invalide, the system will present a message of error.
+* **AC3:** Text must be typed (mininum of 8 characters and maxinum of 500). If the lenght of text is invalide, the system will present a message of error.
+* **AC4:** If Title and Text is valid, user can change font style and then submit discussion.
 
 
 ### 1.4. Found out Dependencies
@@ -58,7 +60,7 @@ As a user, I want to be able to display a font style (bold, italic, underline).
 
 ### 1.6. System Sequence Diagram (SSD)
 
-#### Alternative One
+
 
 ![System Sequence Diagram - Alternative One](svg/us009-system-sequence-diagram-alternative-one.svg)
 

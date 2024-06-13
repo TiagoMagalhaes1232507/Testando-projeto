@@ -2,9 +2,11 @@
 
 # 1. Tests 
 
-**Test 1:** Test if 
+**Test 1:** (AC4) Test that if there's sucess with proper typed title and text.
+* In the page of discussion submission, type title and text (within respective lenght parameters).
+* Above text box, choose any font syle (bold, italic, underline).
+* Is expected a positive message of login from the system. 
 
-**Test 2:** Check that it is not possible to create an instance of the Task class with a reference containing less than five chars - AC2. 
 
 
 

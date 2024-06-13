@@ -4,7 +4,7 @@ skinparam packageStyle rectangle
 skinparam shadowing false
 
 
-title SSD US009: TO FORMAT A DISCUSSION - Alternative One
+title SSD US009: TO FORMAT A DISCUSSION
 
 autonumber
 
@@ -13,10 +13,13 @@ participant ":System" as System
 
 activate User
 
-    User -> System : write a text
+    User -> System : submit a discussion
     activate System
 
-    User -> System : select a format stytle and submit post
+    System --> User : display menu of submission of discussions
+    deactivate System
+
+    User -> System : type title and text + change font style
     activate System
 
     System --> User : Displays message of success
