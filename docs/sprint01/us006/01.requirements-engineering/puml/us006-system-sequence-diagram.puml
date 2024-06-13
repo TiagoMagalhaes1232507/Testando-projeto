@@ -27,8 +27,6 @@ deactivate System
 User -> System: Submit reply content (text)
 activate System
 
-System -> System: Validates input text
-System -> System: Stores reply in the database
 System --> User: Returns success message
 System --> User: Redirects to updated discussion page and displays the updated list of replies ordered by date
 deactivate System
