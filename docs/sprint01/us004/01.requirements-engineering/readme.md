@@ -48,10 +48,6 @@ As a registered user, I want to create a discussion.
 	* Title
 	* Text
 
-	
-* Selected data:
-	* Classifying task category 
-
 
 **Output Data:**
 

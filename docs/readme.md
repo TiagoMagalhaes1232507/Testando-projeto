@@ -42,7 +42,7 @@ was carried out as described in the following table.
 | US 001 (User Registration)  | [1232512](sprint01/us001/readme.md)                                                        |
 | US 002 (To Login in System) | [1232493](sprint01/us002/readme.md)                                                        |
 | US 003 (View discussions list as Unregistered User)     | [1232500](sprint01/us003/readme.md)                                                        |
-| US 004 (Create a discussion)| [1130533](sprint01/us004/readme.md)                                                        |
+| US 004 (To Create a discussion)| [1130533](sprint01/us004/readme.md)                                                        |
 | US 005 (Create a comment)   | [1232497](sprint01/us005/readme.md)                                                        |
 | US 006 (Reply directly to a comment in a Discussion)| [1232507](sprint01/us006/readme.)                                                        |
 | US 007 (Create Link Post)     | [1181731](sprint01/us007/readme.md)                                                      |
