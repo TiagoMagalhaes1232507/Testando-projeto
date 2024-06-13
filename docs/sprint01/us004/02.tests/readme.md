@@ -1,28 +1,85 @@
 # US 004 - To Create a discussion 
 
-# 1. Tests 
+## 1. Tests 
 
-1. Tests
+### 1.1. Check Required Fields Validation
 
-Test AC1: Verify that the submit button functions properly.
+**Test 1:** Check that it is not possible to create a discussion without filling in all required fields (title and text). - AC1.
 
-Upon clicking the submit button, the user should be redirected to a new page where they can create a post. It is essential to be logged in for this to occur; otherwise, the functionality will not work.
+**Steps:**
 
-Test AC2: Ensure that it's impossible to create a task without completing all required fields.
+1. At the all discussions page, click on "submit" and proceed to the submission form page.
+2. Leave the title and text field empty.
+3. Click on the "Submit post" button.
+4. Verify that an error message is displayed indicating the title should be 2 to 85 characters.
+5. Enter title field and leave text empty.
+6. Click on the "Submit post" button.
+7. Verify that an error message is displayed indicating the text field should be 20 to 10000 characters.
 
-All fields must be filled out entirely. If spaces are left in the fields, they will be counted as characters, resulting in empty fields. This situation needs to be addressed.
+**Expected Result:** "The system must prevent submission and provide suitable error messages for any incomplete fields."
 
-Test AC3: Verify that it's impossible to create a task with a title containing fewer than 2 characters or more than 85.
 
-Attempting to submit a title with fewer than 2 characters or more than 85 will trigger an error message, indicating the required field and the number of characters entered. Spaces in the fields will be counted as characters but will result in empty fields, which needs correction.
+### 1.2. Check Title Lenght Validation
 
-Test AC4: Verify that it's impossible to create a task with a description containing fewer than 20 characters or more than 10000.
+**Test 2:** Check that it's impossible to create a discussion with a title containing fewer than 2 characters. - AC2.
 
-Submitting a description with fewer than 20 characters or more than 10000 will prompt an error message, specifying the required field and the character count. Pressing enter for a new line or leaving spaces exceeding 20 characters will be considered as characters but result in empty fields, requiring correction.
+**Steps:**
+1. At the all discussions page, click on "submit" and proceed to the submission form page.
+2. Enter a title with only 1 character.
+3. Enter a text that is valid.
+4. Click on the "Submit post" button.
+5. Verify that an error message is displayed indicating the title field should be 2 to 85 characters.
 
-Test AC5: Validate the success of the task creation operation.
+**Expected Result:** "The system must prevent submission and provide suitable error message for the title length."
 
-Upon receiving a "done-zo" green message on the screen indicating success, the user should be redirected to the "all discussions" page.
+
+**Test 3:** Check that it is not possible to submit a post with a title containing more than 85 characters - AC2.
+
+**Steps:**
+1. At the all discussions page, click on "submit" and proceed to the submission form page.
+2. Enter a title with more than 85 characters.
+3. Enter a text that is valid.
+4. Click on the "Submit post" button.
+5. Verify that an error message is displayed indicating the title should be 2 to 85 characters.
+
+**Expected Result:** "The system must prevent submission and provide suitable error message for the title length."
+
+
+**Test 4:** Check that it's impossible to create a discussion with a description containing fewer than 20 characters. - AC3
+
+**Steps:**
+1. At the all discussions page, click on "submit" and proceed to the submission form page.
+2. Enter a valid title.
+3. Enter a text with less than 20 characters..
+4. Click on the "Submit post" button.
+5. Verify that an error message is displayed indicating the text should be 20 to 10000 characters.
+
+**Expected Result:** "The system must prevent submission and provide suitable error message for the text length."
+
+
+**Test 5:** Check that it's impossible to create a discussion with a description containing more than 10000 characters. - AC3
+
+**Steps:**
+1. At the all discussions page, click on "submit" and proceed to the submission form page.
+2. Enter a valid title.
+3. Enter a text with more than 10000 characters.
+4. Click on the "Submit post" button.
+5. Verify that an error message is displayed indicating the text should be 20 to 10000 characters.
+
+**Expected Result:** "The system must prevent submission and provide suitable error message for the text length."
+
+
+
+### 1.4. Dependencies Testing
+
+**Test 6:** Check that only register and logged users can submit posts - Dependency on "US001 and US002".
+
+**Steps:**
+1. If logged in, log out of the account.
+2. Try to access the submission form page.
+3. Verify that the "submit" button is inactive, as it is clickable only for users who are registered and logged in.
+
+**Expected Result:** The system must prevent unregistered users from accessing the submission page.
 
 
 

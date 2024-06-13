@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 004 - Create a Discussion
 
 [Requirements Engineering](01.requirements-engineering/readme.md)
 
