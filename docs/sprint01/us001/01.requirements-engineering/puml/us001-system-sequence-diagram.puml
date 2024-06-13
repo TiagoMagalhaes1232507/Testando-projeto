@@ -15,7 +15,7 @@ activate User
 User -> System : Select "Join"
 activate System
 
-System -> User : Display new registration form
+System --> User : Display new registration form
 deactivate System
 
 User -> System : submitRegistration (username, password, email)
