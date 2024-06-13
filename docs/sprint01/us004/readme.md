@@ -1,4 +1,4 @@
-# US 004 - To Create a Discussion
+# US 004 - Create a Discussion
 
 [Requirements Engineering](01.requirements-engineering/readme.md)
 
