@@ -2,59 +2,39 @@
 
 title Domain Model for Hackernews-inspired Forum Web App
 
-class Visitor {
-  - visitorID: int
+entity User {
+  username
+  email
+  password
 }
 
-class User {
-    +userId: String
-    +username: String
-    +email: String
-    +password: String
+entity Post {
+  title
+  content
+  createdAt
 }
 
-abstract class Post {
-  - postID: int
-  - title: String
-  - timestamp: DateTime
+entity Comment {
+  content
+  createdAt
 }
 
-class TextPost {
-  - content: String
+entity Vote {
+  type
+  createdAt
 }
 
-class LinkPost {
-  - url: String
+entity Visitor {
 }
 
-class Comment {
-    +commentId: String
-    +content: String
-    +createdAt: Date
-}
-
-class Vote {
-    +voteId: String
-    +type: VoteType
-    +createdAt: Date
-}
-
-enum VoteType {
-    UPVOTE
-    DOWNVOTE
-}
-
-User "1" --> "0..*" Post : creates
-Visitor "1" -- "0..*" Post : views
-Visitor "1" -- "0..*" Comment : lists
-Visitor "1" -- "0..*" Vote : sees
-Post "1" --> "1" User : belongs to
-Post "1" --> "0..*" Comment : has
-Comment "1" --> "1" Post : belongs to
-Comment "1" --> "1" User : written by
-User "1" --> "0..*" Vote : votes
-Post "1" --> "0..*" Vote : receives
-Post <|-- TextPost
-Post <|-- LinkPost
+Visitor "1" -- "0..*" Comment : views >
+Visitor "1" -- "0..*" Post : views >
+Visitor "1" -- "0..*" Vote : views >
+User "1" -- "0..*" Post : creates >
+User "1" -- "0..*" Comment : writes >
+User "1" -- "0..*" Vote : submits >
+Post "1" -- "0..*" Comment : has >
+Post "1" -- "0..*" Vote : receives >
+Comment "1" -- "0..*" Vote : receives >
 
 @enduml

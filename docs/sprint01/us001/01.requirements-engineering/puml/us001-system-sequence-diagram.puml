@@ -21,12 +21,6 @@ deactivate System
 User -> System : submitRegistration (username, password, email)
 activate System
 
-System --> System : Validate User Credentials
-
-System --> System : Create User Account
-
-System --> System : Log in User Account
-
 System --> User : Display Confirmation Message (Valid Credentials) and return to homepage
 
 deactivate System
