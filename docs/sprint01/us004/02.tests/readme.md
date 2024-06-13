@@ -1,4 +1,4 @@
-# US 004 - To Create a discussion 
+# US 004 - Create a discussion 
 
 ## 1. Tests 
 
