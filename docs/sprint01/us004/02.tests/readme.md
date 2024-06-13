@@ -71,6 +71,7 @@
 
 
 
+
 ### 1.4. Dependencies Testing
 
 **Test 6:** Check that only register and logged users can submit posts - Dependency on "US001 and US002".
@@ -80,9 +81,21 @@
 2. Try to access the submission form page.
 3. Verify that the "submit" button is inactive, as it is clickable only for users who are registered and logged in.
 
-**Expected Result:** The system must prevent unregistered users from accessing the submission page.
+**Expected Result:** "The system must prevent unregistered users from accessing the submission page."
 
 
 
+### 1.5. Check Create a Discussion
+
+**Test 7:** Check if it is possible to create a discussion with a Title of 5 characters and Text of 30 characters
+
+**Steps:**
+1. At the all discussions page, click on "submit" and proceed to the submission form page.
+2. Enter a Title with 5 characters.
+3. Enter a Text with 30 characters.
+4. Click on the "Submit post" button.
+5. Verify that a successful message is displayed and the page is redirected to the "All Discussions" page.
+
+**Expected Result:** "The system must create a discussion, provide a suitable success message, and return to the "All Discussions" page."
 
 
