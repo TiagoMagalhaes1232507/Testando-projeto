@@ -44,6 +44,7 @@
 
 **Expected Result:** "The system must prevent submission and provide suitable error message for the title length."
 
+### 1.3 Check Text Lenght Validation
 
 **Test 4:** Check that it's impossible to create a discussion with a description containing fewer than 20 characters. - AC3
 

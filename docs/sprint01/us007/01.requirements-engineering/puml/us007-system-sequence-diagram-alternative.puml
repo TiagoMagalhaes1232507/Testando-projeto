@@ -18,7 +18,7 @@ activate System
 System --> User : Display new submission form
 deactivate System
 
-User -> System : Enter title, select link and enter link
+User -> System : Enter title, select link and enter link and Click on "Submit post"
 activate System
 
 System -> System : Check title and link validity

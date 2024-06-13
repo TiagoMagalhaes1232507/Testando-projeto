@@ -45,8 +45,8 @@ As a registered user, I want to create a discussion.
 **Input Data:**
 
 * Typed data:
-	* title
-	* text
+	* Title
+	* Text
 
 	
 * Selected data:
