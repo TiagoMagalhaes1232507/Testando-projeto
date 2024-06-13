@@ -67,7 +67,7 @@ Steps:
 1. Select the "Join" button to Navigate to the registration page.
 2. Enter user information: fill in the registration form with valid data, including username, password and email address.
 3. Submit registration: submit the completed registration form.
-4. Verify account creation:
+4. Verify account creation.
 
 Expected Results:
 
