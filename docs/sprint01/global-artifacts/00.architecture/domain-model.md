@@ -78,7 +78,7 @@
 8. **Comment "1" --> "1" User : written by**
    - **Description:** Each Comment is written by exactly one User.
 
-9. **User "0..*" --> "0..*" Vote : votes**
+9. **User "1" --> "0..*" Vote : votes**
    - **Description:** A single User can cast multiple Votes. Each Vote is cast by exactly one User.
 
 10. **Post "1" --> "0..*" Vote : receives**

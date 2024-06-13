@@ -52,7 +52,7 @@ Post "1" --> "1" User : belongs to
 Post "1" --> "0..*" Comment : has
 Comment "1" --> "1" Post : belongs to
 Comment "1" --> "1" User : written by
-User "0..*" --> "0..*" Vote : votes
+User "1" --> "0..*" Vote : votes
 Post "1" --> "0..*" Vote : receives
 Post <|-- TextPost
 Post <|-- LinkPost
