@@ -1,4 +1,4 @@
-# US 003 - Access to topics from unregistered users
+# US 003 - Access to posts from unregistered users
 
 ## 1. Requirements Engineering
 
