@@ -62,7 +62,7 @@ As a registred user, I want to be able to change font style (bold, italic, under
 
 
 
-![System Sequence Diagram - Alternative One](svg/us009-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram](svg/us009-system-sequence-diagram.svg)
 
 
 ### 1.7 Other Relevant Remarks

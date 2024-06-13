@@ -21,8 +21,6 @@ activate User
     User -> System : selects voting option (upvote/downvote)
     activate System
 
-        System --> User : validates vote
-
-        System --> User : Updates vote count (if valid)
+        System --> User : Updates vote count
     deactivate System
 @enduml

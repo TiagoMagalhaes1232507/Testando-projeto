@@ -15,8 +15,7 @@ activate RegisteredUser
 RegisteredUser -> System : clicks logout button
 activate System
 
-System --> System :logout 
-System -> RegisteredUser : displays success message
+System --> RegisteredUser : displays success message
 
 
 deactivate System
