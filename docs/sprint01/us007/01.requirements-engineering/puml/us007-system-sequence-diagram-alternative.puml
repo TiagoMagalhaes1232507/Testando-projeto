@@ -21,10 +21,6 @@ deactivate System
 User -> System : Enter title, select link and enter link and Click on "Submit post"
 activate System
 
-System -> System : Check title and link validity
-
-System -> System : Save post
-
 System --> User : Confirm post submission and return to all discussions
 deactivate System
 deactivate User
