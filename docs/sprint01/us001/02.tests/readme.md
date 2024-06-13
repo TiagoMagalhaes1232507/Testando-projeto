@@ -8,14 +8,13 @@ Objective: Verify that the system provides a functional registration form for ne
 
 Steps:
 
-1. Navigate to the registration page: access the page designated for user registration.
+1. Select the "Join" button to Navigate to the registration page.
 2. Verify form presence: confirm that a registration form exists on the page, containing essential fields for user information. (Username, Email, Password)
 3. Validate form elements: ensure each form element is functional:
 	* Text fields allow for user input (username, email, password),
 	* Password field offers password masking for security, 
-	* Submit button initiates the registration process.
 4. Attempt registration: enter valid data into the form fields.
-5. Submit the form: click the submit button to initiate the registration process.
+5. Submit the form: click the "Submit" button to finalize the registration process.
 
 Expected Results:
 
@@ -36,7 +35,7 @@ Objective: Verify that the system enforces proper validation of user-provided in
 
 Steps:
 
-1. Access Registration Page: navigate to the application's registration page.
+1. Select the "Join" button to Navigate to the registration page.
 2. Enter Invalid Data: submit a registration form with intentionally invalid data in one or more fields. This could include:
     * Empty email, username or password fields,
     * Password not meeting requirements (minimum length requirement: 6 characters),
@@ -65,14 +64,14 @@ Objective: verify that the system successfully creates a new user account when a
 
 Steps:
 
-1. Navigate to registration page: access the page dedicated to user registration.
+1. Select the "Join" button to Navigate to the registration page.
 2. Enter user information: fill in the registration form with valid data, including username, password and email address.
 3. Submit registration: submit the completed registration form.
 4. Verify account creation:
 
 Expected Results:
 
-* The registration process completes successfully without errors.
+* The registration process completes successfully without errors. The system displays a success message.
 
 Pass/Fail Criteria:
 
@@ -86,7 +85,7 @@ Objective: Verify that the system displays appropriate feedback messages to the 
 
 Steps:
 
-1. Access the registration page:** Navigate to the page where users can register for an account.
+1. Select the "Join" button to Navigate to the registration page.
 2. Successful Registration:
     * Enter valid registration data (username, password, email) as specified by the system.
     * Submit the registration form.

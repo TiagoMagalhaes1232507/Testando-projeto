@@ -1,25 +1,33 @@
-@startuml
+@startuml System Sequence Diagram (SSD)
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
-title SSD US001: User Registration 
+title SSD US001: User Registration
 
 autonumber
 
 actor "Unregistered User" as User
-participant ":Registration System" as System
+participant ":System" as System
 
 activate User
 
-    User -> System : submitRegistration (username, password, email)
-    activate System
+User -> System : Select "Join"
+activate System
 
-        System --> User : Validate User Credentials
-    
-        System --> User : Create User Account (Validate Credentials)
-    
-        System --> User : Display Confirmation Message (Valid Credentials)
-           
-    deactivate System
+System -> User : Display new registration form
+deactivate System
+
+User -> System : submitRegistration (username, password, email)
+activate System
+
+System --> System : Validate User Credentials
+
+System --> System : Create User Account
+
+System --> System : Log in User Account
+
+System --> User : Display Confirmation Message (Valid Credentials) and return to homepage
+
+deactivate System
 @enduml

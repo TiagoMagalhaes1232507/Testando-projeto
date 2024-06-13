@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As a user I want to login in system.
+As a registred user, I want to login in system.
 
 
 
@@ -25,11 +25,11 @@ As a user I want to login in system.
 
 ### 1.3. Acceptance Criteria
 
-
-* **AC1:** The user should type their username and password.
-* **AC2:** The sistem must validate username and password in database and present a message with the outcome.
-* **AC3:** If validation username and passoword is positive, the sistem present a message of success and permit access to user.
-* **AC4:**	If validation username or password is negative, the sistem present a message of insucess and user must type username and password again.
+* **AC1:** On the registration home, click on "Join" and then "Login".
+* **AC2:** The user should type their username and password.
+* **AC3:** The sistem must validate username and password in database and present a message with the outcome.
+* **AC4:** If validation username and passoword is positive, the sistem present a message of success and permit access to user.
+* **AC5:**	If validation username or password is negative, the sistem present a message of insucess and user must type username and password again.
 
 
 ### 1.4. Found out Dependencies
