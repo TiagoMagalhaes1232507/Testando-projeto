@@ -4,70 +4,70 @@
 
 ### 1.1. Check Required Fields Validation
 
-**Test 1:** Check that it is not possible to create a discussion without filling in all required fields (title and text). - AC1.
+**Test 1:** Check that it is not possible to create a discussion without filling in all required fields (Title and Text). - AC1.
 
 **Steps:**
 
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
-2. Leave the title and text field empty.
+2. Leave the Title and Text field empty.
 3. Click on the "Submit post" button.
-4. Verify that an error message is displayed indicating the title should be 2 to 85 characters.
-5. Enter title field and leave text empty.
+4. Verify that an error message is displayed indicating the Title should be 2 to 85 characters.
+5. Enter Title field and leave Text empty.
 6. Click on the "Submit post" button.
-7. Verify that an error message is displayed indicating the text field should be 20 to 10000 characters.
+7. Verify that an error message is displayed indicating the Text field should be 20 to 10000 characters.
 
 **Expected Result:** "The system must prevent submission and provide suitable error messages for any incomplete fields."
 
 
 ### 1.2. Check Title Lenght Validation
 
-**Test 2:** Check that it's impossible to create a discussion with a title containing fewer than 2 characters. - AC2.
+**Test 2:** Check that it's impossible to create a discussion with a Title containing fewer than 2 characters. - AC2.
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
-2. Enter a title with only 1 character.
-3. Enter a text that is valid.
+2. Enter a Title with only 1 character.
+3. Enter a Text that is valid.
 4. Click on the "Submit post" button.
-5. Verify that an error message is displayed indicating the title field should be 2 to 85 characters.
+5. Verify that an error message is displayed indicating the Title field should be 2 to 85 characters.
 
-**Expected Result:** "The system must prevent submission and provide suitable error message for the title length."
+**Expected Result:** "The system must prevent submission and provide suitable error message for the Title length."
 
 
-**Test 3:** Check that it is not possible to submit a post with a title containing more than 85 characters - AC2.
+**Test 3:** Check that it is not possible to submit a post with a Title containing more than 85 characters - AC2.
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
-2. Enter a title with more than 85 characters.
-3. Enter a text that is valid.
+2. Enter a Title with more than 85 characters.
+3. Enter a Text that is valid.
 4. Click on the "Submit post" button.
-5. Verify that an error message is displayed indicating the title should be 2 to 85 characters.
+5. Verify that an error message is displayed indicating the Title should be 2 to 85 characters.
 
 **Expected Result:** "The system must prevent submission and provide suitable error message for the title length."
 
 ### 1.3 Check Text Lenght Validation
 
-**Test 4:** Check that it's impossible to create a discussion with a description containing fewer than 20 characters. - AC3
+**Test 4:** Check that it's impossible to create a discussion with a Text containing fewer than 20 characters. - AC3
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
-2. Enter a valid title.
-3. Enter a text with less than 20 characters..
+2. Enter a valid Title.
+3. Enter a Text with less than 20 characters.
 4. Click on the "Submit post" button.
-5. Verify that an error message is displayed indicating the text should be 20 to 10000 characters.
+5. Verify that an error message is displayed indicating the Text should be 20 to 10000 characters.
 
-**Expected Result:** "The system must prevent submission and provide suitable error message for the text length."
+**Expected Result:** "The system must prevent submission and provide suitable error message for the Text length."
 
 
 **Test 5:** Check that it's impossible to create a discussion with a description containing more than 10000 characters. - AC3
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
-2. Enter a valid title.
-3. Enter a text with more than 10000 characters.
+2. Enter a valid Title.
+3. Enter a Text with more than 10000 characters.
 4. Click on the "Submit post" button.
-5. Verify that an error message is displayed indicating the text should be 20 to 10000 characters.
+5. Verify that an error message is displayed indicating the Text should be 20 to 10000 characters.
 
-**Expected Result:** "The system must prevent submission and provide suitable error message for the text length."
+**Expected Result:** "The system must prevent submission and provide suitable error message for the Text length."
 
 
 

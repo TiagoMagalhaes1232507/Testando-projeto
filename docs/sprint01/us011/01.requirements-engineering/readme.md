@@ -43,7 +43,7 @@ As a user I want to logout of the application.
 **Input Data:**
 
 * Typed data:
-	* null
+	* no input data required
 	
 
 **Output Data:**
