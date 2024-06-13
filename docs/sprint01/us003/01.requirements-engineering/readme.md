@@ -25,7 +25,7 @@
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** Unregistered user should be granted all access to view existing topics.
+* **AC1:** Unregistered user should be granted all access to view existing posts.
 
 
 
