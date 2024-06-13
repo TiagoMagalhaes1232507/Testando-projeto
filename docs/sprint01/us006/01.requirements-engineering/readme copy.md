@@ -24,7 +24,7 @@ As an user, i want to be able to reply to a comment so that I can take part in a
 
 
 * **AC1:** The user must be logged in.
-* **AC2:** There must be a post with at least one comment.  
+* **AC2:** There must be a post with at least one comment.
 * **AC3:** The reply text box must contain between 20 and 10,000 characters. 
 	* If the criteria are met, the system will display a success message: "Done-zoo 🤠" and publish the comment.
 	* If the criteria are not met, the system will prompt the user to enter a valid number of characters with the message: "Yeahhhhh, comments should be 20 to 10000 characters. Yours was [actual count]. 🤠"
