@@ -18,13 +18,15 @@ As a user, I want to access the website through a link present in a discussion.
 
 ### 1.3. Acceptance Criteria
 
-**AC1:** If a discussion posted to the application contains a link, then this link must be displayed as a hyperlink in a different color or formatting than the rest of the text and must be clickable.
+**AC1:** If a discussion posted to the application contains a link, that link must be displayed as a hyperlink in a different color or formatting than the rest of the text and must be clickable.
 
-**AC2:** When the user clicks on the link, a button with the phrase 'Click to visit the link at' should be shown.
+**AC2:** When the user clicks on the link, a button should be shown with the phrase 'Click to visit the link at'.
 
-**AC3:** When the user clicks on the 'Click to visit the link at' button, a new browser tab must open with the page corresponding to the link./
+**AC3:** When the user clicks on the 'Click to visit the link in' button, a new browser tab should open with the page corresponding to the link.
 
-**AC4:** Only urls that begin with https:// should be considered links.
+**AC4:** If a discussion posted on the application contains links in different parts (start, middle, end), all links must be displayed correctly and must be clickable.
+
+**AC5:** If a discussion posted to the application contains duplicate links, both must be displayed correctly and must be clickable.
 
 ### 1.4. Found out Dependencies
 
