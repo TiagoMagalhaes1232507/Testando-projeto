@@ -31,9 +31,9 @@ As a user I want to logout of the application.
 ### 1.4. Found out Dependencies
 
 
-*  There is a dependency to "US001 As an unregistered user, I want to register on the application (join)" as being registered who makes login, i want to logout.
+*  There is a dependency to "US001 - User Registration" as being registered who makes login, i want to logout.
 
-* There is a dependency to "US002 As a user I want/need to login in sistem" since i need to login to make a logout wheter i am register or not.
+* There is a dependency to "US002 - To login in System" since i need to login to make a logout wheter i am register or not.
 
 
 

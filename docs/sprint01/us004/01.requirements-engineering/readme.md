@@ -9,7 +9,6 @@
 As a registered user, I want to create a discussion.
 
 
-
 ### 1.2. Customer Specifications and Clarifications 
 
 
@@ -33,9 +32,9 @@ As a registered user, I want to create a discussion.
 
 ### 1.4. Found out Dependencies
 
-* There is a dependency to "US001 As an unregistered user, I want to register on the application (join)" as being registered is a requirement for this task.
+* There is a dependency to "US001 - User Registration" as being registered is a requirement for this task.
 
-* There is a dependency to "US002 As a user I want/need to login in sistem" since i need to login to make a discussion.
+* There is a dependency to "US002 - To login in System" since i need to login to make a discussion.
 
 
 
