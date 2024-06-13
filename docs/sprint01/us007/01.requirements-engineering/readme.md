@@ -57,4 +57,4 @@ As a registered user, I want to submit a new post with a link so that I can shar
 * The submitted post must be immediately visible to all users if it passes validation.
 * Implementing a preview feature before final submission could enhance user experience.
 * The current system accepts HTTP, HTTPS, and FTP links without validating them. Future updates may include proper URL validation to enhance security and usability.
-* Error messages should be clear, concise, and professional. For example, instead of "Yeahhhhh, link posts should be 8 to 500 characters. Yours was 0," a more professional message would be: "Error: The link must be between 8 and 500 characters. Please enter a valid link."
+* Error messages should be clear, concise, and explicit. For example, instead of "Yeahhhhh, link posts should be 8 to 500 characters. Yours was 0," a more explicit message would be: "Error: The link must be between 8 and 500 characters. Please enter a valid link."
