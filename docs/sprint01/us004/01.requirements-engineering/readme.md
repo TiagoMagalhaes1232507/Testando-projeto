@@ -55,7 +55,7 @@ As a registered user, I want to create a discussion.
 
 **Output Data:**
 
-* Confirmation of successful post submission
+* Confirmation of successful discussion submission
 * Error messages in case of validation failures
 
 
@@ -70,7 +70,7 @@ As a registered user, I want to create a discussion.
 ### 1.7 Other Relevant Remarks
 
 * The system should ensure data integrity by validating the input fields before saving the discussion to the database.
-* Spaces in the fields shoul not be counted as characters, because it contradicts the acceptance criteria of the system.
-* Clicking on enter in text shold not count as a character, because it contradicts the acceptance criteria of the system.
+* Spaces in the fields should not be counted as characters, otherwise there is no point is range the titles since this allows the title to be in blank. 
+* Clicking on enter in text or spaces should not count as a character, otherwise te system is allowing blank dscussions.
 * In case of a failure, the system should allow the user to correct the errors and resubmit the discussion.
-* Error messages should be clear, concise, and professional. 
+* Error messages should be clear, professional, concise and explicit. 
