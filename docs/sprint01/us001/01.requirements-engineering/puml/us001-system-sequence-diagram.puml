@@ -18,7 +18,7 @@ activate System
 System --> User : Display new registration form
 deactivate System
 
-User -> System : submitRegistration (username, password, email)
+User -> System : Enter username, password, email and click on "Submit"
 activate System
 
 System --> User : Display Confirmation Message (Valid Credentials) and return to homepage
