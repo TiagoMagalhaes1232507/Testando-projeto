@@ -1,14 +1,13 @@
-@startuml
+@startuml "use-case-diagram"
 'skinparam monochrome true
 skinparam packageStyle rectangle
 'skinparam shadowing false
 
 left to right direction
 
-rectangle "System Actors" as actors {
-    actor "Registered User" as RegisteredUser
-    actor "Unregistered User" as UnregisteredUser
-}
+
+actor "Registered User" as RegisteredUser
+actor "Unregistered User" as UnregisteredUser
 
 rectangle "Use Cases" as usecases {
     usecase "UC1 - User Registration" as UC01
@@ -24,12 +23,9 @@ rectangle "Use Cases" as usecases {
     usecase "UC11 - To logout" as UC11
     usecase "UC12 - Access a discussion link" as UC12
     usecase "UC13 - Discussion's list ordered by date" as UC13
-
-
    
-    UnregisteredUser --> UC01
+   
     RegisteredUser --> UC02
-    UnregisteredUser --> UC03
     RegisteredUser --> UC04
     RegisteredUser --> UC05
     RegisteredUser --> UC06
@@ -37,14 +33,14 @@ rectangle "Use Cases" as usecases {
     RegisteredUser --> UC08
     RegisteredUser --> UC09
     RegisteredUser --> UC10
-    UnregisteredUser --> UC10
     RegisteredUser --> UC11
     RegisteredUser --> UC12
     RegisteredUser --> UC13
-    UnregisteredUser --> UC13
-    
-    
 
+UnregisteredUser -up-> UC01
+UnregisteredUser -up-> UC03
+UnregisteredUser -up-> UC10
+UnregisteredUser -up-> UC13
 }
 
 @enduml
