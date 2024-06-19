@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 003 - Access to posts from unregistered users
 
 [Requirements Engineering](01.requirements-engineering/readme.md)
 
