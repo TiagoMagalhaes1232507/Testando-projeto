@@ -1,19 +1,48 @@
-# REST API Endpoint : /api/v1/users
+# REST API Endpoint : /api/v1/members
 
-## Request: get /
+## Request: get /me
 ### URI
-    api/v1/users/
+api/v1/members/
     
 ### HTTP method
-    Get
+Get
+
 ### Headers
     
 ### Body
+{
+    "username": "aaa",
+    "password": "aaaaaa"
+}
 
 ## Response
 ### Status
+200
+
 ### Body
 
-## Request: post /
+## Relate the REST API endpoints with User Stories
+
+
+## Request: get /:username
+### URI
+api/v1/members/
+    
+### HTTP method
+Get
+
+### Headers
+    
+### Body
+{
+    "username": "username",
+    "password": "password"
+}
+
+## Response
+### Status
+200
+
+### Body
 
 ## Relate the REST API endpoints with User Stories
