@@ -1,0 +1,118 @@
+@startuml "Package Diagram"
+
+title "Package Diagram Complete"
+
+package "src" {
+
+    package "api_test" {
+        package "config" {}
+        package "endpoints"{
+            package "abstracts" {}
+        }
+        package "restClient***" {}
+    }
+
+    package "automated-tests" {}
+
+    package "config" {}
+
+    package "modules" {
+        package "forum" {
+            package "domain" {
+                package "events" {}
+                package "services" {}
+            }
+            package "dtos" {}
+            package "infra" {
+                package "http" {
+                    package "routes" {}
+                }
+            }
+            package "mappers" {}
+            package "repos" {
+                package "implementations" {}
+            }
+            package "subscriptions" {}
+            package "useCases"{
+                package "comments" {
+                    package "downvoteComment" {}
+                    package "getCommentByCommentId" {}
+                    package "getCommentsByPostSlug" {}
+                    package "replyToComment" {}
+                    package "replyToPost" {}
+                    package "updateCommentStats" {}
+                    package "upvoteComment" {}
+                }
+                package "members" {
+                    package "createMember" {}
+                    package "getCurrentMember" {}
+                    package "getMemberByUserName" {}
+                }
+
+                package "post"{
+                    package "createPost" {}
+                    package "downvotePost" {}
+                    package "editPost" {}
+                    package "getPopularPosts" {}
+                    package "getPostBySlug" {}
+                    package "getRecentPosts" {}
+                    package "updatePostStats" {}
+                    package "upvotePost" {}
+                }
+            }
+        }
+        package "users" {
+            package "domain" {
+                package "events" {}
+            }
+            package "dtos" {}
+            package "infra" {
+                package "http" {
+                    package "models" {}
+                    package "routes" {}
+                }
+            }
+            package "mappers" {}
+            package "repos" {
+                package "implementations" {}
+            }
+            package "services" {
+                package "redis" {}
+            }
+            package "useCases" {
+                package "createUser" {}
+                package "deleteUser" {}
+                package "getCurrentUser" {}
+                package "getUserByUserName" {}
+                package "login" {}
+                package "logout" {}
+                package "refreshAccessToken" {}
+            }
+        }
+    }
+    package "shared" {
+        package "core" {}
+        package "domain" {}
+        package "events"{}
+    }
+    package "infra" {
+        package "database"{
+            package "sequelize"{
+                package "config" {}
+                package "hooks" {}
+                package "migrations" {}
+                package "models" {}
+            }
+        }
+        package "http" {
+            package "api" {}
+            package "graphql" {}
+            package "models" {}
+            package "utils" {}
+        }
+    }
+    package "utils" {}
+}
+
+
+@enduml
