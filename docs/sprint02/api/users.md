@@ -1,13 +1,13 @@
 # REST API Endpoint : /api/v1/users
 
-## Request: Post /
+## 1- Request: POST /
 
 ### URI
 
     api/v1/users/
 
 ### HTTP method
-<<<<<<< HEAD
+
     Post
 
 ### Description
@@ -16,12 +16,12 @@
 ### Headers
 
 ### Body
-  username: string;
-  email: string;
-  password: string
+{
+username: string;
+email: string;
+password: string }
 
 ## Response
-
 ### Status
 
 A - 200 - OK
@@ -35,15 +35,131 @@ A - message: `OK`
 B - message: `The email ${email} associated for this account already exists`
 c - message: `The username ${username} was already taken`
 D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
+_____________________________________________________________________________________________
+
+## 2- Request: GET / 
+
+### URI
+
+api/v1/users/me
+
+### HTTP method
+
+Get
+
+### Description
+    User uses this to find it's user account.
+
+### Headers
+
+
+### Body
+
+username: string;
+
+## Response
+### Status
+
+### Body
+_____________________________________________________________________________________________
+
+## 3- Request: POST /
+
+### URI
+
+api/v1/users/login
+
+### HTTP method
+
+Post
+
+### Description
+    
+    Used to login in the forum.
+
+### Headers
+
+accessToken: JWTToken;
+refreshToken: RefreshToken;
+
+### Body
+
+{ username: string;
+password: string }
+
+## Response
+### Status
+
+### Body
+_____________________________________________________________________________________________
+
+## 4- Request: POST /
+
+### URI
+
+api/v1/users/logout
+
+### HTTP method
+
+Post
+
+### Headers
+
+accessToken: JWTToken;
+refreshToken: RefreshToken;
+
+### Body
+
+
+
+## Response
+### Status
+
+### Body
+_____________________________________________________________________________________________
+(JOAO PEDRO)
+## 5- Request: POST /
+
+### URI
+
+### HTTP method
+
+### Headers
+
+### Body
+
+## Response
+### Status
+
+### Body
+_____________________________________________________________________________________________
+(JOAO PEDRO)
+## 6- Request: DELETE /
+
+### URI
+
+### HTTP method
+
+### Headers
+
+### Body
+
+## Response
+### Status
+
+### Body
 
 ________________________________________________________________________________________________
-# REST API Endpoint : /api/v1/users
 
-## Request: get /
+## 7- Request: GET /
 ### URI
     api/v1/users/:username --> getUserByUserName
 ### HTTP method
     Get
+
+### Description
+    Used to find a User in the system. 
+
 ### Headers
     Authorization: Token
 ### Body
@@ -52,32 +168,9 @@ ________________________________________________________________________________
 }
 ## Response
 ### Status
-A - 200 - OK
-B - 403 - Forbidden
-C - 409 - Conflict
-D - 500 - Internal Server Error
-### Body
-A - message: `OK`
-B - message: `The email ${email} associated for this account already exists`
-c - message: `The username ${username} was already taken`
-D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
-_____________________________________________________________________________________________
-
-## Request: post /
-
-### URI
-
-### HTTP method
-
-### Headers
 
 ### Body
 
-## Response
-
-### Status
-
-### Body
 
 
 
