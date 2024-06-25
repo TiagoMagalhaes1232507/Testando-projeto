@@ -1,0 +1,32 @@
+@startuml "Package Diagram"
+
+title "Package Diagram - Detail 3.3"
+
+package "src" {
+
+    package "shared" {
+        package "core" {}
+        package "domain" {}
+        package "events"{}
+    }
+    package "infra" {
+        package "database"{
+            package "sequelize"{
+                package "config" {}
+                package "hooks" {}
+                package "migrations" {}
+                package "models" {}
+            }
+        }
+        package "http" {
+            package "api" {}
+            package "graphql" {}
+            package "models" {}
+            package "utils" {}
+        }
+    }
+    package "utils" {}
+}
+
+
+@enduml

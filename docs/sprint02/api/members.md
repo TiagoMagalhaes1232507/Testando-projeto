@@ -2,10 +2,10 @@
 
 ## Request: get /me
 ### URI
-api/v1/members/
+    api/v1/members/
     
 ### HTTP method
-Get
+    Get
 
 ### Headers
     
