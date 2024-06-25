@@ -8,7 +8,7 @@
 
 ### HTTP method
 
-    Post
+    POST
 
 ### Description
     Used to create a new User in the system. The API should provide message informing that the account was already created.
@@ -35,6 +35,10 @@ A - message: `OK`
 B - message: `The email ${email} associated for this account already exists`
 c - message: `The username ${username} was already taken`
 D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
+
+## Relate the REST API endpoints with User Stories
+
+| US 001 | [User Registration](../../us001/Readme.md)|
 _____________________________________________________________________________________________
 
 ## 2- Request: GET / 
@@ -53,14 +57,29 @@ Get
 ### Headers
 
 
+
 ### Body
 
-username: string;
+
 
 ## Response
 ### Status
 
+A - 200 - OK
+
 ### Body
+
+{    "user": {
+        "username": "string",
+        "isEmailVerified": false,
+        "isAdminUser": false,
+        "isDeleted": false
+    }
+}
+
+## Relate the REST API endpoints with User Stories
+
+| US 001 | [User Registration](../../us001/Readme.md)|
 _____________________________________________________________________________________________
 
 ## 3- Request: POST /
@@ -79,8 +98,9 @@ Post
 
 ### Headers
 
-accessToken: JWTToken;
-refreshToken: RefreshToken;
+Authentication:
+        accessToken: JWTToken;
+        refreshToken: RefreshToken
 
 ### Body
 
@@ -89,8 +109,10 @@ password: string }
 
 ## Response
 ### Status
-
+A - 200 - OK
 ### Body
+A - message: `OK`
+
 _____________________________________________________________________________________________
 
 ## 4- Request: POST /
@@ -103,19 +125,26 @@ api/v1/users/logout
 
 Post
 
+### Description
+    
+    Used to logout the account.
+
 ### Headers
 
-accessToken: JWTToken;
-refreshToken: RefreshToken;
+Authentication:
+        accessToken: JWTToken;
+        refreshToken: RefreshToken
 
 ### Body
-
-
 
 ## Response
 ### Status
 
+A - 200 - OK
+
 ### Body
+
+A - message: `OK`
 _____________________________________________________________________________________________
 (JOAO PEDRO)
 ## 5- Request: POST /
@@ -153,7 +182,7 @@ ________________________________________________________________________________
 
 ## 7- Request: GET /
 ### URI
-    api/v1/users/:username --> getUserByUserName
+    api/v1/users/":username" --> getUserByUserName
 ### HTTP method
     Get
 
@@ -161,20 +190,17 @@ ________________________________________________________________________________
     Used to find a User in the system. 
 
 ### Headers
-    Authorization: Token
+    Authentication:
+        accessToken: JWTToken;
+        refreshToken: RefreshToken
 ### Body
-{
-  username: string
-}
+{ username: string }
 ## Response
 ### Status
-
+A - 200 - OK
 ### Body
 
-
-
-
-
+A - message: `OK`
 
 ______________________________________________________________________________________
 ## Relate the REST API endpoints with User Stories
