@@ -25,6 +25,9 @@ app.use('/api/v1', v1Router)
 
 const port = process.env.PORT || 5001;
 
+if (process.env.NODE_ENV !== 'test') {
 app.listen(port, () => {
   console.log(`[App]: Listening on port ${port}`)
 })
+}
+export {app};

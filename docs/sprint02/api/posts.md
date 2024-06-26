@@ -1,16 +1,21 @@
-# REST API Endpoint : /api/v1/users
+# REST API Endpoint : /api/v1/Posts
 
-## 1- Request: Post / Create  Post
+## 1- Request: Post / Create Post
 ### URI
 
- /api/v1/posts/
+ `/api/v1/posts/`
 ### HTTP method
     
-    POST
+POST
+
+
+### Description
+
+This endpoint creates a post
 
 ### Headers
     
- Authorization accessToken
+Authorization accessToken
 
 ### Body
 
@@ -63,7 +68,7 @@ D- "Token signature expired."
 
 ## Relate the REST API endpoints with User Stories
 
-The `/api/v1/posts/createPost`(Post) endpoint is related to  user stories  US 004 - Create a discussion (text) and to  US 007 - Create link post 
+The `/api/v1/posts/`(Post) endpoint is related to  user stories  US 004 - Create a discussion and to  US 007 - Create link post 
 
 
 # REST API Endpoint : /api/v1/users
