@@ -1,8 +1,8 @@
 
 import { Logger } from "tslog";
-import ConfigHandler from "./config/configHandler";
+import ConfigHandler from "../api_test/config/configHandler";
 
-import Posts from "./endpoints/Posts";
+import Posts from "../api_test/endpoints/Posts";
 
 const config = ConfigHandler.getInstance();
 const log = new Logger({
@@ -13,6 +13,7 @@ const log = new Logger({
 });
 
 let posts: Posts;
+let accessToken:string;
 
 describe("Posts endpoint", (): void => {
   beforeAll(async (): Promise<void> => {
@@ -36,12 +37,13 @@ describe("Posts endpoint", (): void => {
   it("Create a new post", async (): Promise<void> => {
     const newPostData = {
       title: "Test Post",
-      content: "This is a test post content.",
-      author: "test_user",
+      text: "This is a test post content.",
+      link: "",
+      postType:"text"
     };
 
-    const response = await posts.createPost(newPostData);
-    expect(response.status).toBe(201); // Assuming 201 for successful creation
+    const response = await posts.createPost(newPostData,accessToken);
+    expect(response.status).toBe(200); // Assuming 201 for successful creation
     expect(response.data).toHaveProperty("postId");
   });
 
