@@ -208,13 +208,13 @@ report only covers code of the tests, it does not cover code of teh backend exec
 
 Stop the backend by hitting Ctrl+C in the terminal where the backend is running.
 
-### Backend clean reset
-
-```shell
-  rm -rf node_modules dist && npm run setup:dev && npm run start:dev
-```
-
-Only perform the following part once, otherwise it takes longer to compile.
+### Backend clean reset 
+ 
+```shell 
+  rm -rf node_modules dist && npm run setup:dev && npm run start:dev 
+``` 
+ 
+Only perform the following part once, otherwise it takes longer to compile. 
 
 ```shell
   rm -rf node_modules dist
