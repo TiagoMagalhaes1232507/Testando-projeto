@@ -19,7 +19,7 @@
     "src/*.ts",
     "src/**/*.ts",
     "src/**/*.js"
-  ],
+, "src/automated-tests/members-tests.ts", "src/automated-tests/posts-tests.ts", "src/automated-tests/users-tests.ts"  ],
   "exclude": [
     "node_modules",
     "src/**/*.spec.ts",
