@@ -1,86 +1,56 @@
-import request from "supertest";
-import { app } from "../shared/infra/http/app";;
-import { CreatePostDTO } from "../modules/forum/useCases/post/createPost/CreatePostDTO";
 
+import { Logger } from "tslog";
+import ConfigHandler from "../api_test/config/configHandler";
 
-let authToken = ''; // Variável para armazenar o token de autenticação
+import Posts from "../api_test/endpoints/Posts";
 
-describe('POST /api/v1/posts', () => {
-  beforeAll(async () => {
-    console.log('Before ALL');
-    // Aqui você pode configurar alguma inicialização global, se necessário
+const config = ConfigHandler.getInstance();
+const log = new Logger({
+  minLevel: config.environmnetConfig.log_level,
+  dateTimeTimezone:
+    config.environmnetConfig.time_zone ||
+    Intl.DateTimeFormat().resolvedOptions().timeZone,
+});
+
+let posts: Posts;
+let accessToken:string;
+
+describe("Posts endpoint", (): void => {
+  beforeAll(async (): Promise<void> => {
+    posts = new Posts();
+    
+    log.debug("1. Posts Base url: "+posts.getBaseUrl());
   });
 
-  beforeEach(async () => {
-    console.log('Before EACH');
-    // Simular o login para obter o token de autenticação
-    const loginCredentials = {
-      username: 'string3',
-      password: 'string3',
-    };
-
-    const loginResponse = await request(app)
-      .post('/api/v1/users/') // Endpoint de login da sua aplicação
-      .send(loginCredentials);
-
-    authToken = loginResponse.body.token; // Assume que o token está sendo retornado no corpo da resposta
-  });
-
-  afterEach(() => {
-    console.log('After EACH');
-    // Aqui você pode limpar ou redefinir qualquer estado após cada teste, se necessário
-  });
-
-  it('should create a new text post successfully with authentication', async () => {
-    const createPostDTO = {
-      userId: 'string3',
-      title: 'abcs',
-      text: 'This is a test text post.',
-      postType: 'text',
-    };
-
-    const response = await request(app)
-      .post('/api/v1/posts')
-      .send(createPostDTO)
-      .set('Authorization', `Bearer ${authToken}`); // Enviar o token de autenticação
-
+  it("Get popular posts", async (): Promise<void> => {
+    const response = await posts.getPopularPosts();
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ message: 'Post created successfully' });
-    // Adicione outras asserções conforme necessário para verificar a resposta
+    expect(response.data.posts).toBeDefined();
   });
 
-  it('should create a new link post successfully with authentication', async () => {
-    const createPostDTO = {
-      userId: 'user123',
-      title: 'Test Link Post',
-      link: 'https://example.com',
-      postType: 'link',
-    };
-
-    const response = await request(app)
-      .post('/api/v1/posts')
-      .send(createPostDTO)
-      .set('Authorization', `Bearer ${authToken}`); // Enviar o token de autenticação
-
+  it("Get recent posts", async (): Promise<void> => {
+    const response = await posts.getRecentPosts();
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ message: 'Post created successfully' });
-    // Adicione outras asserções conforme necessário para verificar a resposta
+    expect(response.data.posts).toBeDefined();
   });
 
-  it('should return 403 without authentication', async () => {
-    const createPostDTO = {
-      userId: 'user123',
-      title: 'Test Text Post',
-      text: 'This is a test text post.',
-      postType: 'text',
+  it("Create a new post", async (): Promise<void> => {
+    const newPostData = {
+      title: "Test Post",
+      text: "This is a test post content.",
+      link: "",
+      postType:"text"
     };
 
-    const response = await request(app)
-      .post('/api/v1/posts')
-      .send(createPostDTO);
+    const response = await posts.createPost(newPostData,accessToken);
+    expect(response.status).toBe(200); // Assuming 201 for successful creation
+    expect(response.data).toHaveProperty("postId");
+  });
 
-    expect(response.status).toBe(403);
-    expect(response.body).toEqual({ message: 'No access token provided' });
-    // Adicione outras asserções conforme necessário para verificar a resposta
+  afterAll(() => {
+    // Limpar recursos ou fazer teardown, se necessário
+    // Por exemplo, fechar conexões, limpar estado, etc.
   });
 });
+
+export default {};
