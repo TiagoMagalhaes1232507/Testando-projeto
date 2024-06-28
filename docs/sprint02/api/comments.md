@@ -16,13 +16,13 @@ This endpoint retrieves comments for a specific post identified by its slug.
 
 ### Headers
 
-Authorization:  token JWT (optional)
+Authorization: token JWT (optional)
 
 ### Parameters
- 
-* `slug` (string, required)
-* `offset?` (number, optional)
-* `userId?` (string, optional)
+
+- `slug` (string, required)
+- `offset?` (number, optional)
+- `userId?` (string, optional)
 
 ### Body
 
@@ -32,30 +32,31 @@ The request body is empty for GET requests.
 
 ### Status
 
-* A - 200 OK (if slug parameter is provided)
-* B - 500 Internal Server Error (if slug parameter is missing)
+- A - 200 OK (if slug parameter is provided)
+- B - 500 Internal Server Error (if slug parameter is missing)
 
 ### Body
 
-* A - `comments` (array of `CommentDTO` objects): An array containing comments for the specified slug parameter provided. Could be returned an empty array `[]`if the slug is not valid. If the array of `CommentDTO` objects is not empty, this includes:  
-    * `postTitle`: (string)
-    * `commentId`: (string)
-    * `parentCommentId?`: (string, optional)
-    * `text`: (string) Content of the comment.
-    * `member`: (MemberDTO object) Information about the user who created the comment.
-    * `createdAt`: (string | Date) 
-    * `childComments`: (array of `CommentDTO` objects) An array containing child comments of this comment (optional).
-    * `points`: (number)
-    * `wasUpvotedByMe`: (boolean, optional)
-    * `wasDownvotedByMe`: (boolean, optional)
+- A - `comments` (array of `CommentDTO` objects): An array containing comments for the specified slug parameter provided. Could be returned an empty array `[]`if the slug is not valid. If the array of `CommentDTO` objects is not empty, this includes:
 
-* B - message: `An unexpected error ocurred` 
+  - `postTitle`: (string)
+  - `commentId`: (string)
+  - `parentCommentId?`: (string, optional)
+  - `text`: (string) Content of the comment.
+  - `member`: (MemberDTO object) Information about the user who created the comment.
+  - `createdAt`: (string | Date)
+  - `childComments`: (array of `CommentDTO` objects) An array containing child comments of this comment (optional).
+  - `points`: (number)
+  - `wasUpvotedByMe`: (boolean, optional)
+  - `wasDownvotedByMe`: (boolean, optional)
+
+- B - message: `An unexpected error ocurred`
 
 ## Relate the REST API endpoints with User Stories
 
 The `/api/v1/comments/?{slug}`(GET) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user or a visitor, I want to read the comments for a specific post".
 
-## 2- Request: POST / Reply To Post 
+## 2- Request: POST / Reply To Post
 
 ### URI
 
@@ -71,38 +72,39 @@ This endpoint replies to a specific post identified by its slug.
 
 ### Headers
 
-Authorization:  token JWT
+Authorization: token JWT
 
 ### Parameters
- 
-* `slug` (string, required)
+
+- `slug` (string, required)
 
 ### Body
 
-* `comment` (string, required) 
+- `comment` (string, required)
 
 ## Response
 
 ### Status
 
-* A - 200 OK (if slug parameter and the comment of the body is provided) 
-* B - 500 Internal Server Error (if slug parameter and the comment of the body is missing) 
-* C - 404 Not Found (if slug do not exist) 
+- A - 200 OK (if slug parameter and the comment of the body is provided)
+- B - 500 Internal Server Error (if slug parameter and the comment of the body is missing)
+- C - 404 Not Found (if slug do not exist)
 
 ### Body
 
-* A - `Ok` 
-* B - message: `TypeError: Cannot read properties of undefined (reading 'toString')` 
-* C - message: ` Couldn't find a post by slug {${slug}}`  
+- A - `Ok`
+- B - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
+- C - message: ` Couldn't find a post by slug {${slug}}`
 
 ## Relate the REST API endpoints with User Stories
 
-The `/api/v1/comments/?{slug}` (POST) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user, I want to reply to a specific post". 
+The `/api/v1/comments/?{slug}` (POST) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user, I want to reply to a specific post".
 
-## 3- Request: POST /  Reply To Comment 
+## 3- Request: POST / Reply To Comment
+
 ### URI
 
-`/api/v1/comments/:commentId/reply` 
+`/api/v1/comments/:commentId/reply`
 
 ### HTTP method
 
@@ -110,43 +112,43 @@ POST
 
 ### Description
 
-This endpoint replies to a comment identified by Id. 
+This endpoint replies to a comment identified by Id.
 
 ### Headers
 
-Authorization:  token JWT
+Authorization: token JWT
 
 ### Parameters
- 
-* `slug` (string, required)
+
+- `slug` (string, required)
 
 ### Body
 
-* `comment` (string, required) 
+- `comment` (string, required)
 
 ## Response
 
 ### Status
 
-* A - 200 OK (if slug parameter, commentId on URL and the comment of the body is provided) 
-* B - 500 Internal Server Error (if if slug parameter, commentId on URL and the comment of the body is missing) 
-* C - 404 Not Found (if slug and commentId does not exist) 
+- A - 200 OK (if slug parameter, commentId on URL and the comment of the body is provided)
+- B - 500 Internal Server Error (if if slug parameter, commentId on URL and the comment of the body is missing)
+- C - 404 Not Found (if slug and commentId does not exist)
 
 ### Body
 
-* A - `Ok` 
-* B - message: `TypeError: Cannot read properties of undefined (reading 'toString')` 
-* C - message: ` Couldn't find a post by slug {${slug}}`/` Couldn't find a comment by commentId {${commentId}}` 
- 
+- A - `Ok`
+- B - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
+- C - message: ` Couldn't find a post by slug {${slug}}`/` Couldn't find a comment by commentId {${commentId}}`
+
 ## Relate the REST API endpoints with User Stories
 
 | US 006 | [Reply directly to a comment in a Discussion](/docs/sprint01/us006/readme.md)|
 
-## 3- Request: get / Get Comment by CommentId
+## 4- Request: get / Get Comment by CommentId
 
 ### URI
 
-api/v1/comment/:commentId
+`api/v1/comment/:commentId`
 
 ### HTTP method
 
@@ -168,39 +170,39 @@ null
 
 ### Status
 
-A- 200 - OK
-B- 403 - Forbidden
-C- 404 - Not Found
+- A- 200 - OK
+- B- 403 - Forbidden
+- C- 404 - Not Found
 
 ### Body
 
-A- {
-comment: {
-postSlug: string,
-commentId: string,
-parentCommentId: string,
-text: string html,
-member: {
-reputation: number,
-user: {
-username: string
-}
-},
-createdAt: Date,
-childComments: [],
-postTitle: string,
-points: number,
-wasUpvotedByMe: boolean,
-wasDownvotedByMe: boolean
-}
-}
+- A- {
+  comment: {
+  postSlug: string,
+  commentId: string,
+  parentCommentId: string,
+  text: string html,
+  member: {
+  reputation: number,
+  user: {
+  username: string
+  }
+  },
+  createdAt: Date,
+  childComments: [],
+  postTitle: string,
+  points: number,
+  wasUpvotedByMe: boolean,
+  wasDownvotedByMe: boolean
+  }
+  }
 
-B- message: Token signature expired.
-C- message: Couldn't find a comment by comment id {}
+- B- message: `Token signature expired.`
+- C- message: `Couldn't find a comment by comment id {}.`
 
 ## Relate the REST API endpoints with User Stories
 
-## 4- Request: post / Upvote to comment
+## 5- Request: post / Upvote to comment
 
 ### URI
 
@@ -226,21 +228,21 @@ null
 
 ### Status
 
-A- 200 - OK
-B- 403 - Forbidden
-C- 404 - Not Found
+- A- 200 - OK
+- B- 403 - Forbidden
+- C- 404 - Not Found
 
 ### Body
 
-A- OK
-B- message: Token signature expired.
-C- message: Couldn't find a comment with id {}.
+- A- `OK`
+- B- message: `Token signature expired.`
+- C- message: `Couldn't find a comment with id {}.`
 
 ## Relate the REST API endpoints with User Stories
 
 | US 008 (To vote on a discussion) | [1232512](sprint01/us008/readme.md)
 
-## 5- Request: post / Downvote to comment
+## 6- Request: post / Downvote to comment
 
 ### URI
 
@@ -266,15 +268,15 @@ null
 
 ### Status
 
-A- 200 - OK
-B- 403 - Forbidden
-C- 404 - Not Found
+- A- 200 - OK
+- B- 403 - Forbidden
+- C- 404 - Not Found
 
 ### Body
 
-A- OK
-B- message: Token signature expired.
-C- message: Couldn't find a comment with id {}.
+- A- `OK`
+- B- message: `Token signature expired.`
+- C- message: `Couldn't find a comment with id {}.`
 
 ## Relate the REST API endpoints with User Stories
 
