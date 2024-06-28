@@ -1,13 +1,10 @@
 # REST API Endpoint : /api/v1/users
 
-## 1- Request: POST /
-
+## 1- Request: POST / Create User
 ### URI
-
     api/v1/users/
 
 ### HTTP method
-
     POST
 
 ### Description
@@ -16,46 +13,39 @@
 ### Headers
 
 ### Body
-{
-username: string;
+{username: string;
 email: string;
 password: string }
 
 ## Response
 ### Status
-
 A - 200 - OK
 B - 409 - Conflict
 C - 409 - Conflict
 D - 500 - Internal Server Error
 
 ### Body
-
 A - message: `OK`
 B - message: `The email ${email} associated for this account already exists`
 c - message: `The username ${username} was already taken`
 D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
 
 ## Relate the REST API endpoints with User Stories
-
 | US 001 | [User Registration](../../us001/Readme.md)|
-_____________________________________________________________________________________________
+________________________________________________________________________________________
 
-## 2- Request: GET / 
+## 2- Request: GET / Get current user
 
 ### URI
-
 api/v1/users/me
 
 ### HTTP method
-
 Get
 
 ### Description
     User uses this to find it's user account.
 
 ### Headers
-
 Authentication:
         accessToken: JWTToken;
         refreshToken: RefreshToken
@@ -64,62 +54,52 @@ Authentication:
 
 ## Response
 ### Status
-
 A - 200 - OK
+B - 403 - Forbidden
 
 ### Body
-
-{    "user": {
+A - {    "user": {
         "username": "string",
         "isEmailVerified": "boolean" ,
         "isAdminUser": "boolean",
         "isDeleted": "boolean"
-    }
-}
+    }}
+B - message: `No access token provided`
 
 ## Relate the REST API endpoints with User Stories
-
 | US 002 | [To login in System](../../us002/Readme.md) |
 ___________________________________________________________________________________________________________________________________
 
-## 3- Request: POST /
+## 3- Request: POST / Login
 
 ### URI
-
 api/v1/users/login
 
 ### HTTP method
-
 Post
 
 ### Description
-    
-    Used to login in the forum.
+        Used to login in the forum.
 
 ### Headers
-
 Authentication:
         accessToken: JWTToken;
 
 ### Body
-
 { username: string;
 password: string }
 
 ## Response
 ### Status
-
 A - 200 - OK
 
 ### Body
-
 A - message: `OK`
 
 ## Relate the REST API endpoints with User Stories
-
 | US 002 | [To login in System](../../us002/Readme.md) |_____________________________________________________________________________________________
 
-## 4- Request: POST /
+## 4- Request: POST / Logout 
 
 ### URI
 
@@ -130,31 +110,27 @@ api/v1/users/logout
 Post
 
 ### Description
-    
-    Used to logout the account. 
+        Used to logout the account. 
 
 ### Headers
-
 Authentication:
         accessToken: JWTToken;
 
 ### Body
-
 ## Response
 ### Status
-
 A - 200 - OK
+B - 403 - Forbidden
 
 ### Body
-
 A - message: `OK`
+B - message: `No access token provided`
 
 ## Relate the REST API endpoints with User Stories
-
 | US 011 | [To logout](../../us011/readme.md)          |
 _____________________________________________________________________________________________
 
-## 5- Request: POST /
+## 5- Request: POST / Refresh token
 
 ### URI
 api/v1/users//token/refresh
@@ -182,9 +158,12 @@ B - 404 - Not found
 A - message: `OK`
 B - message: `Refresh token doesn't exist`
 B - message: `User not found or doesn't exist anymore´
+
+## Relate the REST API endpoints with User Stories
+| US 002 | [To login in System](../../us002/Readme.md) |
 _____________________________________________________________________________________________
 
-## 6- Request: DELETE /
+## 6- Request: DELETE / Delete user
 
 ### URI
     api/v1/users/:userId
@@ -211,28 +190,34 @@ ________________________________________________________________________________
     The `api/v1/users/:userId´(DELETE) endpoint is unrelated to any user stories documented in Sprint01. 
 
 
-____________________________________________________________________________________________________
+________________________________________________________________________________________
 
-## 7- Request: GET /
+
+## 7- Request: GET / Get user by name
 ### URI
-    api/v1/users/":username" --> getUserByUserName
+    api/v1/users/":username"
+
 ### HTTP method
-    Get
- 
+    GET
 
 ### Headers
     Authentication:
         accessToken: JWTToken;
-        refreshToken: RefreshToken
+    
 ### Body
 { username: string }
+
 ## Response
 ### Status
 A - 200 - OK
-### Body
+B - 500 - Internal Server Error
+C - 403 - Forbidden
 
+### Body
 A - message: `OK`
-______________________________________________________________________________________
+B - message: `An unexpecter error occurred`
+C - message: `No access token provided`
+
 ## Relate the REST API endpoints with User Stories
 
-| US 001 | [User Registration](../../us001/Readme.md)|
+The api/v1/users/":username" (GET) endpoint is unrelated to any user stories documented in Sprint01.
