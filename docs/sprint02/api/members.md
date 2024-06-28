@@ -1,6 +1,6 @@
 # REST API Endpoint : /api/v1/members
 
-## 1 - Request: get /me   &&& não estou a conseguir fazer este ***
+## 1 - Request: get /me
 ### URI
     api/v1/members/
     
@@ -8,25 +8,29 @@
     GET
 
 ### Description
-This endpoint retrieves
+This endpoint should present information about members but it isn't responsive.
 
 
 ### Headers
-Autorization: token
+Autorization token is not mandatory.
     
 ### Body
 The body for a HTTP GET request should be empty.
 
 ### Response
 #### Status
-* A - 
-* B - 500 - Internal Server Error
+* A - 500 - Internal Server Error
 
 
 #### Body
+`A - 500 - Internal Server Error`
+
+{
+    message: Couldn't find a member with the username "username"
+}
 
 ## Relate the REST API endpoints with User Stories
-
+This endpoint is unrelated to any user stories documented in Sprint01.
 
 ## 2 - Request: get /:username
 ### URI
@@ -36,9 +40,10 @@ api/v1/members/
 GET
 
 ### Headers
+Autorization token is not mandatory.
 
 ### Description
-Um membro é um utilizador que está registado e consegue ver os posts (?!)
+This endpoint should retrieve information about members (reputation and user).
     
 ### Body
 The body for a HTTP GET request should be empty.
@@ -55,15 +60,15 @@ The body for a HTTP GET request should be empty.
     member: {
         reputation: 0,
         user: {
-            username: zzz
+            username: "username"
         }
     }
 }
 
 `B - 404 NOT FOUND`
 
- {message:Couldn't find a member with the username aaa}
+ {message:Couldn't find a member with the username "username"}
 
 
 ## Relate the REST API endpoints with User Stories
-Create a post?
+This endpoint is unrelated to any user stories documented in Sprint01.
