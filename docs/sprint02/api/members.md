@@ -29,7 +29,7 @@ The body for a HTTP GET request should be empty.
     message: Couldn't find a member with the username "username"
 }
 
-## Relate the REST API endpoints with User Stories
+### Relate the REST API endpoints with User Stories
 This endpoint is unrelated to any user stories documented in Sprint01.
 
 ## 2 - Request: get /:username
@@ -70,5 +70,5 @@ The body for a HTTP GET request should be empty.
  {message:Couldn't find a member with the username "username"}
 
 
-## Relate the REST API endpoints with User Stories
+### Relate the REST API endpoints with User Stories
 This endpoint is unrelated to any user stories documented in Sprint01.
