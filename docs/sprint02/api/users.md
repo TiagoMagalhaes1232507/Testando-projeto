@@ -56,11 +56,11 @@ Get
 
 ### Headers
 
-
+Authentication:
+        accessToken: JWTToken;
+        refreshToken: RefreshToken
 
 ### Body
-
-
 
 ## Response
 ### Status
@@ -71,16 +71,16 @@ A - 200 - OK
 
 {    "user": {
         "username": "string",
-        "isEmailVerified": false,
-        "isAdminUser": false,
-        "isDeleted": false
+        "isEmailVerified": "boolean" ,
+        "isAdminUser": "boolean",
+        "isDeleted": "boolean"
     }
 }
 
 ## Relate the REST API endpoints with User Stories
 
-| US 001 | [User Registration](../../us001/Readme.md)|
-_____________________________________________________________________________________________
+| US 002 | [To login in System](../../us002/Readme.md) |
+___________________________________________________________________________________________________________________________________
 
 ## 3- Request: POST /
 
@@ -100,7 +100,6 @@ Post
 
 Authentication:
         accessToken: JWTToken;
-        refreshToken: RefreshToken
 
 ### Body
 
@@ -109,11 +108,16 @@ password: string }
 
 ## Response
 ### Status
+
 A - 200 - OK
+
 ### Body
+
 A - message: `OK`
 
-_____________________________________________________________________________________________
+## Relate the REST API endpoints with User Stories
+
+| US 002 | [To login in System](../../us002/Readme.md) |_____________________________________________________________________________________________
 
 ## 4- Request: POST /
 
@@ -127,13 +131,12 @@ Post
 
 ### Description
     
-    Used to logout the account.
+    Used to logout the account. 
 
 ### Headers
 
 Authentication:
         accessToken: JWTToken;
-        refreshToken: RefreshToken
 
 ### Body
 
@@ -145,6 +148,10 @@ A - 200 - OK
 ### Body
 
 A - message: `OK`
+
+## Relate the REST API endpoints with User Stories
+
+| US 011 | [To logout](../../us011/readme.md)          |
 _____________________________________________________________________________________________
 
 ## 5- Request: POST /
@@ -197,13 +204,14 @@ ________________________________________________________________________________
 ## Response
 
 ### Status
-    A - 200 - OK
+ 
     B - 404 - Not Found
     
 ## Relate the REST API endpoints with User Stories
     The `api/v1/users/:userId´(DELETE) endpoint is unrelated to any user stories documented in Sprint01. 
 
-________________________________________________________________________________________________
+
+____________________________________________________________________________________________________
 
 ## 7- Request: GET /
 ### URI
@@ -224,7 +232,6 @@ A - 200 - OK
 ### Body
 
 A - message: `OK`
-
 ______________________________________________________________________________________
 ## Relate the REST API endpoints with User Stories
 
