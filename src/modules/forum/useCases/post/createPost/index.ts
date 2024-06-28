@@ -4,7 +4,7 @@ import { postRepo, memberRepo } from "../../../repos";
 import { CreatePostController } from "./CreatePostController";
 
 const createPost = new CreatePost(postRepo, memberRepo);
-const createPostController = new CreatePostController(
+const  createPostController = new CreatePostController(
   createPost
 );
 
