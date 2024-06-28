@@ -146,37 +146,62 @@ A - 200 - OK
 
 A - message: `OK`
 _____________________________________________________________________________________________
-(JOAO PEDRO)
+
 ## 5- Request: POST /
 
 ### URI
+api/v1/users//token/refresh
 
 ### HTTP method
+Post
+
+### Description
+    User must refresh token when access token expires
 
 ### Headers
 
 ### Body
+{
+  refreshToken: RefreshToken;
+}
 
 ## Response
+
 ### Status
+A - 200 - Ok
+B - 404 - Not found
 
 ### Body
+A - message: `OK`
+B - message: `Refresh token doesn't exist`
+B - message: `User not found or doesn't exist anymore´
 _____________________________________________________________________________________________
-(JOAO PEDRO)
+
 ## 6- Request: DELETE /
 
 ### URI
+    api/v1/users/:userId
 
 ### HTTP method
+    DELETE
 
+### Description
+    Used to delete a user by Id.
 ### Headers
 
-### Body
 
+### Body
+{
+  userId: string;
+}
 ## Response
-### Status
 
-### Body
+### Status
+    A - 200 - OK
+    B - 404 - Not Found
+    
+## Relate the REST API endpoints with User Stories
+    The `api/v1/users/:userId´(DELETE) endpoint is unrelated to any user stories documented in Sprint01. 
 
 ________________________________________________________________________________________________
 
@@ -185,9 +210,7 @@ ________________________________________________________________________________
     api/v1/users/":username" --> getUserByUserName
 ### HTTP method
     Get
-
-### Description
-    Used to find a User in the system. 
+ 
 
 ### Headers
     Authentication:
