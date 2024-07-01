@@ -92,7 +92,7 @@ Authorization: acessToken (required).
 
 - A - 200 OK (Sucess);
 - B - 403 Forbiden (if acessToken expired or is missing); 
-- C - 404 Not Found (if slug do not exist); 
+- C - 404 Not Found (if slug does not exist); 
 - D - 500 Internal Server Error (if slug parameter or the comment are missing or empty). 
 
 ### Body 
@@ -110,7 +110,7 @@ Authorization: acessToken (required).
 
 ### URI 
 
-`/api/v1/comments/:commentId/reply` 
+`/api/v1/comments/:commentId/reply?{slug}` 
 
 ### HTTP method 
 
@@ -141,7 +141,7 @@ Authorization: acessToken (required).
 - A - 200 OK (Sucess);
 - B - 403 Forbiden (if acessToken expired or is missing); 
 - C - 404 Not Found (if slug and commentId does not exist or is missing); 
-- D - 500 Internal Server Error (if slug parameter or the comment is missing). 
+- D - 500 Internal Server Error (if slug parameter or the comment are empty or missing). 
 
 ### Body 
 
