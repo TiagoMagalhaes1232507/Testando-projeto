@@ -35,7 +35,7 @@ userRouter.post('/token/refresh',
 
 userRouter.delete('/:userId',
   middleware.ensureAuthenticated(),
-  (req, res) => deleteUserController.execute(req, res)
+  (req, res) => deleteUserController.execute(req, res)  
 )
 
 userRouter.get('/:username',
