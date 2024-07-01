@@ -183,6 +183,7 @@ null
 - A- 200 - OK
 - B- 403 - Forbidden
 - C- 404 - Not Found
+- D - 500 - Internal Server Error 
 
 ### Body
 
@@ -209,6 +210,7 @@ null
 
 - B- message: `Token signature expired.`
 - C- message: `Couldn't find a comment by comment id {}.`
+- D - message: `An unexpected error occurred.`
 
 ## Relate the REST API endpoints with User Stories
 
@@ -241,12 +243,14 @@ null
 - A- 200 - OK
 - B- 403 - Forbidden
 - C- 404 - Not Found
+- D - 500 - Internal Server Error 
 
 ### Body
 
 - A- `OK`
 - B- message: `Token signature expired.`
 - C- message: `Couldn't find a comment with id {}.`
+- D - message: `An unexpected error occurred.`
 
 ## Relate the REST API endpoints with User Stories
 
@@ -281,12 +285,14 @@ null
 - A- 200 - OK
 - B- 403 - Forbidden
 - C- 404 - Not Found
+- D - 500 - Internal Server Error 
 
 ### Body
 
 - A- `OK`
 - B- message: `Token signature expired.`
 - C- message: `Couldn't find a comment with id {}.`
+- D - message: `An unexpected error occurred.`
 
 ## Relate the REST API endpoints with User Stories
 
