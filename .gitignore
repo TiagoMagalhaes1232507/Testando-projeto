@@ -8,6 +8,5 @@ npm-debug.log
 /dist
 /coverage
 report.html
- 
 .idea
 test-report.html
