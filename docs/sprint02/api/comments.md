@@ -1,149 +1,159 @@
-# REST API Endpoint : /api/v1/comments
+# REST API Endpoint : /api/v1/comments 
 
-## 1- Request: GET / Get Comments by Post Slug
+## 1- Request: GET / Get Comments by Post Slug 
 
-### URI
+### URI 
 
-`/api/v1/comments/?{slug}`
+`/api/v1/comments/?{slug}` 
 
-### HTTP method
+### HTTP method 
 
-GET
+GET 
 
-### Description
+### Description 
 
-This endpoint retrieves comments for a specific post identified by its slug.
+This endpoint retrieves comments for a specific post identified by its slug. 
 
-### Headers
+### Headers 
 
-Authorization: token JWT (optional)
+Authorization: acessToken (optional) 
 
-### Parameters
+### Parameters 
 
-- `slug` (string, required)
-- `offset?` (number, optional)
-- `userId?` (string, optional)
+- `slug` (string, required) 
+- `offset?` (number, optional) 
+- `userId?` (string, optional) 
 
-### Body
+### Body 
 
-The request body is empty for GET requests.
+The request body is empty for GET requests. 
 
-## Response
+## Response 
 
-### Status
+### Status 
 
-- A - 200 OK (if slug parameter is provided)
-- B - 500 Internal Server Error (if slug parameter is missing)
+- A - 200 OK (if slug parameter is provided and exists, or is empty, or does not exist) 
+- B - 403 Forbiden (Invalid or missing token) 
+- C - 500 Internal Server Error (if slug parameter is missing) 
 
-### Body
+### Body 
 
-- A - `comments` (array of `CommentDTO` objects): An array containing comments for the specified slug parameter provided. Could be returned an empty array `[]`if the slug is not valid. If the array of `CommentDTO` objects is not empty, this includes:
+- A - `comments` (array of `CommentDTO` objects): An array containing comments for the specified slug parameter provided. An empty array `[]` could be returned `[]`, if there are no comments, if the slug does not exist or if the slug parameter is empty.  
+If the array of `CommentDTO` objects is not empty, this includes: 
 
-  - `postTitle`: (string)
-  - `commentId`: (string)
-  - `parentCommentId?`: (string, optional)
-  - `text`: (string) Content of the comment.
-  - `member`: (MemberDTO object) Information about the user who created the comment.
-  - `createdAt`: (string | Date)
-  - `childComments`: (array of `CommentDTO` objects) An array containing child comments of this comment (optional).
-  - `points`: (number)
-  - `wasUpvotedByMe`: (boolean, optional)
-  - `wasDownvotedByMe`: (boolean, optional)
+  - `postTitle`: (string) 
+  - `commentId`: (string) 
+  - `parentCommentId?`: (string, optional) 
+  - `text`: (string) Content of the comment. 
+  - `member`: (MemberDTO object) Information about the user who created the comment. 
+  - `createdAt`: (string | Date) 
+  - `childComments`: (array of `CommentDTO` objects) An array containing child comments of this comment (optional). 
+  - `points`: (number) 
+  - `wasUpvotedByMe`: (boolean, optional) 
+  - `wasDownvotedByMe`: (boolean, optional) 
 
-- B - message: `An unexpected error ocurred`
+- B - message: `Token signature expired` 
+- C - message: `An unexpected error ocurred`  
 
-## Relate the REST API endpoints with User Stories
+## Relate the REST API endpoints with User Stories 
 
-The `/api/v1/comments/?{slug}`(GET) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user or a visitor, I want to read the comments for a specific post".
+The `/api/v1/comments/?{slug}`(GET) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user or a visitor, I want to read the comments for a specific post". 
 
-## 2- Request: POST / Reply To Post
+## 2- Request: POST / Reply To Post 
 
-### URI
+### URI 
 
-`/api/v1/comments/?{slug}`
+`/api/v1/comments/?{slug}` 
 
-### HTTP method
+### HTTP method 
 
-POST
+POST 
 
-### Description
+### Description 
 
-This endpoint replies to a specific post identified by its slug.
+This endpoint replies to a specific post identified by its slug. 
 
-### Headers
+### Headers 
 
-Authorization: token JWT
+Authorization: acessToken (required) 
 
-### Parameters
+### Parameters 
 
-- `slug` (string, required)
+- `slug` (string, required) 
 
-### Body
+### Body 
 
-- `comment` (string, required)
+- `userId`: (string, required); 
+- `comment` (string, required) 
 
-## Response
+## Response 
 
-### Status
+### Status 
 
-- A - 200 OK (if slug parameter and the comment of the body is provided)
-- B - 500 Internal Server Error (if slug parameter and the comment of the body is missing)
-- C - 404 Not Found (if slug do not exist)
+- A - 200 OK (if slug parameter is provided and exists and the comment of the body is also  provided) 
+- B - 403 Forbiden (Invalid or missing token) 
+- C - 404 Not Found (if slug do not exist) 
+- D - 500 Internal Server Error (if slug parameter or the comment are missing or empty) 
 
-### Body
+### Body 
 
-- A - `Ok`
-- B - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
-- C - message: ` Couldn't find a post by slug {${slug}}`
+- A - `Ok` 
+- B - message: `Token signature expired` 
+- C - message: `Couldn't find a post by slug {${slug}}` 
+- D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`  
 
-## Relate the REST API endpoints with User Stories
+## Relate the REST API endpoints with User Stories 
 
-The `/api/v1/comments/?{slug}` (POST) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user, I want to reply to a specific post".
+The `/api/v1/comments/?{slug}` (POST) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user, I want to reply to a specific post". 
 
-## 3- Request: POST / Reply To Comment
+## 3- Request: POST / Reply To Comment 
 
-### URI
+### URI 
 
-`/api/v1/comments/:commentId/reply`
+`/api/v1/comments/:commentId/reply` 
 
-### HTTP method
+### HTTP method 
 
-POST
+POST 
 
-### Description
+### Description 
 
-This endpoint replies to a comment identified by Id.
+This endpoint replies to a comment identified by Id. 
 
-### Headers
+### Headers 
 
-Authorization: token JWT
+Authorization: acessToken (required) 
 
-### Parameters
+### Parameters 
 
-- `slug` (string, required)
+- `slug` (string, required) 
 
-### Body
+### Body 
 
-- `comment` (string, required)
+- `userId` (string, required) 
+- `comment` (string, required) 
+- `parentCommentId`: (string, required) 
 
-## Response
+## Response 
 
-### Status
+### Status 
 
-- A - 200 OK (if slug parameter, commentId on URL and the comment of the body is provided)
-- B - 500 Internal Server Error (if if slug parameter, commentId on URL and the comment of the body is missing)
-- C - 404 Not Found (if slug and commentId does not exist)
+- A - 200 OK (if slug parameter, commentId on URL and the body is provided) 
+- B - 403 Forbiden (Invalid or missing token) 
+- C - 404 Not Found (if slug and commentId on the URL does not exist or is missing) 
+- D - 500 Internal Server Error (if slug parameter or the comment of the body is missing) 
 
-### Body
+### Body 
 
-- A - `Ok`
-- B - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
-- C - message: ` Couldn't find a post by slug {${slug}}`/` Couldn't find a comment by commentId {${commentId}}`
+- A - `Ok` 
+- B - message: `Token signature expired` 
+- C - message: ` Couldn't find a post by slug {${slug}}`/`Couldn't find a comment by commentId {${commentId}}`/ ´html message` 
+- D - message: `TypeError: Cannot read properties of undefined (reading 'toString')` 
 
-## Relate the REST API endpoints with User Stories
+## Relate the REST API endpoints with User Stories 
 
-| US 006 | [Reply directly to a comment in a Discussion](/docs/sprint01/us006/readme.md)|
-
+| US 006 | [Reply directly to a comment in a Discussion](/docs/sprint01/us006/readme.md)| 
+ 
 ## 4- Request: get / Get Comment by CommentId
 
 ### URI
