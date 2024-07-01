@@ -1,23 +1,43 @@
-// // (RR) este ficheiro é para desenvolver os testes
-// // e depois para exportar para o ficheiro comments-tests.ts (recomendado pelo prof. Baltarejo)
-
-
 import request from "supertest";
 
-let accessToken: string; //Declares a variable to store the access token
-const url: string = "http://localhost:5001"; //Define a URL base para as requisições
-describe("Posts Endpoint", () => {
+let accessToken: string; // Declares a variable to store the access token
+const url: string = "http://localhost:5001"; // Defines the base URL for the requests
+
+describe("Comments Endpoint", () => {
+  let comment: any = {}; // Variable to store the comment details
+  let slug: string = "";
+
   beforeAll(async (): Promise<void> => {
-    const loginResponse = await request(url).post("/api/v1/users/login").send({
-      //Make a POST request to the login endpoint and send the credentials
-      username: "string6",
-      password: "string6",
-    });
-    console.log("Login Response Body:", loginResponse.body);
-    accessToken = loginResponse.body.accessToken; //Stores the access token obtained in the login response
-});
+    // This function runs before all tests in the describe block
 
+    // Create a user
+    try {
+      const createUserResponse = await request(url).post("/api/v1/users").send({
+        username: "string6",
+        email: "string6@gmail.com",
+        password: "string6",
+      });
 
+      const createUser = createUserResponse.body;
+      console.log("Create User Response Body:", createUser);
+    } catch (error) {
+      console.log("Create User Error:", error);
+    }
+
+    // Log in the user
+    try {
+      const loginResponse = await request(url).post("/api/v1/users/login").send({
+        username: "string6",
+        password: "string6",
+      });
+
+      accessToken = loginResponse.body.accessToken; // Stores the access token obtained in the login response
+      console.log("Login Response Body:", loginResponse.body);
+    } catch (error) {
+      console.log("Login Error:", error);
+    }
+  });
+ 
     test("create post text should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
@@ -48,7 +68,6 @@ describe("Posts Endpoint", () => {
           });
         expect(res.status).toEqual(expected);
       });
-  });
 
       test("create post link should return status 200", async () => {
         const uri = "/api/v1/posts/";
@@ -277,5 +296,5 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
 
-
+      });
         
