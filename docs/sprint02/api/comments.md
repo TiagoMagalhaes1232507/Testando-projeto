@@ -97,7 +97,7 @@ Authorization: acessToken (required).
 
 ### Body 
 
-- A - message: `200 OK`; 
+- A - message: `OK`; 
 - B - message: `Token signature expired`/`No access token provided`; 
 - C - message: `Couldn't find a post by slug {${slug}}`;
 - D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`.  
@@ -145,7 +145,7 @@ Authorization: acessToken (required).
 
 ### Body 
 
-- A - message: `200 OK`; 
+- A - message: `OK`; 
 - B - message: `Token signature expired`/`No access token provided`; 
 - C - message: ` Couldn't find a post by slug {${slug}}`/`Couldn't find a comment by commentId {${commentId}}`/ `html message`; 
 - D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`. 
