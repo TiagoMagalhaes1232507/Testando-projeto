@@ -17,63 +17,8 @@ describe("Posts Endpoint", () => {
     accessToken = loginResponse.body.accessToken; //Stores the access token obtained in the login response
 });
 
-test("Get recent post should return status 200 ", async () => {
-    const uri = "/api/v1/posts/recent/";
-    const expected = 200;
-    const res = await request(url).get(uri);
-    expect(res.status).toEqual(expected);
-  });
 
-  test("Get recent post with optional userId should return status 200 ", async () => {
-    const uri = "/api/v1/posts/recent/";
-    const expected = 200;
-    const res = await request(url).get(uri).set("Content-Type", "application/json")
-            .set("Authorization", accessToken).send(
-        {
-            userId: "string6"
-             }
-          );
-    expect(res.status).toEqual(expected);
-  });
-
-  test("Get popular post should return status 200 ", async () => {
-    //arrange: sets the URI for the comment endpoint with a valid ID and expected status
-    const uri = "/api/v1/posts/popular/";
-    const expected = 200;
-    //act: makes a GET request to the defined endpoint
-    const res = await request(url).get(uri);
-    //assert: checks if the response status is the same as expected
-    expect(res.status).toEqual(expected);
-  });
-
-  test("Get popular post with optional userId should return status 200 ", async () => {
-    //arrange: sets the URI for the comment endpoint with a valid ID and expected status
-    const uri = "/api/v1/posts/popular/";
-    const expected = 200;
-    const res = await request(url).get(uri).set("Content-Type", "application/json")
-            .set("Authorization", accessToken).send(
-        {
-            userId: "string6"
-             }
-          );
-    expect(res.status).toEqual(expected);
-  });
-
-  test("Post create post should return status 200 ", async () => {
-    //arrange: sets the URI for the comment endpoint with a valid ID and expected status
-    const uri = "/api/v1/posts/";
-    const expected = 200;
-    //act: makes a GET request to the defined endpoint
-    const res = await request(url).post(uri).set("Content-Type", "application/json")
-            .set("Authorization", accessToken).send(
-        {
-            title: "Create a post",
-            text: "how to create a post in postman", 
-            postType: "text" }       
-    ); 
-});
-
-    test("create post should return status 200", async () => {
+    test("create post text should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
         const res = await request(url)
@@ -88,7 +33,7 @@ test("Get recent post should return status 200 ", async () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("create post with optional userID should return status 200", async () => {
+      test("create post text with optional userID should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
         const res = await request(url)
@@ -137,7 +82,7 @@ test("Get recent post should return status 200 ", async () => {
       });
   
 
-      test("Create post with invalid title length should return status 500", async () => {
+      test("Create post with invalid title length (less than 2 characters) should return status 500", async () => {
         const uri = "/api/v1/posts/";
         const expected = 500;
         const res = await request(url)
@@ -152,7 +97,7 @@ test("Get recent post should return status 200 ", async () => {
         expect(res.status).toEqual(expected);
       });
     
-      test("Create post with invalid title length should return status 500", async () => {
+      test("Create post with invalid title length (more than 85 characters) should return status 500", async () => {
         const uri = "/api/v1/posts/";
         const expected = 500;
         const res = await request(url)
@@ -167,7 +112,7 @@ test("Get recent post should return status 200 ", async () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("Create post with invalid text length should return status 500", async () => {
+      test("Create post with invalid text length (less than 20 characters) should return status 500", async () => {
         const uri = "/api/v1/posts/";
         const expected = 500;
         const res = await request(url)
@@ -182,7 +127,7 @@ test("Get recent post should return status 200 ", async () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("Create post with invalid text length should return status 500", async () => {
+      test("Create post with invalid link length should return status 500", async () => {
         const uri = "/api/v1/posts/";
         const expected = 500;
         const res = await request(url)
@@ -198,7 +143,7 @@ test("Get recent post should return status 200 ", async () => {
       });
     
 
-      test("Create post with invalid text length should return status 500", async () => {
+      test("Create post with invalid text length (more than 10000) should return status 500", async () => {
         const uri = "/api/v1/posts/";
         const expected = 500;
         const res = await request(url)
@@ -213,7 +158,7 @@ test("Get recent post should return status 200 ", async () => {
         expect(res.status).toEqual(expected);
       });
     
-      test("Create post with invalid link length should return status 500", async () => {
+      test("Create post with invalid link length (more than 10000) should return status 500", async () => {
         const uri = "/api/v1/posts/";
         const expected = 500;
         const res = await request(url)
@@ -226,7 +171,111 @@ test("Get recent post should return status 200 ", async () => {
             postType: "link",
           });
         expect(res.status).toEqual(expected);
-       
-       
       });
+       
+        test(" Missing posttype should return status 500", async () => {
+          const uri = "/api/v1/posts/";
+          const expected = 500;
+          const res = await request(url)
+            .post(uri)
+            .set("Content-Type", "application/json")
+            .set("Authorization", accessToken)
+            .send(
+              {
+              title: "Create a post",
+              text: "abcd asdjafoa ashhsaocasc",
+              }
+          );
+          expect(res.status).toEqual(expected);
+        });
 
+        test(" Missing title should return status 500", async () => {
+          const uri = "/api/v1/posts/";
+          const expected = 500;
+          const res = await request(url)
+            .post(uri)
+            .set("Content-Type", "application/json")
+            .set("Authorization", accessToken)
+            .send(
+              {
+              text: "abcd asdjafoa ashhsaocasc",
+              postype: "text",
+              }
+          );
+          expect(res.status).toEqual(expected);
+        });
+
+        test(" Missing text/link should return status 500", async () => {
+          const uri = "/api/v1/posts/";
+          const expected = 500;
+          const res = await request(url)
+            .post(uri)
+            .set("Content-Type", "application/json")
+            .set("Authorization", accessToken)
+            .send(
+              {
+              title: "create post",
+              postype: "text",
+              }
+          );
+          expect(res.status).toEqual(expected);
+        });
+
+        test(" Missing body should return status 500", async () => {
+          const uri = "/api/v1/posts/";
+          const expected = 500;
+          const res = await request(url)
+            .post(uri)
+            .set("Content-Type", "application/json")
+            .set("Authorization", accessToken)
+            .send(
+              
+          );
+          expect(res.status).toEqual(expected);
+        });
+
+
+        test("Get recent post should return status 200 ", async () => {
+          const uri = "/api/v1/posts/recent/";
+          const expected = 200;
+          const res = await request(url).get(uri);
+          expect(res.status).toEqual(expected);
+        });
+      
+        test("Get recent post with optional userId should return status 200 ", async () => {
+          const uri = "/api/v1/posts/recent/";
+          const expected = 200;
+          const res = await request(url).get(uri).set("Content-Type", "application/json")
+                  .set("Authorization", accessToken).send(
+              {
+                  userId: "string6"
+                   }
+                );
+          expect(res.status).toEqual(expected);
+        });
+      
+        test("Get popular post should return status 200 ", async () => {
+          //arrange: sets the URI for the comment endpoint with a valid ID and expected status
+          const uri = "/api/v1/posts/popular/";
+          const expected = 200;
+          //act: makes a GET request to the defined endpoint
+          const res = await request(url).get(uri);
+          //assert: checks if the response status is the same as expected
+          expect(res.status).toEqual(expected);
+        });
+      
+        test("Get popular post with optional userId should return status 200 ", async () => {
+          //arrange: sets the URI for the comment endpoint with a valid ID and expected status
+          const uri = "/api/v1/posts/popular/";
+          const expected = 200;
+          const res = await request(url).get(uri).set("Content-Type", "application/json")
+                  .set("Authorization", accessToken).send(
+              {
+                  userId: "string6"
+                   }
+                );
+          expect(res.status).toEqual(expected);
+        });
+
+
+        
