@@ -140,61 +140,95 @@ ________________________________________________________________________________
 
 ## 4- Request: GET / Get post by slug
 ### URI
-    api/v1/posts/
+api/v1/posts/?={slug}
 
 ### HTTP method
-    POST
+GET
 
 ### Description
-    Used to get posts by slug. The API should provide the post related to that unifying slug.
+Fetches the post associated with the specified slug.
 
 ### Headers
-slug
+Authorization: Bearer {accessToken}
 
 ### Body
+None
 
 ## Response
 ### Status
-A - 200 - OK
-B - 409 - Conflict
-C - 409 - Conflict
-D - 500 - Internal Server Error
+A - 200 - OK: Successfully retrieved the post.
+B - 404 - Not Found: An error given when there are no posts in the database.
+B - 500 - Internal Server Error: A generic error message, given when the slug is invalid.
 
 ### Body
-A - message: `OK`
-B - message: `The email ${email} associated for this account already exists`
-c - message: `The username ${username} was already taken`
-D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
+A - message: 
+{
+    "post": {
+        "slug": "0953436-1st-post",
+        "title": "1ST post",
+        "createdAt": "2024-07-02T13:58:20.000Z",
+        "memberPostedBy": {
+            "reputation": 0,
+            "user": {
+                "username": "1181731"
+            }
+        },
+        "numComments": 0,
+        "points": 1,
+        "text": "This is my first post",
+        "link": "",
+        "type": "text",
+        "wasUpvotedByMe": false,
+        "wasDownvotedByMe": false
+    }
+}
+
+B - message:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Error</title>
+</head>
+<body>
+    <pre>Cannot GET /api/v1/post/</pre>
+</body>
+</html>
+
+C - message: `Couldn't find a post by slug {slug}.`
 
 ## Relate the REST API endpoints with User Stories
+None
 ________________________________________________________________________________________
 
 ## 5- Request: POST / Upvote Post
 ### URI
-    api/v1/posts/upvote/
+api/v1/posts/upvote
 
 ### HTTP method
-    POST
+POST
 
 ### Description
-    Used to allow users to interact with the API to upvote posts.
+Allows users to upvote a specific post.
 
 ### Headers
-Authorization accessToken
-slug
+Authorization: Bearer {accessToken}
 
 ### Body
+{
+  "slug": "{slug}"
+}
 
 ## Response
 ### Status
-- A- 200 - OK
-- B- 403 - Forbidden
-- C- 404 - Not Found
+- A- 200 - OK: Successfully upvoted the post.
+- B- 403 - Forbidden: Invalid or expired token.
+- C- 404 - Not Found: Post with the specified slug not found.
 
 ### Body
 - A- `OK`
 - B- message: `Token signature expired.`
-- C- message: `Couldn't find a post with id {}.`
+- C- message: `Couldn't find a post by slug {slug}.`
 
 ## Relate the REST API endpoints with User Stories
 
@@ -204,30 +238,32 @@ ________________________________________________________________________________
 
 ## 6- Request: POST / Downvote Post
 ### URI
-    api/v1/posts/downvote
+api/v1/posts/downvote
 
 ### HTTP method
-    POST
+POST
 
 ### Description
-    Used to allow users to interact with the API to downvote comments.
+Allows users to downvote a specific post.
 
 ### Headers
-Authorization accessToken
-slug
+Authorization: Bearer {accessToken}
 
 ### Body
+{
+  "slug": "{slug}"
+}
 
 ## Response
 ### Status
-- A- 200 - OK
-- B- 403 - Forbidden
-- C- 404 - Not Found
+- A- 200 - OK: Successfully upvoted the post.
+- B- 403 - Forbidden: Invalid or expired token.
+- C- 404 - Not Found: Post with the specified slug not found.
 
 ### Body
 - A- `OK`
 - B- message: `Token signature expired.`
-- C- message: `Couldn't find a post with id {}.`
+- C- message: `Couldn't find a post by slug {slug}.`
 
 ## Relate the REST API endpoints with User Stories
 
