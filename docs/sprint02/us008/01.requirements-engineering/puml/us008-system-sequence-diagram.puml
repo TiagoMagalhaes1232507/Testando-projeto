@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title SSD US008: To vote on a Discussion 
+
+autonumber
+
+actor "User" as User
+participant ":Application" as System
+
+activate User
+
+    User -> System : accesses discussion
+    activate System
+
+        System --> User : displays discussion
+    deactivate System
+
+    User -> System : selects voting option (upvote/downvote)
+    activate System
+
+        System --> User : Updates vote count
+    deactivate System
+@enduml

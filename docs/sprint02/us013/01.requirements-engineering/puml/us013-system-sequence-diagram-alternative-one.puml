@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam actorStyle awesome
+
+title SSD US 013 - Discussion's list ordered by date
+
+autonumber
+
+actor "RegisteredUser (or UnregisteredUser)" as User
+participant ":System" as System
+
+activate User
+
+  User -> System: starts the application
+  activate System
+
+    User --> System: requests "discussion list"
+  System -> User: Displays homepage (Discussions list sorted by popularity)
+
+  User --> System: requests "discussion list sorted by date"
+  System -> User: Displays homepage (Discussions list sorted by date (newest->oldest))
+
+@enduml

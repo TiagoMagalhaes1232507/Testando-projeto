@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title As a user, I want to access the website through a link present in a discussion.
+
+autonumber
+
+actor "User" as User
+participant ":System" as System
+
+activate User
+
+    User -> System : View discussions posted in the application
+    User -> System : Click on a link posted in a discussion 
+    activate System
+
+        System --> User : Shows a button with the phrase 'Click to visit the link at'
+    deactivate System
+  
+    User -> System : Click on a button 'Click to visit the link at'
+    activate System
+
+        System --> User: Open a new browser tab with the page corresponding to the link
+    deactivate System
+@enduml
