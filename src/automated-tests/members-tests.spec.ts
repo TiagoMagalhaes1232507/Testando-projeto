@@ -5,66 +5,67 @@ import request from "supertest";
 
 
 //let accessToken: string; // variable to store the access token
-let uri: string = "http://localhost:5001"; // defines uri to requests
+let url: string = "http://localhost:5001"; // defines url to requests
 
 describe("Testing requests to members", () => {
 
     beforeAll(async (): Promise<void> => {
         // To Create an user
         try {
-            let createUserResponse = await request(uri)
-                .post("api/v1/users")
+            const createUserResponse = await request(url)
+                .post("/api/v1/users/")
                 .send({
                     username: "zzz",
                     email: "zzz@zzz.com",
                     password: "zzzzzz",
-                });
-            let createUser = createUserResponse.body;
+                })
+            const createUser = createUserResponse.body;
             console.log("Created User:", createUser);
         } catch (error) {
             console.log("Create User Error:", error);
         }
 
         // User Loggin
-        let loginResponse = await request(uri)
+        const loginResponse = await request(url)
             .post("/api/v1/users/login")
             .send({
                 username: "zzz",
                 password: "zzzzzz",
-      });
-    })
-
-
-
-    test("If member is registred", async () => {
-        // Arrange
-        let username = "zzz";
-        let expectedStatus = 200;
-
-        //Send request - Act
-        let response = await request(uri)
-            .get("/api/v1/members/:{username}")
-            .set("Content-Type", "application/json")
-            .send({});
-
-        //Request Response - Assert
-        expect(response.status).toBe(expectedStatus)
+            });
     });
 
 
-    test("If member is not registred", async () => {
+
+    test("T1 - If member is registred", async () => {
+        // For these test authotization isn't mandatory
         // Arrange
-        let username = "yyy";
-        let expectedStatus = 404;
+        const username = "zzz";
+        const expectedStatus = 200;
 
         //Send request - Act
-        let response = await request(uri)
-            .get("/api/v1/members/:{username}")
-            .set("Content-Type", "application/json")
+        const response = await request(url)
+            .get("/api/v1/members/" + username)
+            //.set("Content-Type", "application/json")
             .send({});
 
         //Request Response - Assert
-        expect(response.status).toBe(expectedStatus)
+        expect(response.status).toBe(expectedStatus);
     });
 
-})
+
+    test("T2 - If member is not registred", async () => {
+        // Arrange
+        const username = "yyy";
+        const expectedStatus = 404;
+
+        //Send request - Act
+        const response = await request(url)
+            .get("/api/v1/members/" + username)
+            //.set("Content-Type", "application/json")
+            .send({});
+
+        //Request Response - Assert
+        expect(response.status).toBe(expectedStatus);
+    });
+
+});
