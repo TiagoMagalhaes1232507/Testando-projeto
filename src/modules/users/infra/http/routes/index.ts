@@ -19,7 +19,7 @@ userRouter.get('/me',
   middleware.ensureAuthenticated(),
   (req, res) => getCurrentUserController.execute(req, res)
 )
-
+   
 userRouter.post('/login',
   (req, res) => loginController.execute(req, res)
 )

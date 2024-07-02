@@ -68,5 +68,8 @@ describe("Users Endpoint", () => {
 
   });
 
+  test("Refresh access token should status 200", async () => {
+    const refreshAccessTokenResponse = await request(url).post("/api/v1/users/token/refresh")
+  })
   
 });

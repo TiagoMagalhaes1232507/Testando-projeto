@@ -152,15 +152,16 @@ describe("Comments Endpoint", () => {
     expect(res.status).toEqual(expected);
   });
 
-  test("Upvote Comment should return status 500 as it is missing information", async () => {
+  test("Upvote Comment should return status 500 as it is missing token", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
     //arrange: sets the URI for the comment endpoint with a valid ID and expected status
     const uri = `/api/v1/comments/`;
     const expected = 500;
     //act: makes a GET request to the defined endpoint
-    const res = await request(url).get(uri);
+    const res = await request(url).get(uri)
     //assert: checks if the response status is the same as expected
     expect(res.status).toEqual(expected);
+    
   });
 
   test("Downvote Comment should return status 200 when downvoting an existing comment", async () => {
@@ -189,7 +190,7 @@ describe("Comments Endpoint", () => {
     expect(res.status).toEqual(expected);
   });
 
-  test("Downvote Comment should return status 500 as it is missing information", async () => {
+  test("Downvote Comment should return status 500 as it is missing token", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
     //arrange: sets the URI for the comment endpoint with a valid ID and expected status
     const uri = `/api/v1/comments/`;
@@ -197,6 +198,70 @@ describe("Comments Endpoint", () => {
     //act: makes a GET request to the defined endpoint
     const res = await request(url).get(uri);
     //assert: checks if the response status is the same as expected
+    expect(res.status).toEqual(expected);
+  });
+
+  test("Create comment with valid comment length - more than 20 and less 10.000 characters - should return status 200", async () => {
+    const uri = "/api/v1/comments?slug=" + slug;
+    const expected = 200;
+    const res = await request(url)
+      .post(uri)
+      .set("Content-Type", "application/json")
+      .set("Authorization", accessToken)
+      .send({
+        comment: "In today's digital age, information technology (IT) professionals have become indispensable to the functioning and growth of virtually every industry. ",
+      });
+    expect(res.status).toEqual(expected);
+  });
+
+  test("Create comment with invalid comment length - less than 20 characters - should return status 500", async () => {
+    const uri = "/api/v1/comments?slug=" + slug;
+    const expected = 500;
+    const res = await request(url)
+      .post(uri)
+      .set("Content-Type", "application/json")
+      .set("Authorization", accessToken)
+      .send({
+        comment: "0",
+      });
+    expect(res.status).toEqual(expected);
+  });
+
+  test("Creating a comment with empty comment should return status 500", async () => {
+    const uri = "/api/v1/comments?slug=" + slug;
+    const expected = 500;
+    const res = await request(url)
+      .post(uri)
+      .set("Content-Type", "application/json")
+      .set("Authorization", accessToken)
+      .send({
+        comment: "",
+      });
+    expect(res.status).toEqual(expected);
+  });
+
+  test("Creating a comment with empty body should return status 500", async () => {
+    const uri = "/api/v1/comments?slug=" + slug;
+    const expected = 500;
+    const res = await request(url)
+      .post(uri)
+      .set("Content-Type", "application/json")
+      .set("Authorization", accessToken)
+      .send({
+      });
+    expect(res.status).toEqual(expected);
+  });
+
+  test("Create comment with invalid link length should return status 500", async () => {
+    const uri = "/api/v1/comments?slug=" + slug;
+    const expected = 500;
+    const res = await request(url)
+      .post(uri)
+      .set("Content-Type", "application/json")
+      .set("Authorization", accessToken)
+      .send({
+        link: "a",
+      });
     expect(res.status).toEqual(expected);
   });
 
