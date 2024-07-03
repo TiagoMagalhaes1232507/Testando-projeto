@@ -49,7 +49,7 @@ Neste campo, o userID não é obrigatório colocar no body, mas se o puser ele r
 
 ### Body
 
-opção A - OK
+Observação A - OK
 
 Após colocar no body um post do tipo text, e fazer send, a mensagem de resposta aos post é OK, com o status de 200 OK.
 { 
@@ -58,18 +58,47 @@ Após colocar no body um post do tipo text, e fazer send, a mensagem de resposta
 "postType": "text"
 }
 
-opção B - OK
-ao colocar o parametro userId, opcional
+Observação B - Ok
+Após colocar no body um post do tipo text, e fazer send, a mensagem de resposta aos post é OK, com o status de 200 OK.
 { 
-"userId": "string6",
 "title" : "Create post",
 "text": " create a post test 20",
 "postType": "text"
 }
 
+Observação B - OK
+O mesmo acontece para o link
+{ 
+"userId": "string6",
+"title" : "Create post",
+"link": " "https://www.youtube.com",
+"postType": "link"
+}
 A resposta obtida no body do post é OK, e status 200 OK
 
-opção C- 400 Bad Request ( estrutura de dados errados no body)
+Observação C - OK
+
+Após colocar no body um userId, a mensagem de resposta aos post é OK, com o status de 200 OK.
+{ 
+"userId": "String6",
+"title" : "Create post",
+"text": " create a post test 20",
+"postType": "text"
+}
+
+Obsevação D - OK
+
+Após colocar no body todos o que se pode colocar inclusivo os opcionais, a mensagem de resposta aos post é OK, com o status de 200 OK.
+{ 
+"userId": "String6",
+"title" : "Create post",
+"text": " create a post test 20",
+"link": "https://www.youtube.com",
+"postType": "text"
+}
+
+
+Observação E - 400 Bad Request ( estrutura de dados errados no body)
 
 Exemplo:
 { 
@@ -95,7 +124,7 @@ Ao não por o title entre aspas a mensagem de erro é gerada:
 </html>
 
 
-opção D-500 Internal Server Error 
+Observação F -500 Internal Server Error 
 Exemplo
 { 
 "": "Create post",
@@ -106,10 +135,13 @@ Exemplo
 Ao não cumprir os critérios pedidos no body para criara um post, como exemplo acima não adicionar um title ele responde com esta mensagem:
 ("TypeError: Cannot read properties of undefined (reading 'toString'))
 
-opção E - 403 Forbiden 
+Observação G - 403 Forbiden 
 
 Ao fim de algum tempo, o token expira e aparece esta mensagem:
 "Token signature expired."
+
+
+
 
 ## Request: post /
 
