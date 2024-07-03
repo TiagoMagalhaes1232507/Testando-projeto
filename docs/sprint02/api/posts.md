@@ -115,7 +115,7 @@ Ao fim de algum tempo, o token expira e aparece esta mensagem:
 
 ## Relate the REST API endpoints with User Stories
 
-The `/api/v1/posts/`(Post) endpoint is related to  user stories  US 004 - Create a discussion and to  US 007 - Create link post 
+The `/api/v1/posts/`(Post) endpoint is related to  user stories  US 004 - Create Text Post and to  US 007 - Create Link post 
 
 ________________________________________________________________________________________
 
@@ -188,8 +188,7 @@ Isto aparece com token ou sem token
 ## Request: post /
 
 ## Relate the REST API endpoints with User Stories
-
-
+/api/v1/posts/recent (Post) endpoint is related to  user stories  US 010 - Discussion's list ordered by date
 ________________________________________________________________________________________
 
 ## 3 - Request: Get / getPopulartPosts

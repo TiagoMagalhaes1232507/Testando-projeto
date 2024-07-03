@@ -1,4 +1,4 @@
-# US 004 - Create a discussion 
+# US 004 - Create Text Post
 
 ## 1. Requirements Engineering
 
@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As a registered user, I want to create a discussion.
+As a registered user, I want to create a Text Post.
 
 
 ### 1.2. Customer Specifications and Clarifications 
@@ -34,7 +34,7 @@ As a registered user, I want to create a discussion.
 
 * There is a dependency to "US001 - User Registration" as being registered is a requirement for this task.
 
-* There is a dependency to "US002 - To login in System" since i need to login to make a discussion.
+* There is a dependency to "US002 - To login in System" since i need to login to make a Text Post.
 
 
 
@@ -64,8 +64,8 @@ As a registered user, I want to create a discussion.
 
 ### 1.7 Other Relevant Remarks
 
-* The system should ensure data integrity by validating the input fields before saving the discussion to the database.
+* The system should ensure data integrity by validating the input fields before saving the post to the database.
 * Spaces in the fields should not be counted as characters.
 * Clicking on enter in text should not count as a character.
-* In case of a failure, the system should allow the user to correct the errors and resubmit the discussion.
+* In case of a failure, the system should allow the user to correct the errors and resubmit the post.
 * Error messages should be clear, concise, and professional. 

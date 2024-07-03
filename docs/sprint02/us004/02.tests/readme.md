@@ -1,10 +1,10 @@
-# US 004 - Create a discussion 
+# US 004 - Create Text Post 
 
 ## 1. Tests 
 
 ### 1.1. Check Required Fields Validation
 
-**Test 1:** Check that it is not possible to create a discussion without filling in all required fields (Title and Text). - AC1.
+**Test 1:** Check that it is not possible to create a Text Post without filling in all required fields (Title and Text). - AC1.
 
 **Steps:**
 
@@ -21,7 +21,7 @@
 
 ### 1.2. Check Title Lenght Validation
 
-**Test 2:** Check that it's impossible to create a discussion with a Title containing fewer than 2 characters. - AC2.
+**Test 2:** Check that it's impossible to create a Post with a Title containing fewer than 2 characters. - AC2.
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
@@ -46,7 +46,7 @@
 
 ### 1.3 Check Text Lenght Validation
 
-**Test 4:** Check that it's impossible to create a discussion with a Text containing fewer than 20 characters. - AC3
+**Test 4:** Check that it's impossible to create a Post with a Text containing fewer than 20 characters. - AC3
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
@@ -58,7 +58,7 @@
 **Expected Result:** "The system must prevent submission and provide suitable error message for the Text length."
 
 
-**Test 5:** Check that it's impossible to create a discussion with a description containing more than 10000 characters. - AC3
+**Test 5:** Check that it's impossible to create a Post with a description containing more than 10000 characters. - AC3
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
@@ -85,9 +85,9 @@
 
 
 
-### 1.5. Check Create a Discussion
+### 1.5. Check Create Text Post
 
-**Test 7:** Check if it is possible to create a discussion with a Title of 5 characters and Text of 30 characters
+**Test 7:** Check if it is possible to create a Text Post with a Title of 5 characters and Text of 30 characters
 
 **Steps:**
 1. At the all discussions page, click on "submit" and proceed to the submission form page.
@@ -96,6 +96,6 @@
 4. Click on the "Submit post" button.
 5. Verify that a successful message is displayed and the page is redirected to the "All Discussions" page.
 
-**Expected Result:** "The system must create a discussion, provide a suitable success message, and return to the "All Discussions" page."
+**Expected Result:** "The system must create Text Post, provide a suitable success message, and return to the "All Discussions" page."
 
 
