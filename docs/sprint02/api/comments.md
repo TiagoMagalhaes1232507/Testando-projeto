@@ -59,6 +59,10 @@ If the array of `CommentDTO` objects is not empty, this includes:
 
 The `/api/v1/comments/?{slug}`(GET) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user or a visitor, I want to read the comments for a specific post". 
 
+# tests files
+
+[get coments by post slug](../../../src/automated-tests/comments/comments-tests2.spec.ts)
+
 ## 2- Request: POST / Reply To Post 
 
 ### URI 

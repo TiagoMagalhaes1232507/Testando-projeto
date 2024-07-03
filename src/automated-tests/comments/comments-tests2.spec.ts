@@ -1,11 +1,11 @@
 import request from "supertest";
-import { CreateUserDTO } from "../modules/users/useCases/createUser/CreateUserDTO";
-import { LoginDTO } from "../modules/users/useCases/login/LoginDTO";
-import { CreatePostDTO } from "../modules/forum/useCases/post/createPost/CreatePostDTO";
-import { ReplyToPostDTO } from "../modules/forum/useCases/comments/replyToPost/ReplyToPostDTO";
-import { ReplyToCommentDTO } from "../modules/forum/useCases/comments/replyToComment/ReplyToCommentDTO";
-import { bigText10000char } from "./mocks";
-import { bigText10010char } from "./mocks";
+import { CreateUserDTO } from "../../modules/users/useCases/createUser/CreateUserDTO";
+import { LoginDTO } from "../../modules/users/useCases/login/LoginDTO";
+import { CreatePostDTO } from "../../modules/forum/useCases/post/createPost/CreatePostDTO";
+import { ReplyToPostDTO } from "../../modules/forum/useCases/comments/replyToPost/ReplyToPostDTO";
+import { ReplyToCommentDTO } from "../../modules/forum/useCases/comments/replyToComment/ReplyToCommentDTO";
+import { bigText10000char } from "../mocks";
+import { bigText10010char } from "../mocks";
 
 
 
