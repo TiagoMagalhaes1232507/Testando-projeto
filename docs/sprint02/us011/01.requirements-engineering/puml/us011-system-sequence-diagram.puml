@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title US011 - To logout
+
+autonumber
+
+actor "Registered User" as RegisteredUser
+participant "System" as System
+
+activate RegisteredUser
+
+RegisteredUser -> System : clicks logout button
+activate System
+
+System --> RegisteredUser : displays success message
+
+
+deactivate System
+deactivate RegisteredUser
+@enduml
+

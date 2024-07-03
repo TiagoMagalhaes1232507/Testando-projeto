@@ -1,0 +1,40 @@
+@startuml Domain Model Diagram
+
+title Domain Model for Hackernews-inspired Forum Web App
+
+entity User {
+  username
+  email
+  password
+}
+
+entity Post {
+  title
+  content
+  createdAt
+}
+
+entity Comment {
+  content
+  createdAt
+}
+
+entity Vote {
+  type
+  createdAt
+}
+
+entity Visitor {
+}
+
+Visitor "1" -- "0..*" Comment : views >
+Visitor "1" -- "0..*" Post : views >
+Visitor "1" -- "0..*" Vote : views >
+User "1" -- "0..*" Post : creates >
+User "1" -- "0..*" Comment : writes >
+User "1" -- "0..*" Vote : submits >
+Post "1" -- "0..*" Comment : has >
+Post "1" -- "0..*" Vote : receives >
+Comment "1" -- "0..*" Vote : receives >
+
+@enduml
