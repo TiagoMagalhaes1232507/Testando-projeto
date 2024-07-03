@@ -3,13 +3,9 @@ import request from "supertest";
 let accessToken: string; // Declares a variable to store the access token
 const url: string = "http://localhost:5001"; // Defines the base URL for the requests
 
-describe("Comments Endpoint", () => {
-  let comment: any = {}; // Variable to store the comment details
-  let slug: string = "";
-
+describe("Posts Endpoint", () => {
   beforeAll(async (): Promise<void> => {
     // This function runs before all tests in the describe block
-
     // Create a user
     try {
       const createUserResponse = await request(url).post("/api/v1/users").send({
@@ -296,5 +292,46 @@ describe("Comments Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
 
+        test("Get popular post with optional offset should return status 500 ", async () => {
+          //arrange: sets the URI for the comment endpoint with a valid ID and expected status
+          const uri = "/api/v1/posts/popular/?offset=1";
+          const expected = 500;
+          const res = await request(url).get(uri).set("Content-Type", "application/json")
+                  .set("Authorization", accessToken).send(
+              {
+                   }
+                );
+          expect(res.status).toEqual(expected);
+        });
+
+        test("Get popular post with optional offset should return status 500 ", async () => {
+          //arrange: sets the URI for the comment endpoint with a valid ID and expected status
+          const uri = "/api/v1/posts/popular/?offset=10";
+          const expected = 500;
+          const res = await request(url).get(uri).set("Content-Type", "application/json")
+                  .set("Authorization", accessToken).send(
+              {
+                   }
+                );
+          expect(res.status).toEqual(expected);
+        });
+
       });
-        
+    
+      describe("Posts Endpoint get without token", () => {
+        test("Get recent post without token should return status 200 ", async () => {
+          const uri = "/api/v1/posts/recent/";
+          const expected = 200;
+          const res = await request(url).get(uri)
+          expect(res.status).toEqual(expected);
+        });
+    
+        test("Get popular post without token should return status 200 ", async () => {
+          const uri = "/api/v1/posts/popular/";
+          const expected = 200;
+          const res = await request(url).get(uri).set("Content-Type", "application/json")
+          expect(res.status).toEqual(expected);
+        });
+
+      });
+    

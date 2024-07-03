@@ -1,0 +1,37 @@
+@startuml System Sequence Diagram (SSD)
+skinparam monochrome false
+skinparam packageStyle rectangle
+skinparam shadowing true
+
+title US 004 - Create a Discussion
+
+autonumber
+
+actor "Registered User" as User
+participant ":System" as System
+
+activate User
+
+User -> System : Select "Submit"
+activate System
+
+System --> User : Display new discussion form
+deactivate System
+
+User -> System : Enter Title, Text and click on "Submit post" 
+activate System
+
+System --> User : Confirm discussion submission and return to all discussions
+deactivate System
+deactivate User
+
+@enduml
+
+
+
+
+
+
+
+
+

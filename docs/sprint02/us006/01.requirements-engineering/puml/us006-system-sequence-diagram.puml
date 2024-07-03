@@ -1,0 +1,34 @@
+@startuml System Sequence Diagram (SSD)
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Reply to a Comment
+
+autonumber
+
+actor "Registered User" as User
+participant ":System" as System
+
+activate User
+
+User -> System: Select a specific discussion
+activate System
+
+System --> User: Open discussion page
+deactivate System
+
+User -> System: Click on "reply" button of a specific comment
+activate System
+
+System --> User: Open reply form
+deactivate System
+
+User -> System: Submit reply content (text)
+activate System
+
+System --> User: Returns success message
+System --> User: Redirects to updated discussion page and displays the updated list of replies ordered by date
+deactivate System
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+title SSD US002: TO LOGIN IN SYSTEM
+
+autonumber
+
+actor "Registered User" as User
+participant ":System" as System
+
+activate User
+
+    User -> System : wants to login in system
+    activate System
+
+        System --> User : requests data (username, password)
+    deactivate System
+
+    User -> System : types correct requested data  (username, password) and submit
+    activate System
+
+        System --> User : displays message of success
+    deactivate System
+
+@enduml

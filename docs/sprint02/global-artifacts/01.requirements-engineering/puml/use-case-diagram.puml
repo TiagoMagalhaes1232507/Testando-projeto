@@ -1,0 +1,46 @@
+@startuml "use-case-diagram"
+'skinparam monochrome true
+skinparam packageStyle rectangle
+'skinparam shadowing false
+
+left to right direction
+
+
+actor "Registered User" as RegisteredUser
+actor "Unregistered User" as UnregisteredUser
+
+rectangle "Use Cases" as usecases {
+    usecase "UC1 - User Registration" as UC01
+    usecase "UC2 - To login in System" as UC02
+    usecase "UC3 - View the discussions list as Unregistered User" as UC03
+    usecase "UC4 - Create a discussion" as UC04
+    usecase "UC5 - Create a comment" as UC05
+    usecase "UC6 - Reply directly to a post in a discussion" as UC06
+    usecase "UC7 - Post with a link" as UC07
+    usecase "UC8 - To vote on a Discussion" as UC08
+    usecase "UC9 - To format discussions" as UC09
+    usecase "UC10 - Discussion's list ordered by popularity" as UC10
+    usecase "UC11 - To logout" as UC11
+    usecase "UC12 - Access a discussion link" as UC12
+    usecase "UC13 - Discussion's list ordered by date" as UC13
+   
+   
+    RegisteredUser --> UC02
+    RegisteredUser --> UC04
+    RegisteredUser --> UC05
+    RegisteredUser --> UC06
+    RegisteredUser --> UC07
+    RegisteredUser --> UC08
+    RegisteredUser --> UC09
+    RegisteredUser --> UC10
+    RegisteredUser --> UC11
+    RegisteredUser --> UC12
+    RegisteredUser --> UC13
+
+UnregisteredUser -up-> UC01
+UnregisteredUser -up-> UC03
+UnregisteredUser -up-> UC10
+UnregisteredUser -up-> UC13
+}
+
+@enduml

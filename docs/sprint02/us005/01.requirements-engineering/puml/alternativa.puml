@@ -1,0 +1,35 @@
+@startuml
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Reply to a Comment
+
+autonumber
+
+actor "Registered User" as User
+participant ":System" as System
+
+activate User
+
+User -> System: Click on a discussion
+activate System
+
+  System --> User: Show page with discussion and an empty text box
+deactivate System
+
+User -> System: Type in the text box and click Post comment
+activate System
+
+User -> System: Submit comment (combines steps 8 & 9)
+activate System
+
+  System --> User: Stores comment in the database
+  System --> User: Update list of comments (if applicable)
+  System --> User: Returns success message (if applicable)
+  System --> User: Displays the comment below the Discussion topic
+
+deactivate System
+
+@enduml

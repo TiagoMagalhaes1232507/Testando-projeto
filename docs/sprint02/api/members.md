@@ -26,7 +26,7 @@ The body for a HTTP GET request should be empty.
 `A - 500 - Internal Server Error`
 
 {
-    message: Couldn't find a member with the username "username"
+    "message": "An unexpected error occurred"
 }
 
 ### Relate the REST API endpoints with User Stories

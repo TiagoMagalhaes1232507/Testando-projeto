@@ -4,41 +4,86 @@ import request from "supertest";
 
 
 
-let accessToken: string; // variable to store the access token
-let uri: string = "http://localhost:5001"; // defines uri to requests
+//let accessToken: string; // variable to store the access token
+let url: string = "http://localhost:5001"; // defines url to requests
 
-describe("Testing requests from members", () => {
+describe("Testing requests to members", () => {
 
     beforeAll(async (): Promise<void> => {
-        //Create an user
+        // To Create an user
         try {
-            let createUserResponse = await request(uri)
-                .post("api/vi/users")
+            const createUserResponse = await request(url)
+                .post("/api/v1/users/")
                 .send({
-                    username: "zzz",
-                    email: "zzz@zzz-com",
-                    password: "zzzzzz",
-                });
-            let createUser = createUserResponse.body;
+                    username: "aaa",
+                    email: "aaa@aaa.com",
+                    password: "aaaaaa",
+                })
+            const createUser = createUserResponse.body;
             console.log("Created User:", createUser);
         } catch (error) {
-            console.log("Create User Error", error);
+            console.log("Create User Error:", error);
         }
-    })
 
-    test("Members if member information is ok", async () => {
+        // User Loggin
+        const loginResponse = await request(url)
+            .post("/api/v1/users/login")
+            .send({
+                username: "aaa",
+                password: "aaaaaa",
+            });
+    });
+
+
+    // For these tests authotization isn't mandatory
+    test("T1 - If member is registred (status)", async () => {
         // Arrange
-        let username = "zzz";
-        let expectedStatus = 200;
+        const username = "aaa";
+        const expectedStatusCode = 200;
+        const expectedBody = {"member": {"reputation": 0, "user": {"username": "aaa"}}};
 
         //Send request - Act
-        let response = await request(uri)
-            .get("/api/v1/members/${username}")
-            .set("Content-Type", "application/json")
-            .send();
+        const response = await request(url)
+            .get("/api/v1/members/" + username)
+            //.set("Content-Type", "application/json")
+            .send({});
 
         //Request Response - Assert
-        expect(response.status).toBe(expectedStatus)
-    })
+        expect(response.statusCode).toBe(expectedStatusCode);
+        expect(response.body).toStrictEqual;
+    });
 
-})
+    test("T2 - If member is not registred", async () => {
+        // Arrange
+        const username = "yyy";
+        const expectedStatusCode = 404;
+        const expectedBody = "Couldn't find a member with the username yyy";
+
+        //Send request - Act
+        const response = await request(url)
+            .get("/api/v1/members/" + username)
+            //.set("Content-Type", "application/json")
+            .send({});
+
+        //Request Response - Assert
+        expect(response.statusCode).toBe(expectedStatusCode);
+        expect(response.body.message).toStrictEqual;
+    });
+
+    test("T3 - Response of ../members/me", async () => {
+        // Arrange
+        const expectedStatus = 500;
+        const expectedBody = "An unexpected error occurred";
+
+        //Send request - Act
+        const response = await request(url)
+            .get("/api/v1/members/me")
+                //.set("Content-Type", "application/json")
+                .send({});
+
+        //Request Response - Assert
+        expect(response.status).toBe(expectedStatus);
+        expect(response.body.message).toStrictEqual;
+    });
+
+});
