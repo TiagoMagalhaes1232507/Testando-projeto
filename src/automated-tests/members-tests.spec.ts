@@ -15,9 +15,9 @@ describe("Testing requests to members", () => {
             const createUserResponse = await request(url)
                 .post("/api/v1/users/")
                 .send({
-                    username: "zzz",
-                    email: "zzz@zzz.com",
-                    password: "zzzzzz",
+                    username: "aaa",
+                    email: "aaa@aaa.com",
+                    password: "aaaaaa",
                 })
             const createUser = createUserResponse.body;
             console.log("Created User:", createUser);
@@ -29,18 +29,18 @@ describe("Testing requests to members", () => {
         const loginResponse = await request(url)
             .post("/api/v1/users/login")
             .send({
-                username: "zzz",
-                password: "zzzzzz",
+                username: "aaa",
+                password: "aaaaaa",
             });
     });
 
 
-
-    test("T1 - If member is registred", async () => {
-        // For these test authotization isn't mandatory
+    // For these tests authotization isn't mandatory
+    test("T1 - If member is registred (status)", async () => {
         // Arrange
-        const username = "zzz";
-        const expectedStatus = 200;
+        const username = "aaa";
+        const expectedStatusCode = 200;
+        const expectedBody = {"member": {"reputation": 0, "user": {"username": "aaa"}}};
 
         //Send request - Act
         const response = await request(url)
@@ -49,14 +49,15 @@ describe("Testing requests to members", () => {
             .send({});
 
         //Request Response - Assert
-        expect(response.status).toBe(expectedStatus);
+        expect(response.statusCode).toBe(expectedStatusCode);
+        expect(response.body).toStrictEqual;
     });
-
 
     test("T2 - If member is not registred", async () => {
         // Arrange
         const username = "yyy";
-        const expectedStatus = 404;
+        const expectedStatusCode = 404;
+        const expectedBody = "Couldn't find a member with the username yyy";
 
         //Send request - Act
         const response = await request(url)
@@ -65,7 +66,24 @@ describe("Testing requests to members", () => {
             .send({});
 
         //Request Response - Assert
+        expect(response.statusCode).toBe(expectedStatusCode);
+        expect(response.body.message).toStrictEqual;
+    });
+
+    test("T3 - Response of ../members/me", async () => {
+        // Arrange
+        const expectedStatus = 500;
+        const expectedBody = "An unexpected error occurred";
+
+        //Send request - Act
+        const response = await request(url)
+            .get("/api/v1/members/me")
+                //.set("Content-Type", "application/json")
+                .send({});
+
+        //Request Response - Assert
         expect(response.status).toBe(expectedStatus);
+        expect(response.body.message).toStrictEqual;
     });
 
 });
