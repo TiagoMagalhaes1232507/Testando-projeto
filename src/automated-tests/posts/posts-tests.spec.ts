@@ -49,7 +49,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("create post text with optional userID should return status 200", async () => {
+      test(" T2-create post text with optional userID should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
         const res = await request(url)
@@ -65,7 +65,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("create post link should return status 200", async () => {
+      test("T3 -create post link should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
         const res = await request(url)
@@ -80,7 +80,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("create post link with optional userID should return status 200", async () => {
+      test("T4 -create post link with optional userID should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
         const res = await request(url)
@@ -97,7 +97,7 @@ describe("Posts Endpoint", () => {
       });
   
 
-      test("Create post with invalid title length (less than 2 characters) should return status 400", async () => {
+      test("T5 -Create post with invalid title length (less than 2 characters) should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -112,7 +112,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
     
-      test("Create post with invalid title length (more than 85 characters) should return status 400", async () => {
+      test(" T6-Create post with invalid title length (more than 85 characters) should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -127,7 +127,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("Create post with invalid text length (less than 20 characters) should return status 400", async () => {
+      test("T7 -Create post with invalid text length (less than 20 characters) should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -142,7 +142,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("Create post with invalid link length should return status 400", async () => {
+      test("T8- Create post with invalid link length should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -158,7 +158,7 @@ describe("Posts Endpoint", () => {
       });
     
 
-      test("Create post with invalid text length (more than 10000) should return status 400", async () => {
+      test(" T9 -Create post with invalid text length (more than 10000) should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -173,7 +173,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
     
-      test("Create post with invalid link length (more than 10000) should return status 400", async () => {
+      test("T10 -Create post with invalid link length (more than 10000) should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -188,7 +188,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
        
-        test(" Missing posttype should return status 400", async () => {
+        test(" T11- Missing posttype should return status 400", async () => {
           const uri = "/api/v1/posts/";
           const expected = 400;
           const res = await request(url)
@@ -204,7 +204,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
 
-        test(" Missing title should return status 400", async () => {
+        test("T12- Missing title should return status 400", async () => {
           const uri = "/api/v1/posts/";
           const expected = 400;
           const res = await request(url)
@@ -220,7 +220,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
 
-        test(" Missing text/link should return status 400", async () => {
+        test(" T13 -Missing text/link should return status 400", async () => {
           const uri = "/api/v1/posts/";
           const expected = 400;
           const res = await request(url)
@@ -236,7 +236,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
 
-        test(" Missing body should return status 400", async () => {
+        test(" T14 -Missing body should return status 400", async () => {
           const uri = "/api/v1/posts/";
           const expected = 400;
           const res = await request(url)
@@ -250,14 +250,14 @@ describe("Posts Endpoint", () => {
         });
 
 
-        test("Get recent post should return status 200 ", async () => {
+        test("T15 -Get recent post should return status 200 ", async () => {
           const uri = "/api/v1/posts/recent/";
           const expected = 200;
           const res = await request(url).get(uri);
           expect(res.status).toEqual(expected);
         });
       
-        test("Get recent post with optional userId should return status 200 ", async () => {
+        test("T16 -Get recent post with optional userId should return status 200 ", async () => {
           const uri = "/api/v1/posts/recent/";
           const expected = 200;
           const res = await request(url).get(uri).set("Content-Type", "application/json")
@@ -269,7 +269,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
       
-        test("Get popular post should return status 200 ", async () => {
+        test("T17-Get popular post should return status 200 ", async () => {
           //arrange: sets the URI for the comment endpoint with a valid ID and expected status
           const uri = "/api/v1/posts/popular/";
           const expected = 200;
@@ -279,7 +279,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
       
-        test("Get popular post with optional userId should return status 200 ", async () => {
+        test("T18 -Get popular post with optional userId should return status 200 ", async () => {
           //arrange: sets the URI for the comment endpoint with a valid ID and expected status
           const uri = "/api/v1/posts/popular/";
           const expected = 200;
@@ -292,7 +292,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
 
-        test("Get popular post with optional offset should return status 400 ", async () => {
+        test("T19 -Get popular post with optional offset should return status 400 ", async () => {
           //arrange: sets the URI for the comment endpoint with a valid ID and expected status
           const uri = "/api/v1/posts/popular/?offset=1";
           const expected = 400;
@@ -304,7 +304,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
 
-        test("Get popular post with optional offset should return status 400 ", async () => {
+        test("T20Get popular post with optional offset should return status 400 ", async () => {
           //arrange: sets the URI for the comment endpoint with a valid ID and expected status
           const uri = "/api/v1/posts/popular/?offset=10";
           const expected = 400;
@@ -318,7 +318,7 @@ describe("Posts Endpoint", () => {
 
       });
     
-      describe("Posts Endpoint get without token", () => {
+      describe("T21-Posts Endpoint get without token", () => {
         test("Get recent post without token should return status 200 ", async () => {
           const uri = "/api/v1/posts/recent/";
           const expected = 200;
@@ -326,7 +326,7 @@ describe("Posts Endpoint", () => {
           expect(res.status).toEqual(expected);
         });
     
-        test("Get popular post without token should return status 200 ", async () => {
+        test("T22 -Get popular post without token should return status 200 ", async () => {
           const uri = "/api/v1/posts/popular/";
           const expected = 200;
           const res = await request(url).get(uri).set("Content-Type", "application/json")
