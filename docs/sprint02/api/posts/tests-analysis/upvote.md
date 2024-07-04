@@ -1,8 +1,18 @@
 # Test Cases and Analysis : 
 ## Upvote post endpoint: api/v1/posts/upvote
 
-## Test: 
+## Test: [CTP020 - should increment points after upvote](../../../../../src/automated-tests/posts/upvote-tests.spec.ts): 
 should return status 200 and increment points after upvote
+
+## Expected response:
+    - Status: 200
+    - Body: OK
+    - Points incremented
+
+## Received response
+    - Status: 200
+    - Body: OK
+    - Points not incremented
 
 ## Status:  
 FAIL
@@ -17,8 +27,18 @@ The number of votes did not increase after the upvote action. This indicates a p
 The upvote functionality did not work as expected, possibly due to a failure in the API to correctly process the upvote request or update the vote count in the database. This needs further investigation to ensure that the upvote endpoint correctly processes the request.
 
 
-## Test:  
+## Test: [CTP021 - should update the voteByMe field after upvote](../../../../../src/automated-tests/posts/upvote-tests.spec.ts): 
 should update the voteByMe field after upvote
+
+## Expected response:
+    - Status: 200
+    - Body: OK
+    - wasUpvotedByMe: true
+
+## Received response
+    - Status: 200
+    - Body: OK
+    - wasUpvotedByMe: false
 
 ## Status:  
 FAIL
@@ -33,8 +53,17 @@ The "wasUpvotedByMe" field was not correctly updated, indicating that the API di
 The wasUpvotedByMe field update functionality did not work as expected.
 
 
-## Test:  
+## Test: [CTP022 - should return status 403 for expired token](../../../../../src/automated-tests/posts/upvote-tests.spec.ts): 
 should return status 403 for expired token
+
+## Expected response:
+- Status: 403
+- Body: { "message": "Token signature expired." }
+
+
+## Received response
+- Status: 403
+- Body: { "message": "Token signature expired." }
 
 ## Status:  
 PASS
@@ -52,8 +81,17 @@ The expired token handling works as expected.
 No immediate action needed for this specific test.
 
 
-## Test: 
+## Test: [CTP023 - should return status 404 for non-existent post](../../../../../src/automated-tests/posts/upvote-tests.spec.ts): 
 should return status 404 for non-existent post
+
+## Expected response:
+    - Status: 404
+    - Body: { "message": "Couldn't find a post by slug non-existent-slug." }
+
+
+## Received response
+    - Status: 404
+    - Body: { "message": "Couldn't find a post by slug {non-existent-slug}." }
 
 ## Status:  
 FAIL
@@ -71,8 +109,16 @@ The error message formatting for the non-existent post needs to be corrected. Th
 Correct Error Message Format: Adjust the API to return error messages in the expected format, or update the test to match the actual format used by the API.
 
 
-## Test: 
+## Test: [CTP024 - should return status 400 if userId is included in the request body](../../../../../src/automated-tests/posts/upvote-tests.spec.ts): 
 should return status 400 if userId is included in the request body
+
+## Expected response:
+    - Status: 400
+    - Body: { "message": ""userId" is not allowed" }
+
+## Received response
+    - Status: 200
+    - Body: OK
 
 ## Status:  
 FAIL

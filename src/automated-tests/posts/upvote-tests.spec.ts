@@ -82,7 +82,7 @@ describe("Posts Endpoints", () => {
   }
 
   describe("POST / Upvote Post", () => {
-    test("should return status 200 and increment points after upvote", async () => {
+    test("CTP020 - should increment points after upvote", async () => {
       // ARRANGE: Get the current points before the upvote
       const previousVotesNumber = await getPostPointsBySlug(slug);
 
@@ -103,7 +103,7 @@ describe("Posts Endpoints", () => {
       expect(updatedVotesNumber).toBeGreaterThan(previousVotesNumber);
     });
 
-    test("should update the voteByMe field after upvote", async () => {
+    test("CTP021 - should update the voteByMe field after upvote", async () => {
       // ACT: Trigger the upvote endpoint
       const uri = "/api/v1/posts/upvote";
       await request(url)
@@ -119,7 +119,7 @@ describe("Posts Endpoints", () => {
       expect(updatedIsVotedByMe).toBe(true);
     });
 
-    test("should return status 403 for expired token", async () => {
+    test("CTP022 - should return status 403 for expired token", async () => {
       // ARRANGE: Prepare an expired token
       const expiredToken = "expiredAccessToken";
 
@@ -136,7 +136,7 @@ describe("Posts Endpoints", () => {
       expect(res.body.message).toEqual("Token signature expired.");
     });
 
-    test("should return status 404 for non-existent post", async () => {
+    test("CTP023 - should return status 404 for non-existent post", async () => {
       // ARRANGE: Use a non-existent slug
       const nonExistentSlug = "non-existent-slug";
 
@@ -155,7 +155,7 @@ describe("Posts Endpoints", () => {
       );
     });
 
-    test("should return status 400 if userId is included in the request body", async () => {
+    test("CTP024 - should return status 400 if userId is included in the request body", async () => {
       // ARRANGE: Prepare the request body with an unexpected userId
       const requestBody = {
         slug: slug,
