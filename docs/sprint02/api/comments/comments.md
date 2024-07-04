@@ -239,7 +239,7 @@ CTC017 - missing token
   - body: "No access token provided"
 
 ### Remarks
-Certain parameters, like userId s required for the request body but is possible to get a sucess response without including this.
+Certain parameters, like userId is required for the request body but is possible to get a sucess response without including this.
 
 ### Relate the REST API endpoints with User Stories 
 
