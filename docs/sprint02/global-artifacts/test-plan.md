@@ -123,4 +123,16 @@ Blackbox testing focuses on validating the functionality of the application with
     - Execute the automated tests and review the results to ensure all test cases pass.
     - Investigate and resolve any failed test cases by identifying the root cause and making necessary adjustments to the code or test cases.
 
-By following this structured approach, we aim to achieve a high level of test coverage and ensure that the forum application's API endpoints are thoroughly tested and reliable.
+6. **Conclusions**:
+
+To develop our integration tests, we used the black-box technique, focusing on equivalence classes and boundary values. The tests covered a variety of scenarios relevant to the functionality of responding to endpoints, including valid, minimum, and maximum allowed lengths, as well as invalid lengths, both below and above the allowed limits. 
+Tests were also conducted for both success and failure scenarios, including the validation of mandatory parameters and proper handling of authentication tokens.
+
+In some cases, we had to implement a before-all setup to create a user, log in, create a post, and use the slug of that post to develop our tests. The integration tests showed that, in general, the API works as expected for most scenarios. However, we identified some failures in input validation and error handling. For instance, the API returns status 500 in some cases where status 400 would be more appropriate, indicating the need for more robust validations and improved error handling.
+
+**General Recommendations**:
+
+	•	Review and implement input validations: Ensure that all mandatory parameters are validated at the start of request processing, with clear and appropriate error messages.
+	•	Improve error handling: Clearly differentiate between input validation errors and internal server errors to return the correct HTTP status codes.
+	•	Integration tests: Add specific tests to validate inputs and tokens, ensuring that the API responds correctly to different error scenarios.
+	•	Documentation: Update the API documentation to reflect the expected behaviors and corresponding error messages for different error cases.
