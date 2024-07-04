@@ -1,7 +1,7 @@
 # Test Cases and Analysis : 
 ## Create post endpoint: api/v1/posts/
 
-## Test: CTP09 -Create post with invalid text length (less than 20 characters) should return status 400
+## Test: [CTP09 -Create post with invalid text length (less than 20 characters) should return status 400](../../../../../src/automated-tests/posts/posts-tests.spec.ts): 
 
 ## Status:  
 FAIL

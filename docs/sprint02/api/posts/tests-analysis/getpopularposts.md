@@ -1,7 +1,7 @@
 # Test Cases and Analysis : 
 ## Create post endpoint: api/v1/posts/
 
-## Test:  CTP28 Get popular post with optional offset should return status 400
+## Test: [CTP28 Get popular post with optional offset should return status 400](../../../../../src/automated-tests/posts/posts-tests.spec.ts):
 
 ## Status:  
 FAIL
