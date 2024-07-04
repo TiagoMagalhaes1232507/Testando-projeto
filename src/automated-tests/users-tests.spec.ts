@@ -12,47 +12,47 @@ describe("Users Endpoint", () => {
     // arrange: define os detalhes do usuário a serem enviados na requisição
     const uri = "/api/v1/users";
     const expected = 200;
+    const expectedMessage = "OK"
     //act
-    try {
-      const res = await request(url).post(uri).send({
-        username: "testuser",
-        email: "testuser@test.com",
-        password: "testuser",
-      });
-    } catch (error) {
-      console.log("Create User Error:", error);
-    }
+    const res = await request(url).post(uri).send({
+      username: "testuser",
+      email: "testuser@test.com",
+      password: "testuser",
+    });
+    expect(res.body.message).toStrictEqual;
+    expect(res.status).toBe(expected);
+   
   });
 
-  
-test("TCU02 - Create User with invalid email should return status 400", async () => {
-  // Arrange: define os detalhes do usuário a serem enviados na requisição
-  const uri = "/api/v1/users";
-  const expectedStatus = 400;
-  // Act: faz a requisição para criar um usuário com um email inválido
-  const res = await request(url).post(uri).send({
-    username: "testuser",
-    email: "testusertest.com", // Email inválido (faltando '@')
-    password: "testuser"
+
+  test("TCU02 - Create User with invalid email should return status 400", async () => {
+    // Arrange: define os detalhes do usuário a serem enviados na requisição
+    const uri = "/api/v1/users";
+    const expectedStatus = 400;
+    // Act: faz a requisição para criar um usuário com um email inválido
+    const res = await request(url).post(uri).send({
+      username: "testuser",
+      email: "testusertest.com", // Email inválido (faltando '@')
+      password: "testuser"
+    });
+    // Assert: verifica se o status retornado está correto
+    expect(res.status).toBe(expectedStatus);
   });
-  // Assert: verifica se o status retornado está correto
-  expect(res.status).toBe(expectedStatus);
-});
 
 
-test("TCU03 - Create User with invalid username length - less than 3 characters should return - status 400", async () => {
-  // Arrange: define os detalhes do usuário a serem enviados na requisição
-  const uri = "/api/v1/users";
-  const expectedStatus = 400;
-  // Act: faz a requisição para criar um usuário com um nome de usuário inválido
-  const res = await request(url).post(uri).send({
-    username: "t",
-    email: "testusertest@testuser.com",
-    password: "testuser"
+  test("TCU03 - Create User with invalid username length - less than 3 characters should return - status 400", async () => {
+    // Arrange: define os detalhes do usuário a serem enviados na requisição
+    const uri = "/api/v1/users";
+    const expectedStatus = 400;
+    // Act: faz a requisição para criar um usuário com um nome de usuário inválido
+    const res = await request(url).post(uri).send({
+      username: "t",
+      email: "testusertest@testuser.com",
+      password: "testuser"
+    });
+    // Assert: verifica se o status retornado está correto
+    expect(res.status).toBe(expectedStatus);
   });
-  // Assert: verifica se o status retornado está correto
-  expect(res.status).toBe(expectedStatus);
-});
 
   test("TCU04 - Create User with invalid password lentgh - more 20 caharacter should return - status 400", async () => {
     // arrange: define os detalhes do usuário a serem enviados na requisição
@@ -65,7 +65,7 @@ test("TCU03 - Create User with invalid username length - less than 3 characters 
       password: "testusertestusertestusertestusertestuser",
     });
     // Assert: verifica se o status retornado está correto
-  expect(res.status).toBe(expectedStatus);
+    expect(res.status).toBe(expectedStatus);
   });
 
   test("TCU05 - Checking authorization after login and after logout", async () => {
@@ -106,7 +106,7 @@ test("TCU03 - Create User with invalid username length - less than 3 characters 
     const res = await request(url).get(uri).set("Authorization", accessToken);
     //assert
     expect(res.status).toEqual(expected);
-    
+
 
     //act - Logout
     const logoutResponse = await request(url)
@@ -165,7 +165,7 @@ test("TCU03 - Create User with invalid username length - less than 3 characters 
     const res = await request(url)
       .get(uri)
       .set("Authorization", accessToken)
-      .send({ });
+      .send({});
     //assert
     expect(res.status).toEqual(expected);
   });
@@ -212,11 +212,11 @@ test("TCU03 - Create User with invalid username length - less than 3 characters 
     //assert
     expect(res.status).toEqual(expected);
     expect(res.body.accessToken).toBeDefined();
-});
+  });
 });
 
 
-describe("User Endpoint", () => {
+describe("User Endpoint - Create User", () => {
   beforeAll(async () => {
     // Este bloco será executado antes de todos os testes na função describe
     try {
@@ -236,64 +236,45 @@ describe("User Endpoint", () => {
   test("TCU13 - Create user with existing username should return 409", async () => {
     // Arrange: define a URI para a criação do usuário e os dados do usuário existente
     const uri = "/api/v1/users";
-    const expected = 409;
-
+    const expectedStatus = 409;
+    const expectedMessage = "The username testuseralpha was already taken";
+  
     // Act: faz uma solicitação POST para criar um usuário com o mesmo username
     const res = await request(url).post(uri).send({
       username: "testuseralpha",
       email: "testusertest@testuser.com",
-      password: "testuser",
+      password: "testuser"
     });
-
+  
     // Assert: verifica se o status da resposta é 409 (Conflito)
-    expect(res.status).toEqual(expected);
+    expect(res.status).toEqual(expectedStatus);
+    expect(res.body).toHaveProperty("message", expectedMessage);
   });
 
   test("TCU14 - Create user with existing email should return 409", async () => {
     // Arrange: define a URI para a criação do usuário e os dados do usuário existente
     const uri = "/api/v1/users";
-    const expected = 409;
-
+    const expectedStatus = 409;
+    const expectedMessage = "The email testuseralpha@test.com associated for this account already exists";
+  
     // Act: faz uma solicitação POST para criar um usuário com o mesmo email
     const res = await request(url).post(uri).send({
       username: "testuserbeta",
       email: "testuseralpha@test.com",
-      password: "testuser",
+      password: "testuser"
     });
-
+  
     // Assert: verifica se o status da resposta é 409 (Conflito)
-    expect(res.status).toEqual(expected);
+    expect(res.status).toEqual(expectedStatus);
+    expect(res.body).toHaveProperty("message", expectedMessage);
   });
-});
-
+})
 /*
 
 let accessToken: string;
 const url: string = "http://localhost:5001";
 
 describe("Users Endpoint", () => {
-
-// 1- Request: POST / Create User
-
-  test("Create User returns OK", async () => {
-    // arrange
-    const url = "/api/v1/users";
-    const expected = 200;
-    //act
-    try {
-      const createUserResponse = await request(url).post("/api/v1/users").send({
-        username: "testuseralpha",
-        email: "testuseralpha@test.com",
-        password: "testuseralpha",
-      });
-
-      const createUser = createUserResponse.body;
-      console.log("Create User Response Body:", createUser);
-    } catch (error) {
-      console.log("Create User Error:", error);
-    }
-  });
-
 
 // 2- Request: GET / Get current user
 
