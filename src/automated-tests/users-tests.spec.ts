@@ -24,8 +24,25 @@ describe("Users Endpoint", () => {
    
   });
 
+  test("TCU02 - Create User with username and email containing special characters", async () => {
+    // Arrange: define os detalhes do usuário a serem enviados na requisição
+    const uri = "/api/v1/users";
+    const expectedStatus = 200;
+    const expectedMessage = "OK";
+  
+    // Act: faz a requisição para criar um usuário com nome de usuário e email contendo caracteres especiais
+    const res = await request(app).post(uri).send({
+      username: "testuse_r",
+      email: "testuser@test.com",
+      password: "testuse_r"
+    });
+  
+    // Assert: verifica se o status retornado está correto e se a mensagem de sucesso está presente
+    expect(res.status).toBe(expectedStatus);
+    expect(res.body).toHaveProperty("message", expectedMessage);
+  });
 
-  test("TCU02 - Create User with invalid email should return status 400", async () => {
+  test("TCU03 - Create User with invalid email should return status 400", async () => {
     // Arrange: define os detalhes do usuário a serem enviados na requisição
     const uri = "/api/v1/users";
     const expectedStatus = 400;
@@ -40,7 +57,7 @@ describe("Users Endpoint", () => {
   });
 
 
-  test("TCU03 - Create User with invalid username length - less than 3 characters should return - status 400", async () => {
+  test("TCU04 - Create User with invalid username length - less than 3 characters should return - status 400", async () => {
     // Arrange: define os detalhes do usuário a serem enviados na requisição
     const uri = "/api/v1/users";
     const expectedStatus = 400;
@@ -54,7 +71,7 @@ describe("Users Endpoint", () => {
     expect(res.status).toBe(expectedStatus);
   });
 
-  test("TCU04 - Create User with invalid password lentgh - more 20 caharacter should return - status 400", async () => {
+  test("TCU05 - Create User with invalid password lentgh - more 20 caharacter should return - status 400", async () => {
     // arrange: define os detalhes do usuário a serem enviados na requisição
     const uri = "/api/v1/users";
     const expectedStatus = 400;
@@ -68,7 +85,7 @@ describe("Users Endpoint", () => {
     expect(res.status).toBe(expectedStatus);
   });
 
-  test("TCU05 - Checking authorization after login and after logout", async () => {
+  test("TCU06 - Checking authorization after login and after logout", async () => {
     const loginResponse = await request(url).post("/api/v1/users/login").send({
       username: "testuser",
       password: "testuser",
@@ -92,7 +109,7 @@ describe("Users Endpoint", () => {
     expect(res2.status).toEqual(403);
   });
 
-  test(" TCU06 - Checking authorization after login and after logout token no exist", async () => {
+  test(" TCU07 - Checking authorization after login and after logout token no exist", async () => {
     const loginResponse = await request(url).post("/api/v1/users/login").send({
       username: "testuser",
       password: "testuser",
@@ -117,7 +134,7 @@ describe("Users Endpoint", () => {
     expect(res2.status).toEqual(403);
   });
 
-  test("TCU07 - Get User by Username should status 200", async () => {
+  test("TCU08 - Get User by Username should status 200", async () => {
     const loginResponse = await request(url).post("/api/v1/users/login").send({
       username: "testuseralpha",
       password: "testuseralpha",
@@ -135,7 +152,7 @@ describe("Users Endpoint", () => {
     expect(res.status).toEqual(expected);
   });
 
-  test("TCU08 - Get User by Username should status 403 token expired", async () => {
+  test("TCU09 - Get User by Username should status 403 token expired", async () => {
     const loginResponse = await request(url).post("/api/v1/users/login").send({
       username: "testuseralpha",
       password: "testuseralpha",
@@ -152,7 +169,7 @@ describe("Users Endpoint", () => {
     expect(res.status).toEqual(expected);
   });
 
-  test("TCU09 - Get User by Username should status 500 body missing", async () => {
+  test("TCU10 - Get User by Username should status 500 body missing", async () => {
     const loginResponse = await request(url).post("/api/v1/users/login").send({
       username: "testuseralpha",
       password: "testuseralpha",
@@ -171,7 +188,7 @@ describe("Users Endpoint", () => {
   });
 
 
-  test("TCU10 - Get current user should return status 200", async () => {
+  test("TCU11 - Get current user should return status 200", async () => {
     //arrange
     const uri = "/api/v1/users/me";
     const expected = 200;
@@ -183,7 +200,7 @@ describe("Users Endpoint", () => {
     expect(res.status).toEqual(expected);
   });
 
-  test("TCU11 - Get current user should return status 403 token expired", async () => {
+  test("TCU12 - Get current user should return status 403 token expired", async () => {
     //arrange
     const uri = "/api/v1/users/me";
     const expected = 403;
@@ -194,7 +211,7 @@ describe("Users Endpoint", () => {
     expect(res.status).toEqual(expected);
   });
 
-  test("TCU12 - Testing refresh token should status 200", async () => {
+  test("TCU13 - Testing refresh token should status 200", async () => {
     const loginResponse = await request(url).post("/api/v1/users/").send({
       username: "testuseralpha",
       password: "testuseralpha",
@@ -233,7 +250,7 @@ describe("User Endpoint - Create User", () => {
     }
   });
 
-  test("TCU13 - Create user with existing username should return 409", async () => {
+  test("TCU14 - Create user with existing username should return 409", async () => {
     // Arrange: define a URI para a criação do usuário e os dados do usuário existente
     const uri = "/api/v1/users";
     const expectedStatus = 409;
@@ -251,7 +268,7 @@ describe("User Endpoint - Create User", () => {
     expect(res.body).toHaveProperty("message", expectedMessage);
   });
 
-  test("TCU14 - Create user with existing email should return 409", async () => {
+  test("TCU15 - Create user with existing email should return 409", async () => {
     // Arrange: define a URI para a criação do usuário e os dados do usuário existente
     const uri = "/api/v1/users";
     const expectedStatus = 409;
