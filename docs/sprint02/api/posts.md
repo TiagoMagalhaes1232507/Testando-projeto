@@ -1,4 +1,4 @@
-# REST API Endpoint : /api/v1/Posts
+# REST API Endpoint : /api/v1/posts
 
 ## 1- Request: Post / Create Post
 ### URI
@@ -7,7 +7,6 @@
 ### HTTP method
     
 POST
-
 
 ### Description
 
@@ -19,14 +18,14 @@ Authorization accessToken
 
 ### Body
 
- opção A
+ option A
 
 { title: string,
   text: string,
   link: string, (optional)
   postType: "text", }
 
-opção B
+option B
 
  { title: string,
   text: string, (optional)
@@ -53,13 +52,11 @@ Response A
 
 message
 
-Ok
+OK
 
-Após colocar no body um post do tipo text, e fazer send, a mensagem de resposta aos post é OK, com o status de 200 OK. O mesmo acontece para o link
-Após colocar no body um userId, a mensagem de resposta aos post é OK, com o status de 200 OK.
-Após colocar no body todos o que se pode colocar inclusivo os opcionais, a mensagem de resposta aos post é OK, com o status de 200 OK.
-
-
+After placing a text type post in the body and sending it, the response message to the post is OK, with a status of 200 OK. The same happens for the link post.
+After placing everything that can be placed in the body, including the optional ones, the response message to the post is OK, with a status of 200 OK.
+Note: The front end says
 
 Response B 
 
@@ -79,40 +76,42 @@ Message
 
 </html>
 
-Esta resposta foi gerada perante isto:
+This response was generated in the face of this:
 { 
 title : "Create post",
 "text": " create a post test 20",
 "postType": "text"
 }
 
-400 Bad Request ( estrutura de dados errados no body)
-Ao não por o title entre aspas a mensagem de erro é gerada:
+400 Bad Request (incorrect data structure in the body)
+When not putting the title in quotes, the error message is generated:
 
 
 Response C  
 
 Message
 
-("TypeError: Cannot read properties of undefined (reading 'toString'))
+"TypeError: Cannot read properties of undefined (reading 'toString')
 
-Esta mensagem de erro é gerada perante isto
+This error message is generated in the face of this:
 { 
 "Title": "Create post",
 "text": " Create ",
 "postType": "text"
 }
 
-Ao não cumprir os critérios pedidos no body para criara um post, como exemplo acima não adicionar o texto com os carateres suficientes
+By not meeting the requested criteria in the body to create a post, such as in the example above not adding the text with sufficient characters.
+
 500 Internal Server Error
-Este erro não deveria aparecer pois é um erro não controlado da aplicação. (Runtime Error)
+This error should not appear because it is an uncontrolled application error (Runtime Error).
+
 
 Response D 
 
-Message - "Token signature expired"
+Message 
+"Token signature expired"
 
-Ao fim de algum tempo, o token expira e aparece esta mensagem:
-
+After some time, the token expires and this message appears
 
 
 
@@ -154,8 +153,7 @@ The request body is empty for GET requests
 
 A-200 OK
 B-500 Internal Server Error
-C-403 Forbiden 
-
+C- 403 Forbiden 
 
 ### Body
 
@@ -167,23 +165,24 @@ C-403 Forbiden
 }
 
 
-Neste caso, não preciso de ter posts ou estar logado, ou ter o accesstoken
-Ele responde com os posts.
-
-
-opção C- 500 Internal Server Error
-
-http://localhost:5001/api/v1/posts/recent?offset=1
-outro exemplo 
-http://localhost:5001/api/v1/posts/recent?offset=5
-
-ambas as situações apresentam esta mensagem:
+Response B
 
 {
     "message": "An unexpected error occurred."
 }
 
-Isto aparece com token ou sem token
+http://localhost:5001/api/v1/posts/recent?offset=1
+other example
+http://localhost:5001/api/v1/posts/recent?offset=5
+
+Both situations present this message
+
+
+Response C
+
+{
+    "message": "Token signature expired."
+}
 
 
 
@@ -219,42 +218,14 @@ The request body is empty for GET requests
 
 ### Status
 
-200 OK
-403 Forbiden 
+A-200 OK
+B-500 Internal Server Error
+C- 403 Forbiden 
 
 
 ### Body
 
-opção A - sem os parametros sem token:
-
-{
-    "posts": 
-        ....
-}
-
-Neste caso, não preciso de ter posts ou estar logado, ou ter o accesstoken
-Ele responde com os posts.
-
-
-opção C - 200 OK
-com o userID no body - sem token
-
-{
-"userID": "string6"
-}
-aparecem os posts, na resposta
-{
-    "posts": 
-        ....
-}
-
-opção D - 200 OK
-com o userID no body - com token
-
-{
-"userID": "string6"
-}
-aparecem os posts, na resposta
+Response A 
 
 {
     "posts": 
@@ -262,52 +233,24 @@ aparecem os posts, na resposta
 }
 
 
-opção E- 200 OK 
-sem token
-
-http://localhost:5001/api/v1/posts/popular?0ffset=1
-
+Response B 
+ 
 {
-    "posts": 
-        ....
+    "message": "An unexpected error occurred."
 }
 
-http://localhost:5001/api/v1/posts/popular?0ffset=5
+http://localhost:5001/api/v1/posts/popular?offset=1
+other example
+http://localhost:5001/api/v1/posts/popular?offset=5
 
-{
-    "posts": 
-        ....
-}
+Both situations present this message
 
-aqui aparecem os mesmos posts na respostas, quer com token ou sem token
 
-opção F- 200 OK 
+Response C
 
-Com token
-
-http://localhost:5001/api/v1/posts/popular?0ffset=1
-
-{
-    "posts": 
-        ....
-}
-
-http://localhost:5001/api/v1/posts/popular?0ffset=5
-
-{
-    "posts": 
-        ....
-}
-
-aqui aparecem os mesmos posts na respostas, quer com token ou sem token
-
-opção G- 403 Forbiden 
-
-O token expirou e aparece esta mensagem:
 {
     "message": "Token signature expired."
 }
-
 
 
 ## Request: post /
