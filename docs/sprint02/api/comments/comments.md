@@ -400,6 +400,7 @@ Certain parameters, like userId and parentCommentId, are required for the reques
 
 | US 006 | [Reply directly to a comment in a Discussion](/docs/sprint01/us006/readme.md)| 
  
+
 ## 4- Request: get / Get Comment by CommentId
 
 ### URI
@@ -408,7 +409,7 @@ Certain parameters, like userId and parentCommentId, are required for the reques
 
 ### HTTP method
 
-POST
+GET
 
 ### Description
 
@@ -418,18 +419,22 @@ Used to show the details of a specific comment by its unique identifier (comment
 
 Authorization accessToken
 
+### Parameters 
+
+- `commentID` (string, required); 
+
 ### Body
 
-null
+none
 
 ## Response
 
 ### Status
 
-- A- 200 - OK
-- B- 403 - Forbidden
-- C- 404 - Not Found
-- D - 500 - Internal Server Error 
+- A- 200 - OK / Comment retrieved successfully.
+- B- 404 - Not Found / Not Found: An error given when there are no comments in the database.
+- C - 500 - Internal Server Error / Internal Server Error: A generic error message given when the commentID is empty.
+- D - 403 - Forbidden / Invalid or expired token.
 
 ### Body
 
@@ -454,11 +459,13 @@ null
   }
   }
 
-- B- message: `Token signature expired.`
-- C- message: `Couldn't find a comment by comment id {}.`
-- D - message: `An unexpected error occurred.`
+
+- B - message: `Couldn't find a comment by comment id {}.`
+- C - message: `An unexpected error occurred.`
+- D - message: `Token signature expired.`
 
 ## Relate the REST API endpoints with User Stories
+none
 
 ## 5- Request: post / Upvote to comment
 
@@ -478,29 +485,33 @@ Used to allow users to interact with the API to upvote comments.
 
 Authorization accessToken
 
-### Body
+## Parameters
 
-null
+- `commentID` (string, required); 
+
+### Body
+none
 
 ## Response
 
 ### Status
 
-- A- 200 - OK
-- B- 403 - Forbidden
-- C- 404 - Not Found
-- D - 500 - Internal Server Error 
+- A - 200 - OK / Successfully upvoted the comment.
+- B - 404 - Not Found / Not Found: Comment with the specified comment Id not found.
+- C - 500 - - Internal Server Error - Internal Server Error: A generic error message given when the access token is empty.
+- D - 403 - Forbidden / Invalid or expired token.
+
 
 ### Body
 
-- A- `OK`
-- B- message: `Token signature expired.`
-- C- message: `Couldn't find a comment with id {}.`
-- D - message: `An unexpected error occurred.`
+- A - `OK`
+- B - message: `Couldn't find a comment with id {}.` 
+- C - message:  `An unexpected error occurred`
+- D - message: `Token signature expired.`
 
 ## Relate the REST API endpoints with User Stories
 
-| US 008 (To vote on a discussion) | [1232512](sprint01/us008/readme.md)
+none
 
 ## 6- Request: post / Downvote to comment
 
@@ -520,26 +531,33 @@ Used to allow users to interact with the API to downvote comments.
 
 Authorization accessToken
 
+## Parameters
+
+- `commentID` (string, required); 
+
+
 ### Body
 
-null
+none
 
 ## Response
 
 ### Status
 
-- A- 200 - OK
-- B- 403 - Forbidden
-- C- 404 - Not Found
-- D - 500 - Internal Server Error 
+- A - 200 - OK / Successfully upvoted the comment.
+- B - 404 - Not Found / Not Found: Comment with the specified comment Id not found.
+- C - 500 - - Internal Server Error - Internal Server Error: A generic error message given when the access token is empty.
+- D - 403 - Forbidden / Invalid or expired token.
+
 
 ### Body
 
-- A- `OK`
-- B- message: `Token signature expired.`
-- C- message: `Couldn't find a comment with id {}.`
-- D - message: `An unexpected error occurred.`
+- A - `OK`
+- B - message: `Couldn't find a comment with id {}.` 
+- C - message:  `An unexpected error occurred`
+- D - message: `Token signature expired.`
 
 ## Relate the REST API endpoints with User Stories
 
-| US 008 (To vote on a discussion) | [1232512](sprint01/us008/readme.md)
+none
+
