@@ -356,9 +356,9 @@ describe("Posts Endpoint", () => {
               expect(res.status).toEqual(expected);
             });
 
-        test("CTP21 - Should return 403 if doesnt have accesstoken", async () => {
+        test("CTP21 - Should return 401 if doesnt have accesstoken", async () => {
           const uri = "/api/v1/posts/";
-          const expected = 403;
+          const expected = 401;
           const res = await request(url)
             .post(uri)
             .set("Content-Type", "application/json")

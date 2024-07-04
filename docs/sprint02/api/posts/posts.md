@@ -109,9 +109,13 @@ This error should not appear because it is an uncontrolled application error (Ru
 Response D 
 
 Message 
-"Token signature expired"
+{
+    "message": "Token signature expired."
+}
+
 
 After some time, the token expires and this message appears
+However the correct error should be 401 Unauthorized
 
 
 
@@ -188,7 +192,7 @@ Response C
     "message": "Token signature expired."
 }
 
-
+However the correct error should be 401 Unauthorized
 
 ## Request: post /
 
@@ -260,6 +264,7 @@ Response C
     "message": "Token signature expired."
 }
 
+However the correct error should be 401 Unauthorized
 
 ## Request: post /
 

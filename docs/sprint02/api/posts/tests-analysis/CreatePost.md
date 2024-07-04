@@ -45,3 +45,17 @@ This error should not appear because it is an uncontrolled application error (Ru
 
 ### Conclusion: 
 This is possibly due to a failure in the API to correctly. This needs further investigation to ensure that the endpoint correctly processes the request.
+
+## CTP21 - Should return 401 if doesnt have accesstoken
+
+## Status:  
+FAIL
+
+### Description: 
+This tests checks if without the access token the status expected is 401 Unauthorized
+
+### Analysis: 
+In this test the error status should be 401 Unauthorized, however the tests fails and the status received is 403 - Forbiden
+
+### Conclusion: 
+This is possibly due to a failure in the API to correctly. This needs further investigation to ensure that the endpoint correctly processes the request.
