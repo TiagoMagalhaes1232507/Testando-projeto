@@ -353,9 +353,14 @@ Authorization: Bearer {accessToken}
 - B- message: `Token signature expired.`
 - C- message: `Couldn't find a post by slug {slug}.`
 
+### Test Cases analysis and conclusions
+|[Test Cases analysis and conclusions](../posts/tests-analysis/upvote.md)|
+
 ## Relate the REST API endpoints with User Stories
 
 | US 008 | [To vote on a Discussion](../../sprint01/us008/readme.md)|
+
+
 
 ________________________________________________________________________________________
 
