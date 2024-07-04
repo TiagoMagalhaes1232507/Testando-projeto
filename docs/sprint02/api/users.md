@@ -34,13 +34,13 @@ Note:
     While using Postman:
     - Error 500:
         * Short password : less than 6 characters --> 500 {"message":"The username tiago was already taken"} --> 400 Bad Request
-            "Yeahhhhh, your password should be at least 6 chars 🤠" message doesn't show.
+            API message: "Yeahhhhh, your password should be at least 6 chars 🤠";
 
         * Email wrong written/Invalid email: no “@” for example --> 500 {"message":"TypeError: Cannot read properties of undefined (reading 'toString')"}--> 400 Bad Request
-            "Yeahhhhh, Want to try that again with a valid email? 🤠" message doesn't show.
+            API message: "Yeahhhhh, Want to try that again with a valid email? 🤠";
 
         * “null” username: 500 {"message":"TypeError: Cannot read properties of undefined (reading 'toString')"}--> 400 Bad Request
-            "Yeahhhhh, you forgot your username. 🤠" message doesn't show.
+            API message: "Yeahhhhh, you forgot your username. 🤠".
 
         * Short username (less than 2 characters) --> 500 {"message":"TypeError: Cannot read properties of undefined (reading 'toString')"}--> 400 Bad Request
     - There is an absense of the report messages that will inform the needed number of characters ('@', n. characters password/username).

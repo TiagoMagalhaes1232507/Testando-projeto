@@ -27,8 +27,8 @@ As a registred user, I want to login in system.
 
 * **AC1:** On the registration homepage, click on "Join" and then "Login".
 * **AC2:** The user should type their username and password.
-* **AC3:** The sistem must validate username and password in database and present a message with the outcome.
-* **AC4:** If validation username and passoword is positive, the sistem present a message of success and permit access to user.
+* **AC3:** The system must validate username and password in database and present a message with the outcome.
+* **AC4:** If validation username and passoword is positive, the system present a message of success and permit access to user.
 * **AC5:**	If validation username or password is negative, the sistem present a message of insucess and user must type username and password again.
 
 

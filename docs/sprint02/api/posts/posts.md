@@ -109,9 +109,13 @@ This error should not appear because it is an uncontrolled application error (Ru
 Response D 
 
 Message 
-"Token signature expired"
+{
+    "message": "Token signature expired."
+}
+
 
 After some time, the token expires and this message appears
+However the correct error should be 401 Unauthorized
 
 
 
@@ -119,8 +123,8 @@ After some time, the token expires and this message appears
 
 ## Relate the REST API endpoints with User Stories
 
-| US 004 | [Create Text Post](../../sprint02/us004/readme.md)|
-| US 007 | [Create Link Post](../../sprint02/us004/readme.md)|
+| US 004 | [Create Text Post](../../us004/01.requirements-engineering/readme.md)|
+| US 007 | [Create Link Post](../../us007/01.requirements-engineering/readme.md)|
 
 ________________________________________________________________________________________
 
@@ -188,12 +192,12 @@ Response C
     "message": "Token signature expired."
 }
 
-
+However the correct error should be 401 Unauthorized
 
 ## Request: post /
 
 ## Relate the REST API endpoints with User Stories
-| US 013 | [Discussion's list ordered by date](../../sprint02/us013/readme.md)|
+| US 013 | [Discussion's list ordered by date](../../us013/01.requirements-engineering/readme.md)|
 ________________________________________________________________________________________
 
 ## 3 - Request: Get / getPopulartPosts
@@ -260,12 +264,13 @@ Response C
     "message": "Token signature expired."
 }
 
+However the correct error should be 401 Unauthorized
 
 ## Request: post /
 
 ## Relate the REST API endpoints with User Stories
 
-| US 010 | [Discussion's list ordered by popularity](../../sprint02/us010/readme.md)|
+| US 010 | [Discussion's list ordered by popularity](../../us010/01.requirements-engineering/readme.md)|
 
 ________________________________________________________________________________________
 
