@@ -127,7 +127,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("T7 -Create post with invalid text length (less than 20 characters) should return status 400", async () => {
+      test("T7 -Create post with invalid text length should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -136,7 +136,7 @@ describe("Posts Endpoint", () => {
           .set("Authorization", accessToken)
           .send({
             title: "Create a post",
-            text: "aaaaaaaaaaaaaaaaaaa",
+            text: "a",
             postType: "text",
           });
         expect(res.status).toEqual(expected);
@@ -144,7 +144,7 @@ describe("Posts Endpoint", () => {
 
       test("T8- Create post with invalid link length (less than 8 characters) should return status 400", async () => {
         const uri = "/api/v1/posts/";
-        const expected = 500;
+        const expected = 400;
         const res = await request(url)
           .post(uri)
           .set("Content-Type", "application/json")
@@ -159,7 +159,7 @@ describe("Posts Endpoint", () => {
     
       test("T9- Create post with invalid link length(more than 500) should return status 400", async () => {
         const uri = "/api/v1/posts/";
-        const expected = 500;
+        const expected = 400;
         const res = await request(url)
           .post(uri)
           .set("Content-Type", "application/json")
