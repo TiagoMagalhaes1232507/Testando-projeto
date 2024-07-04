@@ -325,7 +325,6 @@ None
 ________________________________________________________________________________________
 
 ## 5- Request: POST / Upvote Post
-### [CTP021 Upvote Post](../../../../src/automated-tests/posts/upvote-tests.spec.ts)
 
 ### URI
 api/v1/posts/upvote
