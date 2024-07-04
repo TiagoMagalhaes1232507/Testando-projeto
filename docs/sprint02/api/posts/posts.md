@@ -133,6 +133,10 @@ ________________________________________________________________________________
     
 GET
 
+### Description
+
+This endpoint gets the recent posts
+
 ### Headers
     
  Authorization accessToken (optional)
@@ -200,6 +204,10 @@ ________________________________________________________________________________
 ### HTTP method
     
 GET
+
+### Description
+
+This endpoint gets the popular posts
 
 ### Headers
     

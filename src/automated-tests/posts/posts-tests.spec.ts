@@ -49,7 +49,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("T2-create post text with optional userID should return status 200", async () => {
+      test("T2-create post text with optional userId should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
         const res = await request(url)
@@ -80,7 +80,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("T4 -create post link with optional userID should return status 200", async () => {
+      test("T4 -create post link with optional userId should return status 200", async () => {
         const uri = "/api/v1/posts/";
         const expected = 200;
         const res = await request(url)
@@ -127,7 +127,7 @@ describe("Posts Endpoint", () => {
         expect(res.status).toEqual(expected);
       });
 
-      test("T7 -Create post with invalid text length should return status 400", async () => {
+      test("T7 -Create post with invalid text length (less than 20 characters) should return status 400", async () => {
         const uri = "/api/v1/posts/";
         const expected = 400;
         const res = await request(url)
@@ -136,7 +136,7 @@ describe("Posts Endpoint", () => {
           .set("Authorization", accessToken)
           .send({
             title: "Create a post",
-            text: "a",
+            text: "aa",
             postType: "text",
           });
         expect(res.status).toEqual(expected);
@@ -268,14 +268,14 @@ describe("Posts Endpoint", () => {
 
 
         test("T16 -Get recent post should return status 200 ", async () => {
-          const uri = "/api/v1/posts/recent/";
+          const uri = "/api/v1/posts/recent";
           const expected = 200;
           const res = await request(url).get(uri);
           expect(res.status).toEqual(expected);
         });
       
         test("T17 -Get recent post with optional userId should return status 200 ", async () => {
-          const uri = "/api/v1/posts/recent/";
+          const uri = "/api/v1/posts/recent";
           const expected = 200;
           const res = await request(url).get(uri).set("Content-Type", "application/json")
                   .set("Authorization", accessToken).send(
@@ -287,7 +287,7 @@ describe("Posts Endpoint", () => {
         });
       
         test("T18 -Get recent post without token with body should return status 200 ", async () => {
-          const uri = "/api/v1/posts/recent/";
+          const uri = "/api/v1/posts/recent";
           const expected = 200;
           const res = await request(url).get(uri).set("Content-Type", "application/json")
                   .send(
@@ -299,14 +299,14 @@ describe("Posts Endpoint", () => {
         });
 
         test("T19 -Get popular post should return status 200 ", async () => {
-          const uri = "/api/v1/posts/popular/";
+          const uri = "/api/v1/posts/popular";
           const expected = 200;
           const res = await request(url).get(uri);
           expect(res.status).toEqual(expected);
         });
       
         test("T20 -Get popular post with optional userId should return status 200 ", async () => {
-          const uri = "/api/v1/posts/popular/";
+          const uri = "/api/v1/posts/popular";
           const expected = 200;
           const res = await request(url).get(uri).set("Content-Type", "application/json")
                   .set("Authorization", accessToken).send(
@@ -318,7 +318,7 @@ describe("Posts Endpoint", () => {
         });
 
         test("T21 -Get recent post with optional offset should return status 400 ", async () => {
-          const uri = "/api/v1/posts/recent/?offset=1";
+          const uri = "/api/v1/posts/recent?offset=1";
           const expected = 400;
           const res = await request(url).get(uri).set("Content-Type", "application/json")
                   .set("Authorization", accessToken).send(
@@ -329,7 +329,7 @@ describe("Posts Endpoint", () => {
         });
 
         test("T22 Get popular post with optional offset should return status 400 ", async () => {
-          const uri = "/api/v1/posts/popular/?offset=1";
+          const uri = "/api/v1/posts/popular?offset=1";
           const expected = 400;
           const res = await request(url).get(uri).set("Content-Type", "application/json")
                   .set("Authorization", accessToken).send(
