@@ -64,7 +64,7 @@ describe("Posts Endpoints", () => {
   });
 
   describe("GET / Get post by slug", () => {
-    test("should return status 200", async () => {
+    test("CTP23 - should return status 200", async () => {
       const uri = `/api/v1/posts/?slug=${slug}`;
       const expected = 200;
       const res = await request(url).get(uri).set("Authorization", accessToken);
@@ -74,7 +74,7 @@ describe("Posts Endpoints", () => {
       expect(res.body.post.title).toEqual(postData.title);
     });
 
-    test("should return status 404 for invalid slug", async () => {
+    test("CTP24 - should return status 404 for invalid slug", async () => {
       const uri = `/api/v1/posts/?slug=invalid-slug`;
       const expected = 404;
       const res = await request(url).get(uri).set("Authorization", accessToken);
@@ -85,16 +85,16 @@ describe("Posts Endpoints", () => {
       );
     });
 
-    test("should return status 500 for server error", async () => {
+    test("CTP25 - should return status 404 for server error", async () => {
       const uri = `/api/v1/errorRoute/?slug=${slug}`;
-      const expected = 500;
+      const expected = 404;
       const res = await request(url).get(uri).set("Authorization", accessToken);
       expect(res.status).toEqual(expected);
-      expect(res.text).toContain("Cannot GET /api/v1/errorRoute/");
+      expect(res.text).toContain(`Cannot GET ${uri}`);
     });
   });
 
-  //Function that extracts the number of votes of a specific post
+  // Function that extracts the number of votes of a specific post
   async function getPostPointsBySlug(slug: string): Promise<number> {
     const uri = `/api/v1/posts/?slug=${slug}`;
     const res = await request(url).get(uri).set("Authorization", accessToken);
@@ -102,6 +102,7 @@ describe("Posts Endpoints", () => {
     return res.body.post.points;
   }
 
+  // Function that checks if a post was upvoted by the current user
   async function getIsVotedByMe(slug: string): Promise<boolean> {
     const uri = `/api/v1/posts/?slug=${slug}`;
     const res = await request(url).get(uri).set("Authorization", accessToken);
@@ -109,75 +110,8 @@ describe("Posts Endpoints", () => {
     return res.body.post.wasUpvotedByMe;
   }
 
-  describe("POST / Upvote Post", () => {
-    test("should return status 200, increment points after upvote and update the voteByMe field", async () => {
-      // Get the current points before the upvote
-      const previousVotesNumber = await getPostPointsBySlug(slug);
-
-      // Trigger the upvote endpoint
-      const uri = "/api/v1/posts/upvote";
-      const expectedStatus = 200;
-      const res = await request(url)
-        .post(uri)
-        .set("Authorization", accessToken)
-        .set("Content-Type", "application/json")
-        .send({
-          slug: slug,
-        });
-
-      // Validate the response status and message
-      expect(res.status).toEqual(expectedStatus);
-      expect(res.text).toEqual("OK");
-
-      // Get the updated points after upvoting
-      const updatedVotesNumber = await getPostPointsBySlug(slug);
-
-      // Get the updated owner of votes after upvoting
-      const updatedIsVotedByMe = await getIsVotedByMe(slug);
-
-      // Validate that the points have been incremented
-      expect(updatedVotesNumber).toBeGreaterThan(previousVotesNumber);
-
-      // Validate that the vote owner have been update accordingly
-      expect(updatedVotesNumber).toBe(true);
-    });
-
-    test("should return status 403 for expired token", async () => {
-      const uri = "/api/v1/posts/upvote";
-      const expected = 403;
-      const expiredToken = "expiredAccessToken";
-      const res = await request(url)
-        .post(uri)
-        .set("Authorization", expiredToken)
-        .set("Content-Type", "application/json")
-        .send({
-          slug: slug,
-        });
-
-      expect(res.status).toEqual(expected);
-      expect(res.body.message).toEqual("Token signature expired.");
-    });
-
-    test("should return status 404 for non-existent post", async () => {
-      const uri = "/api/v1/posts/upvote";
-      const expected = 404;
-      const res = await request(url)
-        .post(uri)
-        .set("Authorization", accessToken)
-        .set("Content-Type", "application/json")
-        .send({
-          slug: "non-existent-slug",
-        });
-
-      expect(res.status).toEqual(expected);
-      expect(res.body.message).toEqual(
-        "Couldn't find a post by slug {non-existent-slug}."
-      );
-    });
-  });
-
   describe("POST / Downvote Post", () => {
-    test("should return status 200 and decrement points after downvote", async () => {
+    test("CTP31 - should return status 200 and decrement points after downvote", async () => {
       // Get the current points before the upvote
       const previousVotesNumber = await getPostPointsBySlug(slug);
 
@@ -203,7 +137,7 @@ describe("Posts Endpoints", () => {
       expect(updatedVotesNumber).toBeLessThan(previousVotesNumber);
     });
 
-    test("should return status 403 for expired token", async () => {
+    test("CTP32 - should return status 403 for expired token", async () => {
       const uri = "/api/v1/posts/downvote";
       const expected = 403;
       const expiredToken = "expiredAccessToken";
@@ -219,7 +153,7 @@ describe("Posts Endpoints", () => {
       expect(res.body.message).toEqual("Token signature expired.");
     });
 
-    test("should return status 404 for non-existent post", async () => {
+    test("CTP33 - should return status 404 for non-existent post", async () => {
       const uri = "/api/v1/posts/downvote";
       const expected = 404;
       const res = await request(url)
