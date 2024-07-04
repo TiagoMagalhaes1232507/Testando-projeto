@@ -71,7 +71,7 @@ CTC03 - Empty slug parameter
 
 - expected response:
   - status: 400 Bad Request
-  - body (message): "Slug parameter must not be empty"
+  - body: "Slug parameter must not be empty"
 
 - received response:
   - status: 200 OK
@@ -81,7 +81,7 @@ CTC04 - Missing slug parameter
 
 - expected response:
   - status: 400 Bad Request
-  - body (message): "Slug parameter must be provided"
+  - body: "Slug parameter must be provided"
 
 - received response:
   - status: 500 Internal Server Error
@@ -91,7 +91,7 @@ CTC05 - invalid token
 
 - expected response:
   - status: 401 Unauthorized
-  - body (message): "User authentication required"
+  - body: "User authentication required"
 
 - received response:
   - status: 403 Forbidden
@@ -196,7 +196,7 @@ CTC013 - invalid slug
 
 - expected/received response:
   - status: 404 Not Found
-  - body: "Couldn't find a post by slug {${slug}}"
+  - body: "Couldn't find a post by slug {invalidSlug}."
 
 CTC014 - missing slug parameter
 
@@ -339,7 +339,7 @@ CTC025 - invalid slug
 
 - expected/received response:
   - status: 404 Not Found
-  - body: "Couldn't find a post by slug {${slug}}"
+  - body: "Couldn't find a post by slug {invalidslug}."
 
 CTC026 - missing slug parameter
 
@@ -365,7 +365,7 @@ CTC028 - invalid commentId
 
 - expected/received response:
   - status: 404 Not Found
-  - body: "Couldn't find a comment by commentId {${commentId}}"
+  - body: "Couldn't find a comment by commentId {invalidCcommentId}."
 
 CTC029 - missing commentId
 
@@ -377,7 +377,7 @@ CTC030 - invalid token
 
 - expected response:
   - status: 401 Unauthorized
-  - body (message): "User authentication required"
+  - body: "User authentication required"
 
 - received response:
   - status: 403 Forbidden
@@ -387,7 +387,7 @@ CTC031 - missing token
 
 - expected response:
   - status: 401 Unauthorized
-  - body (message): "User authentication required"
+  - body: "User authentication required"
 
 - received response:
   - status: 403 Forbidden
