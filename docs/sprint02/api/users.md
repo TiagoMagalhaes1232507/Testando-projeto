@@ -30,6 +30,21 @@ B - message: `The email ${email} associated for this account already exists`
 c - message: `The username ${username} was already taken`
 D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`
 
+Note:
+    While using Postman:
+    - Error 500: 
+        * Short password : less than 6 characters --> 500 {"message":"The username tiago was already taken"} --> 400 Bad Request
+            "Yeahhhhh, your password should be at least 6 chars 🤠" message doesn't show.
+
+        * Email wrong written/Invalid email: no “@” for example --> 500 {"message":"TypeError: Cannot read properties of undefined (reading 'toString')"}--> 400 Bad Request
+            "Yeahhhhh, Want to try that again with a valid email? 🤠" message doesn't show.
+
+        * “null” username: 500 {"message":"TypeError: Cannot read properties of undefined (reading 'toString')"}--> 400 Bad Request
+            "Yeahhhhh, you forgot your username. 🤠" message doesn't show.
+
+        * Short username (less than 2 characters) --> 500 {"message":"TypeError: Cannot read properties of undefined (reading 'toString')"}--> 400 Bad Request
+    - There is an absense of the report messages that will inform the needed number of characters ('@', n. characters password/username).
+
 ## Relate the REST API endpoints with User Stories
 | US 001 | [User Registration](../../us001/Readme.md)|
 ________________________________________________________________________________________
@@ -92,12 +107,22 @@ password: string }
 ## Response
 ### Status
 A - 200 - OK
+B - 500 - Internal Server ErrorInternal Server Error
+C - 400 - Bad Request
 
 ### Body
 A - message: `OK`
+B - message: "An unexpected error occurred."
+C - message: "Password doesnt match error."
+
+Notes:
+    While using postman:
+        - Testing "Unexistent user": 500 {"message":"An unexpected error occurred."}--> should be : 404 Not Found `Username or password incorrect.`
+
 
 ## Relate the REST API endpoints with User Stories
-| US 002 | [To login in System](../../us002/Readme.md) |_____________________________________________________________________________________________
+| US 002 | [To login in System](../../us002/Readme.md) |
+_____________________________________________________________________________________________
 
 ## 4- Request: POST / Logout 
 

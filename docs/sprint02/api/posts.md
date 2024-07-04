@@ -1,4 +1,4 @@
-# REST API Endpoint : /api/v1/Posts
+# REST API Endpoint : /api/v1/posts
 
 ## 1- Request: Post / Create Post
 ### URI
@@ -7,7 +7,6 @@
 ### HTTP method
     
 POST
-
 
 ### Description
 
@@ -19,14 +18,14 @@ Authorization accessToken
 
 ### Body
 
- opção A
+ option A
 
 { title: string,
   text: string,
   link: string, (optional)
   postType: "text", }
 
-opção B
+option B
 
  { title: string,
   text: string, (optional)
@@ -42,43 +41,26 @@ Neste campo, o userID não é obrigatório colocar no body, mas se o puser ele r
 
 ### Status
 
-200 OK
-400 Bad Request ( estrutura de dados errados no body) - 
-500 Internal Server Error 
-403 Forbiden 
+A-200 OK
+B-400 Bad Request ( estrutura de dados errados no body) - 
+C-500 Internal Server Error 
+D-403 Forbiden 
 
 ### Body
 
-opção A - OK
+Response A 
 
-Após colocar no body um post do tipo text, e fazer send, a mensagem de resposta aos post é OK, com o status de 200 OK.
-{ 
-"title" : "Create post",
-"text": " create a post test 20",
-"postType": "text"
-}
+message
 
-opção B - OK
-ao colocar o parametro userId, opcional
-{ 
-"userId": "string6",
-"title" : "Create post",
-"text": " create a post test 20",
-"postType": "text"
-}
+OK
 
-A resposta obtida no body do post é OK, e status 200 OK
+After placing a text type post in the body and sending it, the response message to the post is OK, with a status of 200 OK. The same happens for the link post.
+After placing everything that can be placed in the body, including the optional ones, the response message to the post is OK, with a status of 200 OK.
+Note: The front end says
 
-opção C- 400 Bad Request ( estrutura de dados errados no body)
+Response B 
 
-Exemplo:
-{ 
-title : "Create post",
-"text": " create a post test 20",
-"postType": "text"
-}
-
-Ao não por o title entre aspas a mensagem de erro é gerada:
+Message
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,28 +76,51 @@ Ao não por o title entre aspas a mensagem de erro é gerada:
 
 </html>
 
-
-opção D-500 Internal Server Error 
-Exemplo
+This response was generated in the face of this:
 { 
-"": "Create post",
+title : "Create post",
 "text": " create a post test 20",
 "postType": "text"
 }
 
-Ao não cumprir os critérios pedidos no body para criara um post, como exemplo acima não adicionar um title ele responde com esta mensagem:
-("TypeError: Cannot read properties of undefined (reading 'toString'))
+400 Bad Request (incorrect data structure in the body)
+When not putting the title in quotes, the error message is generated:
 
-opção E - 403 Forbiden 
 
-Ao fim de algum tempo, o token expira e aparece esta mensagem:
-"Token signature expired."
+Response C  
+
+Message
+
+"TypeError: Cannot read properties of undefined (reading 'toString')
+
+This error message is generated in the face of this:
+{ 
+"Title": "Create post",
+"text": " Create ",
+"postType": "text"
+}
+
+By not meeting the requested criteria in the body to create a post, such as in the example above not adding the text with sufficient characters.
+
+500 Internal Server Error
+This error should not appear because it is an uncontrolled application error (Runtime Error).
+
+
+Response D 
+
+Message 
+"Token signature expired"
+
+After some time, the token expires and this message appears
+
+
 
 ## Request: post /
 
 ## Relate the REST API endpoints with User Stories
 
-The `/api/v1/posts/`(Post) endpoint is related to  user stories  US 004 - Create Text Post and to  US 007 - Create Link post 
+| US 004 | [Create Text Post](../../sprint02/us004/readme.md)|
+| US 007 | [Create Link Post](../../sprint02/us004/readme.md)|
 
 ________________________________________________________________________________________
 
@@ -138,57 +143,53 @@ GET
 The request body is empty for GET requests
 
 ### Parameters 
-`offset?` (number, optional); 
-`userId?` (string, optional). 
+
+`offset?` (number, optional)
+`userId?` (string, optional) 
 
 ## Response
 
 ### Status
 
-200 OK
-500 Internal Server Error
-403 Forbiden 
-
+A-200 OK
+B-500 Internal Server Error
+C- 403 Forbiden 
 
 ### Body
 
-opção A - sem os parametros:
+ Response A 
+
 {
     "posts": 
         ....
 }
 
-Neste caso, não preciso de ter posts ou estar logado, ou ter o accesstoken
-Ele responde com os posts.
 
-opção B - 200 OK
-com o userID no body
-{
-"userID": "string6"
-}
- aparecem os posts, na resposta
-Posts []
-
-opção C- 500 Internal Server Error
-
-http://localhost:5001/api/v1/posts/recent?offset=1
-outro exemplo 
-http://localhost:5001/api/v1/posts/recent?offset=5
-
-ambas as situações apresentam esta mensagem:
+Response B
 
 {
     "message": "An unexpected error occurred."
 }
 
-Isto aparece com token ou sem token
+http://localhost:5001/api/v1/posts/recent?offset=1
+other example
+http://localhost:5001/api/v1/posts/recent?offset=5
+
+Both situations present this message
+
+
+Response C
+
+{
+    "message": "Token signature expired."
+}
 
 
 
 ## Request: post /
 
 ## Relate the REST API endpoints with User Stories
-/api/v1/posts/recent (Post) endpoint is related to  user stories  US 010 - Discussion's list ordered by date
+| US 013 | [Discussion's list ordered by date](../../sprint02/us013/readme.md)|
 ________________________________________________________________________________________
 
 ## 3 - Request: Get / getPopulartPosts
@@ -217,50 +218,14 @@ The request body is empty for GET requests
 
 ### Status
 
-200 OK
-403 Forbiden 
+A-200 OK
+B-500 Internal Server Error
+C- 403 Forbiden 
 
 
 ### Body
 
-opção A - sem os parametros sem token:
-
-{
-    "posts": 
-        ....
-}
-
-Neste caso, não preciso de ter posts ou estar logado, ou ter o accesstoken
-Ele responde com os posts.
-
-opção B - sem os parametros com token:
-
-{
-    "posts": 
-        ....
-}
-
-Com access tokken, também aparecem os posts na resposta
-
-opção C - 200 OK
-com o userID no body - sem token
-
-{
-"userID": "string6"
-}
-aparecem os posts, na resposta
-{
-    "posts": 
-        ....
-}
-
-opção D - 200 OK
-com o userID no body - com token
-
-{
-"userID": "string6"
-}
-aparecem os posts, na resposta
+Response A 
 
 {
     "posts": 
@@ -268,57 +233,31 @@ aparecem os posts, na resposta
 }
 
 
-opção E- 200 OK 
-sem token
-
-http://localhost:5001/api/v1/posts/popular?0ffset=1
-
+Response B 
+ 
 {
-    "posts": 
-        ....
+    "message": "An unexpected error occurred."
 }
 
-http://localhost:5001/api/v1/posts/popular?0ffset=5
+http://localhost:5001/api/v1/posts/popular?offset=1
+other example
+http://localhost:5001/api/v1/posts/popular?offset=5
 
-{
-    "posts": 
-        ....
-}
+Both situations present this message
 
-aqui aparecem os mesmos posts na respostas, quer com token ou sem token
 
-opção F- 200 OK 
+Response C
 
-Com token
-
-http://localhost:5001/api/v1/posts/popular?0ffset=1
-
-{
-    "posts": 
-        ....
-}
-
-http://localhost:5001/api/v1/posts/popular?0ffset=5
-
-{
-    "posts": 
-        ....
-}
-
-aqui aparecem os mesmos posts na respostas, quer com token ou sem token
-
-opção G- 403 Forbiden 
-
-O token expirou e aparece esta mensagem:
 {
     "message": "Token signature expired."
 }
 
 
-
 ## Request: post /
 
 ## Relate the REST API endpoints with User Stories
+
+| US 010 | [Discussion's list ordered by popularity](../../sprint02/us010/readme.md)|
 
 ________________________________________________________________________________________
 

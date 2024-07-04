@@ -28,11 +28,54 @@ Authorization: acessToken (optional).
 
 The request body is empty for GET requests. 
 
-## Response 
+## Tests
 
-### Status 
+### [Get Coments by Post Slug](../../../src/automated-tests/comments/comments-tests2.spec.ts)
 
-- A - 200 OK (f the slug parameter is provided, even if it is invalid or empty); 
+CTC021 - Valid slug parameter is provided
+
+- expected response:
+  - status: 200
+  - body (message): "comments": [
+    {
+            "postSlug": string,
+            "commentId": string,
+            "parentCommentId?": string,
+            "text": string,
+            "member": MemberDTO,
+            "createdAt": string | Date,
+            "childComments": CommentDTO[],
+            "postTitle": string,
+            "points": number,
+            "wasUpvotedByMe": boolean,
+            "wasDownvotedByMe": boolean
+    }
+  ]
+    
+-received response
+  - status: 200
+  - body (message): 
+  "comments": [
+        {
+            "postSlug": "6554114-criar-um-post",
+            "commentId": "0372bafc-01c7-4d6d-9363-afbf539dda2f",
+            "parentCommentId": null,
+            "text": "Testing comment text",
+            "member": {
+                "reputation": 0,
+                "user": {
+                    "username": "anabastos"
+                }
+            },
+            "createdAt": "2024-07-03T15:51:19.000Z",
+            "childComments": [],
+            "postTitle": "criar um post",
+            "points": 1,
+            "wasUpvotedByMe": false,
+            "wasDownvotedByMe": false
+        },
+  ]
+- A - 200 OK (if the slug parameter is provided, even if it is invalid or empty); 
 - B - 403 Forbiden (if acessToken expired); 
 - C - 500 Internal Server Error (if slug parameter is missing). 
 
@@ -41,23 +84,34 @@ The request body is empty for GET requests.
 - A - `comments` (array of `CommentDTO` objects): An array containing comments for the specified slug parameter provided. An empty array `[]` could be returned `[]`, if there are no comments, if the slug does not exist or if the slug parameter is empty.  
 If the array of `CommentDTO` objects is not empty, this includes: 
 
-  - `postTitle`: (string); 
-  - `commentId`: (string); 
-  - `parentCommentId?`: (string, optional); 
-  - `text`: (string) Content of the comment;
-  - `member`: (MemberDTO object) Information about the user who created the comment; 
-  - `createdAt`: (string | Date); 
-  - `childComments`: (array of `CommentDTO` objects) An array containing child comments of this comment (optional); 
-  - `points`: (number); 
-  - `wasUpvotedByMe`: (boolean, optional); 
-  - `wasDownvotedByMe`: (boolean, optional). 
+
+  postSlug: string;
+  postTitle: string;
+  commentId: string;
+  parentCommentId?: string;
+  text: string;
+  member: MemberDTO;
+  createdAt: string | Date;
+  childComments: CommentDTO[];
+  points: number;
+  wasUpvotedByMe: boolean;
+  wasDownvotedByMe: boolean;
 
 - B - message: `Token signature expired`; 
 - C - message: `An unexpected error ocurred`.  
 
+## Remarks
+required parameters
+
 ## Relate the REST API endpoints with User Stories 
 
 The `/api/v1/comments/?{slug}`(GET) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user or a visitor, I want to read the comments for a specific post". 
+
+# Tests files
+
+tes
+[get coments by post slug](../../../src/automated-tests/comments/comments-tests2.spec.ts)
+
 
 ## 2- Request: POST / Reply To Post 
 
@@ -86,9 +140,19 @@ Authorization: acessToken (required).
 - `userId`: (string, required); 
 - `comment` (string, required). 
 
-## Response 
+## Tests
 
-### Status 
+### [Get Coments by Post Slug](../../../src/automated-tests/comments/comments-tests2.spec.ts)
+
+CTC021 - Valid slug parameter is provided
+
+- expected response:
+  - status: 200
+  - message: ok this message should be more descritive
+
+-received response
+  - status: 200
+ 
 
 - A - 200 OK (Sucess);
 - B - 403 Forbiden (if acessToken expired or is missing); 
