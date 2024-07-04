@@ -133,6 +133,10 @@ ________________________________________________________________________________
     
 GET
 
+### Description
+
+This endpoint gets the recent posts
+
 ### Headers
     
  Authorization accessToken (optional)
@@ -200,6 +204,10 @@ ________________________________________________________________________________
 ### HTTP method
     
 GET
+
+### Description
+
+This endpoint gets the popular posts
 
 ### Headers
     
@@ -325,6 +333,7 @@ None
 ________________________________________________________________________________________
 
 ## 5- Request: POST / Upvote Post
+
 ### URI
 api/v1/posts/upvote
 
@@ -358,7 +367,7 @@ Authorization: Bearer {accessToken}
 
 ## Relate the REST API endpoints with User Stories
 
-| US 008 | [To vote on a Discussion](../../sprint01/us008/readme.md)|
+| US 008 | [To vote on a Discussion](../../us008/01.requirements-engineering/readme.md)|
 
 
 

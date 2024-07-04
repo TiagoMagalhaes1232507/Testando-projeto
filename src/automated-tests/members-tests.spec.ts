@@ -1,8 +1,4 @@
 import request from "supertest";
-//import {app} from "./shared/infra/http/"
-// import DTO ?????!
-
-
 
 //let accessToken: string; // variable to store the access token
 let url: string = "http://localhost:5001"; // defines url to requests
@@ -15,9 +11,9 @@ describe("Testing requests to members", () => {
             const createUserResponse = await request(url)
                 .post("/api/v1/users/")
                 .send({
-                    username: "aaa",
-                    email: "aaa@aaa.com",
-                    password: "aaaaaa",
+                    username: "testmembers",
+                    email: "members@test.com",
+                    password: "membersss",
                 })
             const createUser = createUserResponse.body;
             console.log("Created User:", createUser);
@@ -29,18 +25,18 @@ describe("Testing requests to members", () => {
         const loginResponse = await request(url)
             .post("/api/v1/users/login")
             .send({
-                username: "aaa",
-                password: "aaaaaa",
+                username: "testmembers",
+                password: "membersss",
             });
     });
 
 
     // For these tests authotization isn't mandatory
-    test("T1 - If member is registred (status)", async () => {
+    test("CTm1 - If member is registred (status)", async () => {
         // Arrange
-        const username = "aaa";
+        const username = "testmembers";
         const expectedStatusCode = 200;
-        const expectedBody = {"member": {"reputation": 0, "user": {"username": "aaa"}}};
+        const expectedBody = {"member": {"reputation": 0, "user": {"username": "testmembers"}}};
 
         //Send request - Act
         const response = await request(url)
@@ -53,11 +49,11 @@ describe("Testing requests to members", () => {
         expect(response.body).toStrictEqual;
     });
 
-    test("T2 - If member is not registred", async () => {
+    test("CTm2 - If member is not registred", async () => {
         // Arrange
-        const username = "yyy";
+        const username = "notmember";
         const expectedStatusCode = 404;
-        const expectedBody = "Couldn't find a member with the username yyy";
+        const expectedBody = "Couldn't find a member with the username";
 
         //Send request - Act
         const response = await request(url)
@@ -70,10 +66,10 @@ describe("Testing requests to members", () => {
         expect(response.body.message).toStrictEqual;
     });
 
-    test("T3 - Response of ../members/me", async () => {
+    test("CTm3 - Response of ../members/me", async () => {
         // Arrange
-        const expectedStatus = 500;
-        const expectedBody = "An unexpected error occurred";
+        const expectedStatus = 400;
+        const expectedBody = "Bad Request";
 
         //Send request - Act
         const response = await request(url)

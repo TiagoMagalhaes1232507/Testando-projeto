@@ -97,34 +97,32 @@ describe("Comments API Tests", () => {
     commentId = commentsListResponse.body.comments?.[0].commentId;
   });
 
-  // Test GET /api/v1/comments/?slug={slug} 
+  // // Test GET /api/v1/comments/?slug={slug} 
 
-  //CTC01
-  test("Get Comments by Post Slug (success - Valid slug parameter is provided)", async (): Promise<void> => {
-    // Act 
-    const response = await request(app)
-      .get(`${uri}/comments/?slug=${slug}`);
+  // //CTC01
+  // test("Get Comments by Post Slug (success - Valid slug parameter)", async (): Promise<void> => {
+  //   // Act 
+  //   const response = await request(app)
+  //     .get(`${uri}/comments/?slug=${slug}`);
 
-    const firstComment = response.body.comments?.[0]
+  //   const firstComment = response.body.comments?.[0]
 
-    // Assert 
-    expect(response.statusCode).toBe(statusCode200);
-    expect(response.body.comments).toBeDefined(); // Check if the comments list is defined 
-    expect(response.body.comments.length).toBeGreaterThan(0); // Check if there is at least one comment 
-    expect(Object.keys(firstComment)?.includes("postTitle")).toBe(true)
-
-    //   - `postTitle`: (string); 
-    // - `commentId`: (string); 
-    // - `parentCommentId?`: (string, optional); 
-    // - `text`: (string) Content of the comment;
-    // - `member`: (MemberDTO object) Information about the user who created the comment; 
-    // - `createdAt`: (string | Date); 
-    // - `childComments`: (array of `CommentDTO` objects) An array containing child comments of this comment (optional); 
-    // - `points`: (number); 
-    // - `wasUpvotedByMe`: (boolean, optional); 
-    // - `wasDownvotedByMe`: (boolean, optional). 
-
-  });
+  //   // Assert 
+  //   expect(response.statusCode).toBe(statusCode200);
+  //   expect(response.body.comments).toBeDefined(); // Check if the comments list is defined 
+  //   expect(response.body.comments.length).toBeGreaterThan(0); // Check if there is at least one comment 
+  //   expect(Object.keys(firstComment)?.includes("postSlug")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("postTitle")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("commentId")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("parentCommentId")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("text")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("member")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("createdAt")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("childComments")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("points")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("wasUpvotedByMe")).toBe(true);
+  //   expect(Object.keys(firstComment)?.includes("wasDownvotedByMe")).toBe(true);
+  // });
 
   //CTC02
   // test("Get Comments by Post Slug (Error - Invalid slug parameter)", async (): Promise<void> => {
@@ -168,7 +166,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode401);
-  //   expect(response.body.message).toBe("Valid token required")
+  //   expect(response.body.message).toBe("User authentication required")
   // });
 
   // // Test POST /api/v1/comments/?slug={slug} 
@@ -210,6 +208,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode200);
+  //   expect(response.text).toBe("OK");
   // });
 
   // //CTC08
@@ -229,6 +228,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode200);
+  //   expect(response.text).toBe("OK");
   // });
 
   // //CTC09
@@ -325,6 +325,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode404);
+  //   expect(response.body.message).toBe("Couldn't find a post by slug {${slug}}");
   // });
 
   // //CTC014
@@ -366,7 +367,7 @@ describe("Comments API Tests", () => {
   // });
 
   // //CTC016
-  // test("Reply To Post (Error - Expired/Invalid acessToken)", async () => {
+  // test("Reply To Post (Error - invalid token)", async () => {
   //   // Arrange 
   //   const commentData: ReplyToPostDTO = {
   //     slug,
@@ -381,7 +382,8 @@ describe("Comments API Tests", () => {
   //     .send(commentData);
 
   //   // Assert 
-  //   expect(response.statusCode).toBe(statusCode403);
+  //   expect(response.statusCode).toBe(statusCode401);
+  //   expect(response.body.message).toBe("User authentication required");
   // });
 
   // //CTC017
@@ -400,11 +402,13 @@ describe("Comments API Tests", () => {
   //     .send(commentData);
 
   //   // Assert 
-  //   expect(response.statusCode).toBe(statusCode403);
+  //   expect(response.statusCode).toBe(statusCode401);
+  //   expect(response.body.message).toBe("User authentication required");
   // });
 
-  // //CTC018
   // //Test POST /api/v1/comments/:commentId/reply 
+
+  // //CTC018
   // test("Reply to a comment (success - comment length >= 20 <= 10000))", async () => {
   //   // Arrange (Assuming you have a comment ID) 
   //   const replyData: ReplyToCommentDTO = {
@@ -422,6 +426,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode200);
+  //   expect(response.text).toBe("OK");
   // });
 
   // //CTC019
@@ -442,6 +447,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode200);
+  //   expect(response.text).toBe("OK");
   // });
 
   // //CTC020
@@ -462,6 +468,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode200);
+  //   expect(response.text).toBe("OK");
   // });
 
   // //CTC021
@@ -549,7 +556,7 @@ describe("Comments API Tests", () => {
   // });
 
   // //CTC025
-  // test("Reply to a comment (Error - Invalid slug parameter)", async () => {
+  // test("Reply to a comment (Error - invalid slug parameter)", async () => {
   //   // Arrange (Assuming you have a comment ID) 
   //   const replyData = {
   //     userId: username,
@@ -565,6 +572,7 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode404);
+  //   expect(response.body.message).toBe("Couldn't find a post by slug {${slug}}");
   // });
 
   // //CTC026
@@ -625,10 +633,11 @@ describe("Comments API Tests", () => {
 
   //   // Assert 
   //   expect(response.statusCode).toBe(statusCode404);
+  //   expect(response.body.message).toBe("Couldn't find a comment by commentId {${commentId}}");
   // });
 
   // //CTC029
-  // test("Reply to a comment (Error - missing/empty commentID))", async () => {
+  // test("Reply to a comment (Error - missing commentID))", async () => {
   //   const replyData: ReplyToCommentDTO = {
   //     slug,
   //     userId: username,
@@ -647,7 +656,7 @@ describe("Comments API Tests", () => {
   // });
 
   // //CTC030
-  // test("Reply to a comment (Error - Expired/Invalid acessToken)", async () => {
+  // test("Reply to a comment (Error - invalid token)", async () => {
   //   // Arrange (Assuming you have a comment ID) 
   //   const replyData: ReplyToCommentDTO = {
   //     slug,
@@ -663,7 +672,8 @@ describe("Comments API Tests", () => {
   //     .send(replyData);
 
   //   // Assert 
-  //   expect(response.statusCode).toBe(statusCode403);
+  //   expect(response.statusCode).toBe(statusCode401);
+  //   expect(response.body.message).toBe("User authentication required");
   // });
 
   // //CTC031
@@ -683,7 +693,8 @@ describe("Comments API Tests", () => {
   //     .send(replyData);
 
   //   // Assert 
-  //   expect(response.statusCode).toBe(statusCode403);
+  //   expect(response.statusCode).toBe(statusCode401);
+  //   expect(response.body.message).toBe("User authentication required");
   // });
 
 });

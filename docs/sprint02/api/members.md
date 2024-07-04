@@ -2,7 +2,7 @@
 
 ## 1 - Request: get /me
 ### URI
-    api/v1/members/
+    api/v1/members/me
     
 ### HTTP method
     GET
@@ -17,10 +17,17 @@ Autorization token is not mandatory.
 ### Body
 The body for a HTTP GET request should be empty.
 
-### Response
-#### Status
+### Test Analysis
+#### Response
+
+[Members Tests](../../../src/automated-tests/members-tests.spec.ts)
+
+(CTm3) This endpoint isn't responsive. It presents an error "500 - Internal Server Error", in this test was executed with an expected "400 - Bad Request", although this can also be incorrect.
+
+Presented:
 * A - 500 - Internal Server Error
 
+Expected:
 
 #### Body
 `A - 500 - Internal Server Error`
@@ -32,9 +39,15 @@ The body for a HTTP GET request should be empty.
 ### Relate the REST API endpoints with User Stories
 This endpoint is unrelated to any user stories documented in Sprint01.
 
+### Test Analysis
+
+[Members Tests](../../../src/automated-tests/members-tests.spec.ts)
+
+(CTm3) This endpoint isn't responsive. It presents an error "500 - Internal Server Error", in this test was executed with an expected "400 - Bad Request", although this can also be incorrect.
+
 ## 2 - Request: get /:username
 ### URI
-api/v1/members/
+api/v1/members/username
     
 ### HTTP method
 GET
@@ -48,12 +61,12 @@ This endpoint should retrieve information about members (reputation and user).
 ### Body
 The body for a HTTP GET request should be empty.
 
-## Response
-### Status
+### Response
+#### Status
 * A - 200 - OK
 * B - 404 - Not Found (if member doesn't exist)
 
-### Body
+#### Body
 `A - 200 OK`
 
 {
@@ -72,3 +85,10 @@ The body for a HTTP GET request should be empty.
 
 ### Relate the REST API endpoints with User Stories
 This endpoint is unrelated to any user stories documented in Sprint01.
+
+### Test Analysis
+
+[Members Tests](../../../src/automated-tests/members-tests.spec.ts)
+
+
+(CTm1)

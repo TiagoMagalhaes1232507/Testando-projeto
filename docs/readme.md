@@ -24,8 +24,10 @@ was carried out as described in the following table.
 | -------------- | -------------------------------------------------------------------|--------------------------------------------------------------|
 | Architecture   | [all](sprint01/global-artifacts/00.architecture/architecture.md) | [all](sprint02/global-artifacts/00.architecture/architecture.md)|       
 | Glossary       | [all](sprint01/global-artifacts/01.requirements-engineering/glossary.md) |  [all](sprint02/global-artifacts/01.requirements-engineering/glossary.md)                              
-| Use Case Diagram (UCD)    |[all](sprint01/global-artifacts/01.requirements-engineering/use-case-diagram.md)             | [all](sprint02/global-artifacts/01.requirements-engineering/use-case-diagram.md) |                                                    
-| Supplementary Specification    | [all](sprint01/global-artifacts/01.requirements-engineering/supplementary-specification.md)|  [all](sprint02/global-artifacts/01.requirements-engineering/supplementary-specification.md)|
+| Use Case Diagram (UCD)    |[1232507](sprint01/global-artifacts/01.requirements-engineering/use-case-diagram.md)             | [1232507](sprint02/global-artifacts/01.requirements-engineering/use-case-diagram.md) |                                                    
+| Supplementary Specification    | [1232507](sprint01/global-artifacts/01.requirements-engineering/supplementary-specification.md)|  |
+| Supplementary Specification    | [1232512](sprint01/global-artifacts/01.requirements-engineering/supplementary-specification.md)|
+| Domain Model  | [1232512]()|
 | US 001 (User Registration)  | [1232512](sprint01/us001/readme.md)  |     [1232512](sprint02/us001/readme.md)                        |
 | US 002 (To Login in System) | [1232493](sprint01/us002/readme.md)|   [1232493](sprint02/us002/readme.md)                            |
 | US 003 (View discussions list as Unregistered User)   | [1232500](sprint01/us003/readme.md) | [1232500](sprint01/us003/readme.md)   |
