@@ -1,267 +1,366 @@
-// // (RR) este ficheiro é para desenvolver os testes
-// // e depois para exportar para o ficheiro comments-tests.ts (recomendado pelo prof. Baltarejo)
-
 import request from "supertest";
+import { CreateUserDTO } from "../modules/users/useCases/createUser/CreateUserDTO";
+import { LoginDTO } from "../modules/users/useCases/login/LoginDTO";
+import { CreatePostDTO } from "../modules/forum/useCases/post/createPost/CreatePostDTO";
+import { ReplyToPostDTO } from "../modules/forum/useCases/comments/replyToPost/ReplyToPostDTO";
 
-let accessToken: string; //Declares a variable to store the access token
-const url: string = "http://localhost:5001"; //Defines the base URL for the requests
+const url: string = "http://localhost:5001";
+const username: string = "testuseralpha";
+const password: string = "testuseralpha";
+const email: string = "testuseralpha@.testuseralpha.com";
+let accessToken: string;
+let slug: string;
+let comment: any = {};
+let commentId: string = "";
+const invalidCommentId: string = "invalidCommentId";
+const invalidToken: string = "expired/invalid acessToken";
+const statusCode200: number = 200;
+const statusCode400: number = 400;
+const statusCode403: number = 403;
+const statusCode404: number = 404;
+const statusCode401: number = 401;
 
-describe("Comments Endpoint", () => {
-  let comment: any = {}; // Variable to store the comment details
-  let slug: string = "";
-
+describe("Comments API Tests", () => {
   beforeAll(async (): Promise<void> => {
-    // This function runs before all tests in the describe block
-
-    // Create a user
+    //Register User
     try {
-      const createUserResponse = await request(url).post("/api/v1/users").send({
-        username: "testuseralpha",
-        email: "testuseralpha@test.com",
-        password: "testuseralpha",
-      });
+      const userData: CreateUserDTO = {
+        username,
+        email,
+        password,
+      };
 
-      const createUser = createUserResponse.body;
-      console.log("Create User Response Body:", createUser);
+      const registerUserResponse = await request(url)
+        .post("/api/v1/users")
+        .send(userData);
+
+      console.log("registerUserResponse", registerUserResponse.body);
     } catch (error) {
-      console.log("Create User Error:", error);
+      console.log("register User Error:", error);
     }
 
-    // Log in the user
-    const loginResponse = await request(url).post("/api/v1/users/login").send({
-      // Make a POST request to the login endpoint and send the credentials
-      username: "testuseralpha",
-      password: "testuseralpha",
-    });
-    accessToken = loginResponse.body.accessToken; // Stores the access token obtained in the login response
+    //Login user
+    const loginData: LoginDTO = {
+      username,
+      password,
+    };
+    const loginResponse = await request(url)
+      .post("/api/v1/users/login")
+      .send(loginData);
 
-    // Creating a post
+    accessToken = loginResponse.body.accessToken;
+
+    //Create Post
+    const postData: CreatePostDTO = {
+      userId: username,
+      title: "Testing creat a post",
+      text: "Testing creat a post text",
+      link: "",
+      postType: "text",
+    };
+
     await request(url)
       .post("/api/v1/posts")
       .set("Content-Type", "application/json")
-      .set("Authorization", accessToken) // Adds the access token to the request header
-      .send({
-        title: "Testing creat a post",
-        text: "Testing creat a post text",
-        userId: "testuseralpha",
-        postType: "text",
-      });
+      .set("Authorization", accessToken)
+      .send(postData);
 
-    // Get a recent post
+    //Get Recent Posts
     const getRecentPost = await request(url)
       .get("/api/v1/posts/recent")
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken);
 
-    slug = getRecentPost.body.posts[0].slug; // Extracts the slug of the most recent post
+    slug = getRecentPost.body.posts?.[0].slug; // Extracts the slug of the most recent post
 
-    // Creating a comment
+    //Creating a comment
     await request(url)
-      .post("/api/v1/comments?slug=" + slug) // Appends the slug to the query string
+      .post(`/api/v1/comments?slug=${slug}`) // Appends the slug to the query string
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken)
       .send({
         comment: "Testing comment text", // Text content of the comment
       });
 
-    const getCommentsResponse = await request(url)
-      .get("/api/v1/comments/?slug=" + slug)
+    //Get Comments by Slug
+    const getCommentsListResponse = await request(url)
+      .get(`/api/v1/comments/?slug=${slug}`)
       .set("Content-Type", "application/json")
-      .set("Authorization", accessToken);
+      .send();
 
-    comment = getCommentsResponse.body.comments[0]; // Stores the first comment from the response
+    comment = getCommentsListResponse.body.comments[0];
   });
 
-  //CTC01
-  test("Get Comment by Slug should return status 200 for a valid post slug", async () => {
-    // arrange: define a URI to get the comment using the post slug
-    const uri = "/api/v1/comments/?slug=" + slug;
-    const expected = 200;
-    // act: make a GET request to the defined endpoint
-    const res = await request(url).get(uri).set("Authorization", accessToken); // Add the access token to the request header
-    // assert: check if the response status is the same as expected
-    expect(res.status).toEqual(expected);
-    expect(res.body.comments).toBeDefined(); // Check if the comments list is defined
-    expect(res.body.comments[0].text).toEqual("Testing comment text"); // // Check if the text of the first comment returned in the response is equal to "Testing comment text"
-    expect(res.body.comments.length).toBeGreaterThan(0); // Check if there is at least one comment
-  });
-
-
-  //CTC02
-  test("Get Comment by Slug return status 404 for a invalid post slug", async () => {
-    // arrange: define a URI to get the comment using an invalid post slug
-    const invalidSlug = "invalidSlug";
-    const uri = "/api/v1/comments/" + invalidSlug;
-    const expected = 404;
-    // act: make a GET request to the defined endpoint
-    const res = await request(url).get(uri).set("Authorization", accessToken); // Add the access token to the request header
-    // assert: check if the response status is the same as expected
-    expect(res.status).toEqual(expected);
-    expect(res.body.message).toEqual("Couldn't find a comment by comment id {invalidSlug}."); 
-  });
-
-
-  //CTC03
-  test("Get Comment by Comment Id should return status 200 for a valid comment ID", async () => {
+  //CTC032
+  test("Get Comment by CommentId should return status 200 for a valid commentID", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
-    //arrange: sets the URI for the comment endpoint with a valid ID and expected status
+    //arrange:
     const uri = `/api/v1/comments/${comment.commentId}`;
-    const expected = 200;
-    //act: makes a GET request to the defined endpoint
+    const expectedMessage = "0008a1bf-91c9-4544-9dd2-90c25f1a5020";
+    //act:
     const res = await request(url).get(uri);
-    //assert: checks if the response status is the same as expected
-    expect(res.status).toEqual(expected);
-  
+    //assert:
+    expect(res.statusCode).toEqual(statusCode200);
+    expect(res.body.comment.commentId).toEqual(expectedMessage);
   });
 
-  //CTC04
+  //CTC033
   test("Get Comment by Comment Id should return status 404 for an invalid comment ID", async () => {
-    //arrange
+    //arrange:
     const uri = "/api/v1/comments/wrongID";
-    const expected = 404;
-    //act
+    const expectedMessage = "Couldn't find a comment by comment id {wrongID}.";
+    //act:
     const res = await request(url).get(uri);
-
-    //assert
-    expect(res.status).toEqual(expected);
-    expect(res.body.message).toEqual("Couldn't find a comment by comment id {wrongID}.");
+    //assert:
+    expect(res.statusCode).toEqual(statusCode404);
+    expect(res.body.message).toEqual(expectedMessage);
   });
 
-
-  //CTC05
-  test("Get Comment by Comment Id should return status 500 Internal server error missging comment Id", async () => {
+  //CTC034
+  test("Get Comment by Comment Id should return status 400 missing comment Id", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
-    //arrange: sets the URI for the comment endpoint with a valid ID and expected status
+    //arrange: 
     const uri = `/api/v1/comments/`;
-    const expected = 500;
-    //act: makes a GET request to the defined endpoint
+    const expectedMessage = "CommentID parameter must not be empty"; //Message suggestion: 
+    //act: 
     const res = await request(url).get(uri);
-    //assert: checks if the response status is the same as expected
-    expect(res.status).toEqual(expected);
-    expect(res.body.message).toEqual("An unexpected error occurred.");
-
+    //assert: 
+    expect(res.statusCode).toEqual(statusCode400);
+    expect(res.body.message).toEqual(expectedMessage);
   });
 
 
-  //CTC06
-  test("Upvote Comment should return status 200 when upvoting an existing comment", async () => {
-    //arrange
-    const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
-    const expected = 200;
-    //act: makes a POST request to the upvote endpoint with the authorization token
-    const res = await request(url).post(uri).set("Authorization", accessToken);
-    //assert
-    expect(res.status).toEqual(expected);
-    expect(res.text).toEqual("OK");
-  });
+  //Function that extracts the number of votes of a specific post
+  async function getCommentPointsById(id: string) {
+    const uri = `/api/v1/comments/${comment.commentId}`;
+    const res = await request(url).get(uri).set("Authorization", accessToken);
+
+    return res.body.comment.points;
+  }
+
+  //CTC035
+  test("Upvote comment should return status 200 and increment points after upvote", async () => {
   
+    // Get the current points before the upvote
+    const previousVotesNumber = await getCommentPointsById(comment.commentId);
+    console.log("menos aqui", previousVotesNumber)
+   
+    // Trigger the upvote endpoint
+    //arrange:
+    const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
+    const expectedMessage = "OK"
+    //act:
+    const res = await request(url)
+      .post(uri)
+      .set("Authorization", accessToken)
+      .set("Content-Type", "application/json");
+   
+      // assert: Validate the response status and message
+    expect(res.statusCode).toEqual(statusCode200);
+    expect(res.text).toEqual(expectedMessage);
+   
+    // Get the updated points after upvoting
+    const updatedVotesNumber = await getCommentPointsById(comment.commentId);
+    console.log("mais aqui", updatedVotesNumber)
+ 
+    // Validate that the points have been incremented
+    expect(updatedVotesNumber).toBeGreaterThan(previousVotesNumber);
+  });
+ 
+ 
+  //CTC036
+  test("Upvote Comment should return status 200 when upvoting an existing comment", async () => {
+    //arrange:
+    const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
+    const expectedMessage = "OK"
+    //act:
+    const res = await request(url).post(uri).set("Authorization", accessToken);
+    //assert:
+    expect(res.statusCode).toEqual(statusCode200);
+    expect(res.text).toEqual(expectedMessage);
+  });
 
-  //CTC07
+  //CTC037
   test("Upvote Comment should return status 404 when upvoting a non-existent comment", async () => {
-    //arrange
+    //arrange:
     const uri = "/api/v1/comments/wrongID/upvote";
-    const data = { userId: "testuseralpha" };
-    const expected = 404;
-    //act
+    const expectedMessage = "Couldn't find a comment with id {wrongID}."
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken);
-    //assert
-    expect(res.status).toEqual(expected);
-    expect(res.body.message).toEqual("Couldn't find a comment with id {wrongID}.");
+    //assert:
+    expect(res.statusCode).toEqual(statusCode404);
+    expect(res.body.message).toEqual(expectedMessage);
   });
-
-  //CTC08
-  test("Upvote Comment should return status 500 as it is missing token", async () => {
+ 
+  //CTC038
+  test("Upvote Comment should return status 401 as it is missing token", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
-    //arrange: sets the URI for the comment endpoint with a valid ID and expected status
-    const uri = `/api/v1/comments/`;
-    const expected = 500;
-    //act: makes a GET request to the defined endpoint
+    //arrange:
+    const uri = "/api/v1/comments/";
+    const expectedMessage = "AccessToken parameter must not be empty"; //Message suggestion: 
+    //act:
     const res = await request(url).get(uri)
-    //assert: checks if the response status is the same as expected
-    expect(res.status).toEqual(expected);
-    expect(res.body.message).toEqual("An unexpected error occurred."); 
+    //assert:
+    expect(res.statusCode).toEqual(statusCode401);
+    expect(res.body.message).toEqual(expectedMessage);
   });
-
-  //CTC09
-  test("Downvote Comment should return status 200 when downvoting an existing comment", async () => {
-    //arrange
+ 
+  //CTC039
+  test("Upvote Comment should return status 403 for expired token", async () => {
+    //arrange:
+    const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
+    const expiredToken = "expiredAccessToken";
+    const expectedMessage = "Token signature expired."
+    //act:
+    const res = await request(url)
+      .post(uri)
+      .set("Authorization", expiredToken)
+      .set("Content-Type", "application/json");
+    //assert:
+    expect(res.statusCode).toEqual(statusCode403);
+    expect(res.body.message).toEqual(expectedMessage);
+  });
+ 
+  //CTC040
+  test("Downvote comment should return status 200 and increment points after downvote", async () => {
+    // Get the current points before the upvote
+    const previousVotesNumber = await getCommentPointsById(comment.commentId);
+ 
+ 
+    // Trigger the upvote endpoint
+    //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
-    const expected = 200;
-    //act
+    const expectedMessage = "OK"
+    //act:
+    const res = await request(url)
+      .post(uri)
+      .set("Authorization", accessToken)
+      .set("Content-Type", "application/json");
+     // assert: Validate the response status and message
+    expect(res.statusCode).toEqual(statusCode200);
+    expect(res.text).toEqual(expectedMessage);
+ 
+ 
+    // Get the updated points after upvoting
+    const updatedVotesNumber = await getCommentPointsById(comment.commentId);
+ 
+ 
+    // Validate that the points have been incremented
+    expect(updatedVotesNumber).toBeLessThan(previousVotesNumber);
+  });
+ 
+ 
+  //CTC041
+  test("Downvote Comment should return status 200 when downvoting an existing comment", async () => {
+    //arrange:
+    const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
+    const expectedText = "OK";
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken);
-    //assert
-    expect(res.status).toEqual(expected);
-    expect(res.text).toEqual("OK");
+    //assert:
+    expect(res.statusCode).toEqual(statusCode200);
+    expect(res.text).toEqual(expectedText);
   });
-
-  //CTC010
+ 
+ 
+  //CTC042
   test("Downvote Comment should return status 404 when downvoting non-existent comment", async () => {
-    //arrange
+    //arrange:
     const uri = "/api/v1/comments/wrongID/upvote";
-    const expected = 404;
-    //act
+    const expectedMessage = "Couldn't find a comment with id {wrongID}."
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken);
-    //assert
-    expect(res.status).toEqual(expected);
-    expect(res.body.message).toEqual("Couldn't find a comment with id {wrongID}.");
+    //assert:
+    expect(res.statusCode).toEqual(statusCode404);
+    expect(res.body.message).toEqual(expectedMessage);
   });
-
-  //CTC011
-  test("Downvote Comment should return status 500 as it is missing token", async () => {
+ 
+ 
+  //CTC043
+  test("Downvote Comment should return status 401 as it is missing token", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
-    //arrange: sets the URI for the comment endpoint with a valid ID and expected status
+    //arrange:
     const uri = `/api/v1/comments/`;
-    const expected = 500;
-    //act: makes a GET request to the defined endpoint
+    const expectedMessage = "AccessToken parameter must not be empty"; //Message suggestion: 
+    //act: 
     const res = await request(url).get(uri);
-    //assert: checks if the response status is the same as expected
-    expect(res.status).toEqual(expected);
-    expect(res.body.message).toEqual("An unexpected error occurred."); 
+    //assert: 
+    expect(res.statusCode).toEqual(statusCode401);
+    expect(res.body.message).toEqual(expectedMessage);
+  });
+ 
+  //CTC044
+  test("Downvote Comment should return status 403 for expired token", async () => {
+    //arrange:
+    const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
+    const expiredToken = "expiredAccessToken";
+    const expectedMessage = "Token signature expired."
+    //act:
+    const res = await request(url)
+      .post(uri)
+      .set("Authorization", expiredToken)
+      .set("Content-Type", "application/json");
+    //assert:
+    expect(res.statusCode).toEqual(statusCode403);
+    expect(res.body.message).toEqual(expectedMessage);
   });
 
+  
+ //Black box testing - Equivalence classes
 
-  //Black box testing - Equivalence classes
-  //CTC012
-  test("Create comment with valid comment length - more than 20 and less 10.000 characters - should return status 200", async () => {
+  //CTC045
+  test("Create comment with valid comment length > 20 and < 10.000 characters - should return status 200", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 200;
+    const commentData: ReplyToPostDTO = {
+      slug,
+      userId: username,
+      comment:
+        "In today's digital age, information technology (IT) professionals have become indispensable to the functioning and growth of virtually every industry. ",
+    };
+    //assert:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken)
-      .send({
-        comment: "In today's digital age, information technology (IT) professionals have become indispensable to the functioning and growth of virtually every industry. ",
-      });
-    expect(res.status).toEqual(expected);
+      .send({ commentData });
+    //act:
+    expect(res.statusCode).toEqual(statusCode200);
   });
 
-  //CTC013
-  test("Create comment with invalid comment length - less than 20 characters - should return status 500", async () => {
+  //CTC046
+  test("Create comment with invalid comment length - < 20 charracteres - should return status 400", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 500;
+    const commentData: ReplyToPostDTO = {
+      slug,
+      userId: username,
+      comment: "0",
+    };
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken)
-      .send({
-        comment: "0",
-      });
-    expect(res.status).toEqual(expected);
+      .send({comment: commentData});
+    //assert:
+    expect(res.statusCode).toEqual(statusCode400);
   });
 
-  //CTC014
-  test("Creating a comment with empty comment should return status 500", async () => {
+  //CTC047
+  test("Creating a comment with empty comment should return status 400", async () => {
+    //arrange
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 500;
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
@@ -269,26 +368,29 @@ describe("Comments Endpoint", () => {
       .send({
         comment: "",
       });
-    expect(res.status).toEqual(expected);
+    //assert:
+    expect(res.statusCode).toEqual(statusCode400);
   });
 
-  //CTC015
-  test("Creating a comment with empty body should return status 500", async () => {
+  //CTC048
+  test("Creating a comment with empty body should return status 400", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 500;
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken)
-      .send({
-      });
-    expect(res.status).toEqual(expected);
+      .send({});
+    //assert:
+    expect(res.statusCode).toEqual(statusCode400);
   });
 
-  //CTC016
-  test("Create comment with invalid link length should return status 500", async () => {
+  //CTC049
+  test("Create comment with invalid link length should return status 400", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 500;
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
@@ -296,17 +398,20 @@ describe("Comments Endpoint", () => {
       .send({
         link: "a",
       });
-    expect(res.status).toEqual(expected);
+    //assert:
+    expect(res.statusCode).toEqual(statusCode400);
   });
+
 
   // Limit Value Tests
 
   //Valid Comment Lower Limit
 
-  //CTC017
+  //CTC050
   test("Create comment with exactly 20 characters should return status 200", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 200;
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
@@ -314,16 +419,17 @@ describe("Comments Endpoint", () => {
       .send({
         comment: "12345678901234567890",
       });
-    expect(res.status).toEqual(expected);
+    //assert:
+    expect(res.statusCode).toEqual(statusCode200);
   });
 
-
-//Valid Comment Upper Limit
-//CTC018
+  //Valid Comment Upper Limit
+  //CTC051
   test("Create comment with exactly 10.000 characters should return status 200", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 200;
     const longComment = "a".repeat(10000); // String with 10.000 caracteres
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
@@ -331,13 +437,15 @@ describe("Comments Endpoint", () => {
       .send({
         comment: longComment,
       });
-    expect(res.status).toEqual(expected);
+    //assert:
+    expect(res.statusCode).toEqual(statusCode200);
   });
 
-  //CTC019 - BUG REPORT - API is not validating comment length correctly.
-  test("Create comment with 19 characters (just below the limit) should return status 500", async () => {
+  //CTC052 - BUG REPORT - API is not validating comment length correctly.
+  test("Create comment with 19 characters (just below the limit) should return status 400", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 500;
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
@@ -345,14 +453,16 @@ describe("Comments Endpoint", () => {
       .send({
         comment: "1234567890123456789", // 19 caracteres
       });
-    expect(res.status).toEqual(expected);
+    //assert:
+    expect(res.statusCode).toEqual(statusCode400);
   });
 
-  //CTC020 
-  test("Create comment with 10001 characters (just above the limit) should return status 500", async () => {
+  //CTC053
+  test("Create comment with 10001 characters (just above the limit) should return status 400", async () => {
+    //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
-    const expected = 500;
     const longComment = "a".repeat(10001); // 10.001 caracteres
+    //act:
     const res = await request(url)
       .post(uri)
       .set("Content-Type", "application/json")
@@ -360,7 +470,7 @@ describe("Comments Endpoint", () => {
       .send({
         comment: longComment,
       });
-    expect(res.status).toEqual(expected);
+    //assert:
+    expect(res.statusCode).toEqual(statusCode400);
   });
-
 });
