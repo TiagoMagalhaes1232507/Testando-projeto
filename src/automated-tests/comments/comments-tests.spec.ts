@@ -92,7 +92,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC032
-  test("Get Comment by CommentId should return status 200 for a valid commentID", async () => {
+  test("CTC032 - Get Comment by CommentId should return status 200 for a valid commentID", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
     //arrange:
     const uri = `/api/v1/comments/${comment.commentId}`;
@@ -105,7 +105,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC033
-  test("Get Comment by Comment Id should return status 404 for an invalid comment ID", async () => {
+  test("CTC033 - Get Comment by Comment Id should return status 404 for an invalid comment ID", async () => {
     //arrange:
     const uri = "/api/v1/comments/wrongID";
     const expectedMessage = "Couldn't find a comment by comment id {wrongID}.";
@@ -117,7 +117,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC034
-  test("Get Comment by Comment Id should return status 400 missing comment Id", async () => {
+  test("CTC034 - Get Comment by Comment Id should return status 400 empty comment Id", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
     //arrange:
     const uri = `/api/v1/comments/`;
@@ -138,7 +138,7 @@ describe("Comments API Tests", () => {
   }
 
   //CTC035
-  test("Upvote comment should return status 200 and increment points after upvote", async () => {
+  test("CTC035 - Upvote comment should return status 200 and increment points after upvote", async () => {
     // Get the current points before the upvote
     const previousVotesNumber = await getCommentPointsById(comment.commentId);
     console.log("menos aqui", previousVotesNumber);
@@ -146,7 +146,7 @@ describe("Comments API Tests", () => {
     // Trigger the upvote endpoint
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
-    const expectedMessage = "OK";
+    const expectedMessage = "OK"; //wasUpvotedByMe: true
     //act:
     const res = await request(url)
       .post(uri)
@@ -166,7 +166,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC036
-  test("Upvote Comment should return status 200 when upvoting an existing comment", async () => {
+  test("CTC036 - Upvote Comment should return status 200 when upvoting an existing comment", async () => {
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
     const expectedMessage = "OK";
@@ -178,7 +178,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC037
-  test("Upvote Comment should return status 404 when upvoting a non-existent comment", async () => {
+  test("CTC037 - Upvote Comment should return status 404 when upvoting a non-existent comment", async () => {
     //arrange:
     const uri = "/api/v1/comments/wrongID/upvote";
     const expectedMessage = "Couldn't find a comment with id {wrongID}.";
@@ -193,7 +193,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC038
-  test("Upvote Comment should return status 401 as it is missing token", async () => {
+  test("CTC038 - Upvote Comment should return status 401 as it is empty token", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
     //arrange:
     const uri = "/api/v1/comments/";
@@ -206,7 +206,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC039
-  test("Upvote Comment should return status 403 for expired token", async () => {
+  test("CTC039 - Upvote Comment should return status 401 for expired token", async () => {
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
     const expiredToken = "expiredAccessToken";
@@ -217,19 +217,19 @@ describe("Comments API Tests", () => {
       .set("Authorization", expiredToken)
       .set("Content-Type", "application/json");
     //assert:
-    expect(res.statusCode).toEqual(statusCode403);
+    expect(res.statusCode).toEqual(statusCode401);
     expect(res.body.message).toEqual(expectedMessage);
   });
 
   //CTC040
-  test("Downvote comment should return status 200 and increment points after downvote", async () => {
+  test("CTC040 - Downvote comment should return status 200 and increment points after downvote", async () => {
     // Get the current points before the upvote
     const previousVotesNumber = await getCommentPointsById(comment.commentId);
 
     // Trigger the upvote endpoint
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
-    const expectedMessage = "OK";
+    const expectedMessage = "OK"; //wasUpvotedByMe: true
     //act:
     const res = await request(url)
       .post(uri)
@@ -247,7 +247,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC041
-  test("Downvote Comment should return status 200 when downvoting an existing comment", async () => {
+  test("CTC041 - Downvote Comment should return status 200 when downvoting an existing comment", async () => {
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
     const expectedText = "OK";
@@ -262,7 +262,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC042
-  test("Downvote Comment should return status 404 when downvoting non-existent comment", async () => {
+  test("CTC042 - Downvote Comment should return status 404 when downvoting non-existent comment", async () => {
     //arrange:
     const uri = "/api/v1/comments/wrongID/upvote";
     const expectedMessage = "Couldn't find a comment with id {wrongID}.";
@@ -277,7 +277,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC043
-  test("Downvote Comment should return status 401 as it is missing token", async () => {
+  test("CTC043 - Downvote Comment should return status 401 as it is empty token", async () => {
     expect(comment.commentId).toBeDefined(); // Ensures the comment ID is defined
     //arrange:
     const uri = `/api/v1/comments/`;
@@ -290,7 +290,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC044
-  test("Downvote Comment should return status 403 for expired token", async () => {
+  test("CTC044 - Downvote Comment should return status 401 for expired token", async () => {
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
     const expiredToken = "expiredAccessToken";
@@ -301,14 +301,15 @@ describe("Comments API Tests", () => {
       .set("Authorization", expiredToken)
       .set("Content-Type", "application/json");
     //assert:
-    expect(res.statusCode).toEqual(statusCode403);
+    expect(res.statusCode).toEqual(statusCode401);
     expect(res.body.message).toEqual(expectedMessage);
   });
+
 
   //Black box testing - Equivalence classes
 
   //CTC045
-  test("Create comment with valid comment length > 20 and < 10.000 characters - should return status 200", async () => {
+  test("CTC045 - Create comment with valid comment length > 20 and < 10.000 characters - should return status 200", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     const commentData: ReplyToPostDTO = {
@@ -322,13 +323,13 @@ describe("Comments API Tests", () => {
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken)
-      .send({ commentData });
+      .send(commentData);
     //act:
     expect(res.statusCode).toEqual(statusCode200);
   });
 
   //CTC046
-  test("Create comment with invalid comment length - < 20 charracteres - should return status 400", async () => {
+  test("CTC046 - Create comment with invalid comment length - < 20 charracteres - should return status 400", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     const commentData: ReplyToPostDTO = {
@@ -341,13 +342,13 @@ describe("Comments API Tests", () => {
       .post(uri)
       .set("Content-Type", "application/json")
       .set("Authorization", accessToken)
-      .send({ comment: commentData });
+      .send(commentData);
     //assert:
     expect(res.statusCode).toEqual(statusCode400);
   });
 
   //CTC047
-  test("Creating a comment with empty comment should return status 400", async () => {
+  test("CTC047 - Creating a comment with empty comment should return status 400", async () => {
     //arrange
     const uri = "/api/v1/comments?slug=" + slug;
     //act:
@@ -363,7 +364,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC048
-  test("Creating a comment with empty body should return status 400", async () => {
+  test("CTC048 - Creating a comment with empty body should return status 400", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     //act:
@@ -377,7 +378,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC049
-  test("Create comment with invalid link length should return status 400", async () => {
+  test("CTC049 - Create comment with invalid link length should return status 400", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     //act:
@@ -397,7 +398,7 @@ describe("Comments API Tests", () => {
   //Valid Comment Lower Limit
 
   //CTC050
-  test("Create comment with exactly 20 characters should return status 200", async () => {
+  test("CTC050 - Create comment with exactly 20 characters should return status 200", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     //act:
@@ -414,7 +415,7 @@ describe("Comments API Tests", () => {
 
   //Valid Comment Upper Limit
   //CTC051
-  test("Create comment with exactly 10.000 characters should return status 200", async () => {
+  test("CTC051 - Create comment with exactly 10.000 characters should return status 200", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     const longComment = "a".repeat(10000); // String with 10.000 caracteres
@@ -431,7 +432,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC052 - BUG REPORT - API is not validating comment length correctly.
-  test("Create comment with 19 characters (just below the limit) should return status 400", async () => {
+  test("CTC052 - Create comment with 19 characters (just below the limit) should return status 400", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     //act:
@@ -447,7 +448,7 @@ describe("Comments API Tests", () => {
   });
 
   //CTC053
-  test("Create comment with 10001 characters (just above the limit) should return status 400", async () => {
+  test("CTC053 - Create comment with 10001 characters (just above the limit) should return status 400", async () => {
     //arrange:
     const uri = "/api/v1/comments?slug=" + slug;
     const longComment = "a".repeat(10001); // 10.001 caracteres
@@ -462,4 +463,20 @@ describe("Comments API Tests", () => {
     //assert:
     expect(res.statusCode).toEqual(statusCode400);
   });
+});
+
+
+
+test("CTC041rrrrr - Downvote Comment should return status 400 when downvoting send body", async () => {
+  //arrange:
+  const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
+  const expectedText = "OK";
+  //act:
+  const res = await request(url)
+    .post(uri)
+    .set("Content-Type", "application/json")
+    .set("Authorization", accessToken)
+    .send({teste: "testedois" })
+  expect(res.statusCode).toEqual(statusCode400);
+  expect(res.text).toEqual(expectedText);
 });
