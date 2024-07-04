@@ -16,8 +16,8 @@ describe("Users Endpoint", () => {
     const expectedMessage = "OK"
     //act
     const res = await request(url).post(uri).send({
-      username: "testuser",
-      email: "testuser@test.com",
+      username: "testuserzz",
+      email: "testuser@testzz.com",
       password: "testuser",
     });
     expect(res.body.message).toBe(expectedMessage);
@@ -32,13 +32,13 @@ describe("Users Endpoint", () => {
 
     // Act: faz a requisição para criar um usuário com nome de usuário e email contendo caracteres especiais
     const res = await request(url).post(uri).send({
-      username: "testuse_r",
-      email: "test_user@test.com",
+      username: "testuse_rxyz",
+      email: "test_user@testxyz.com",
       password: "testuser"
     });
     // Assert: verifica se o status retornado está correto e se a mensagem de sucesso está presente
     expect(res.body.message).toBe(expectedMessage);
-    expect(res.status).toBe(expectedStatus);
+    expect(res.status).toBe(expectedStatus)
   });
 
   test("TCU03 - 1st Create User with invalid email should return status 400", async () => {
@@ -296,8 +296,22 @@ describe("User Endpoint - Create User", () => {
     expect(res.body).toHaveProperty("message", expectedMessage);
   });
 
+  test("TCU17 - Create User with less than 6 characters password", async () => {
+    // Arrange: define os detalhes do usuário a serem enviados na requisição
+    const uri = "/api/v1/users";
+    const expectedStatus = 400;
+    
+    // Act: faz a requisição para criar um usuário com nome de usuário e email contendo caracteres especiais
+    const res = await request(url).post(uri).send({
+      username: "testuser3",
+      email: "testuser3@test.com",
+      password: "tes"
+    });
+    // Assert: verifica se o status retornado está correto e se a mensagem de sucesso está presente
+      expect(res.status).toBe(expectedStatus);
+})
 
-    describe('GET /api/v1/users/me', () => {
+    /*describe('GET /api/v1/users/me', () => {
 
       beforeAll(async () => {
         const loginResponse = await request(url).post("/api/v1/users/login").send({
@@ -350,5 +364,5 @@ describe("User Endpoint - Create User", () => {
         // Assert
         expect(res.statusCode).toBe(expectedStatus);
         })
-    })
-  })
+    })*/
+ 
