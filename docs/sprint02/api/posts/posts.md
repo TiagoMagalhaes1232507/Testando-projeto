@@ -119,8 +119,8 @@ After some time, the token expires and this message appears
 
 ## Relate the REST API endpoints with User Stories
 
-| US 004 | [Create Text Post](../../sprint02/us004/readme.md)|
-| US 007 | [Create Link Post](../../sprint02/us004/readme.md)|
+| US 004 | [Create Text Post](sprint02/us004/readme.md)
+| US 007 | [Create Link Post](sprint02/us007/readme.md)
 
 ________________________________________________________________________________________
 
