@@ -354,7 +354,7 @@ Authorization: Bearer {accessToken}
 - C- message: `Couldn't find a post by slug {slug}.`
 
 ### Test Cases analysis and conclusions
-|[Test Cases nalysis and conclusions](../posts/tests-analysis/upvote.md)|
+|[Test Cases analysis and conclusions](../posts/tests-analysis/upvote.md)|
 
 ## Relate the REST API endpoints with User Stories
 
