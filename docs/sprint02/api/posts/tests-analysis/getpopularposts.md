@@ -3,8 +3,6 @@
 
 ## Test: [CTP28 Get popular post with optional offset should return status 400](../../../../../src/automated-tests/posts/posts-tests.spec.ts):
 
-## Status:  
-FAIL
 
 ### Description: 
 This test checks if parameter offset is working and the correct status is expected.

@@ -25,9 +25,8 @@ was carried out as described in the following table.
 | Architecture   | [all](sprint01/global-artifacts/00.architecture/architecture.md) | [all](sprint02/global-artifacts/00.architecture/architecture.md)|       
 | Glossary       | [all](sprint01/global-artifacts/01.requirements-engineering/glossary.md) |  [all](sprint02/global-artifacts/01.requirements-engineering/glossary.md)                              
 | Use Case Diagram (UCD)    |[1232507](sprint01/global-artifacts/01.requirements-engineering/use-case-diagram.md)             | [1232507](sprint02/global-artifacts/01.requirements-engineering/use-case-diagram.md) |                                                    
-| Supplementary Specification    | [1232507](sprint01/global-artifacts/01.requirements-engineering/supplementary-specification.md)|  |
-| Supplementary Specification    | [1232512](sprint01/global-artifacts/01.requirements-engineering/supplementary-specification.md)|
-| Domain Model  | [1232512]()|
+| Supplementary Specification    | [1232507 ; 1232512](sprint01/global-artifacts/01.requirements-engineering/supplementary-specification.md)|  
+| Domain Model  | [1181731]()|
 | US 001 (User Registration)  | [1232512](sprint01/us001/readme.md)  |     [1232512](sprint02/us001/readme.md)                        |
 | US 002 (To Login in System) | [1232493](sprint01/us002/readme.md)|   [1232493](sprint02/us002/readme.md)                            |
 | US 003 (View discussions list as Unregistered User)   | [1232500](sprint01/us003/readme.md) | [1232500](sprint01/us003/readme.md)   |
@@ -41,38 +40,23 @@ was carried out as described in the following table.
 | US 011 (To Logout)     | [1130533](sprint01/us011/readme.md)       | [1130533](sprint02/us011/readme.md) |
 | US 012 (Access a discussion link)     | [1232497](sprint01/us012/readme.md)     |[1232497](sprint01/us012/readme.md)   |
 | US 013 (Discussion's list ordered by date)     | [1232507](sprint01/us013/readme.md)   | [1232507](sprint02/us013/readme.md) |
-| Package Diagram || [1232512](sprint01/us013/readme.md) |
-| Dependencies    || [1232493](sprint01/us013/readme.md) |
+| Package Diagram || [1232493]() |
+| Dependencies    || [1232512](sprint02/global-artifacts/Dependencies.md) |
 | Requirements Matrix    || [All](sprint01/us013/readme.md) |
 |Endpoints|||
-| Comments  || [1232497](sprint02/api/comments.md)|
-| Comments  || [1232512](sprint02/api/comments.md)|  
+| Comments  || [1232497 ; 1232512](sprint02/api/comments.md)|
 | Members   || [1232493](sprint02/api/members.md)|  
-| Posts     || [1130533](sprint02/api/posts.md) | 
-| Posts     || [1181731](sprint02/api/posts.md) |
-| Users     || [1232507](sprint02/api/users.md) |
-| Users     || [1232500](sprint02/api/users.md) |
+| Posts     || [1130533 ; 1181731](sprint02/api/posts.md) | 
+| Users     || [1232507 ; 1232500](sprint02/api/users.md) |
 |Endpoint Tests|||
 |Comments  || [1232497](../src/automated-tests/comments/comments-tests.spec.ts)|
 |Comments  ||[1232512](../src/automated-tests/comments/comments-tests2.spec.ts)|  
 |Members   || [1232493](../src/automated-tests/members-tests.spec.ts)|  
 |Posts     || [1130533](../src/automated-tests/posts/posts-tests.spec.ts)| 
 |Posts     ||[1181731](../src/automated-tests/posts/posts2-tests.spec.ts)|
-|Users     || [1232500](../src/automated-tests/users-tests.spec.ts) |
-|Users     || [1232507](../src/automated-tests/users-tests.spec.ts) |
+|Users     || [1232500 ; 1232507](../src/automated-tests/users-tests.spec.ts) |
 
-                                                                                                             
-
-
-
-
-
-
-
- 
-
-
-  
+                                                                                    
 
 
 ## 3. Sprints

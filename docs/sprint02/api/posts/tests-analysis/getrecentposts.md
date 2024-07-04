@@ -3,8 +3,7 @@
 
 ## Test:  [CTP27 -Get recent post with optional offset should return status 400](../../../../../src/automated-tests/posts/posts-tests.spec.ts):
 
-## Status:  
-FAIL
+
 
 ### Description: 
 This test checks if the text post length returns a 400 status for the body text lenght with less than 20 characters
