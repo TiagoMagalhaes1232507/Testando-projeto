@@ -1,5 +1,7 @@
 import request from "supertest";
 import { TextPostDto } from "./testTypes";
+import { CreateUserDto } from "./testTypes";
+import { LoginUserDto } from "./testTypes";
 
 let accessToken: string; // Declares a variable to store the access token
 const url: string = "http://localhost:5001"; // Defines the base URL for the requests
@@ -15,29 +17,35 @@ describe("Posts Endpoints", () => {
     postType: "text",
   };
 
-  beforeAll(async (): Promise<void> => {
-    // This function runs before all tests in the describe block
+  // Populating a user
+  const createUser: CreateUserDto = {
+    username: "testuser",
+    email: "testuser@test.com",
+    password: "testuserpass",
+  };
 
+  // Populating a login
+  const loginUser: LoginUserDto = {
+    username: "testuser",
+    password: "testuserpass",
+  };
+
+  beforeAll(async (): Promise<void> => {
     // Create a user
     try {
-      const createUserResponse = await request(url).post("/api/v1/users").send({
-        username: "testuser",
-        email: "testuser@test.com",
-        password: "testuserpass",
-      });
-
-      const createUser = createUserResponse.body;
-      console.log("Create User Response Body:", createUser);
+      const createUserResponse = await request(url)
+        .post("/api/v1/users")
+        .send(createUser);
+      const createdUser = createUserResponse.body;
+      console.log("Create User Response Body:", createdUser);
     } catch (error) {
       console.log("Create User Error:", error);
     }
 
     // Log in the user
-    const loginResponse = await request(url).post("/api/v1/users/login").send({
-      // Make a POST request to the login endpoint and send the credentials
-      username: "testuser",
-      password: "testuserpass",
-    });
+    const loginResponse = await request(url)
+      .post("/api/v1/users/login")
+      .send(loginUser);
     accessToken = loginResponse.body.accessToken; // Stores the access token obtained in the login response
 
     await request(url)
@@ -54,6 +62,7 @@ describe("Posts Endpoints", () => {
 
     slug = recentPost.body.posts[0].slug; // Extracts the slug of the most recent post
   });
+
   describe("GET / Get post by slug", () => {
     test("should return status 200", async () => {
       const uri = `/api/v1/posts/?slug=${slug}`;
@@ -86,15 +95,22 @@ describe("Posts Endpoints", () => {
   });
 
   //Function that extracts the number of votes of a specific post
-  async function getPostPointsBySlug(slug: string) {
+  async function getPostPointsBySlug(slug: string): Promise<number> {
     const uri = `/api/v1/posts/?slug=${slug}`;
     const res = await request(url).get(uri).set("Authorization", accessToken);
 
     return res.body.post.points;
   }
 
+  async function getIsVotedByMe(slug: string): Promise<boolean> {
+    const uri = `/api/v1/posts/?slug=${slug}`;
+    const res = await request(url).get(uri).set("Authorization", accessToken);
+
+    return res.body.post.wasUpvotedByMe;
+  }
+
   describe("POST / Upvote Post", () => {
-    test("should return status 200 and increment points after upvote", async () => {
+    test("should return status 200, increment points after upvote and update the voteByMe field", async () => {
       // Get the current points before the upvote
       const previousVotesNumber = await getPostPointsBySlug(slug);
 
@@ -116,9 +132,14 @@ describe("Posts Endpoints", () => {
       // Get the updated points after upvoting
       const updatedVotesNumber = await getPostPointsBySlug(slug);
 
+      // Get the updated owner of votes after upvoting
+      const updatedIsVotedByMe = await getIsVotedByMe(slug);
+
       // Validate that the points have been incremented
-      //NOTA: SOLUÇÃO PARA O LIMITE DE 2 VOTOS E PARA O PROBLEMA DE PERCEBER QUANTOS VOTOS POR USER PODEM SER FEITOS
       expect(updatedVotesNumber).toBeGreaterThan(previousVotesNumber);
+
+      // Validate that the vote owner have been update accordingly
+      expect(updatedVotesNumber).toBe(true);
     });
 
     test("should return status 403 for expired token", async () => {
@@ -179,7 +200,6 @@ describe("Posts Endpoints", () => {
       const updatedVotesNumber = await getPostPointsBySlug(slug);
 
       // Validate that the points have been incremented
-      //NOTA: SOLUÇÃO PARA O LIMITE DE 2 VOTOS E PARA O PROBLEMA DE PERCEBER QUANTOS VOTOS POR USER PODEM SER FEITOS
       expect(updatedVotesNumber).toBeLessThan(previousVotesNumber);
     });
 
