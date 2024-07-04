@@ -1,6 +1,6 @@
 # REST API Endpoint : /api/v1/comments 
 
-## 1- Request: GET / Get Comments by Post Slug 
+## 1 - Get Comments by Post Slug 
 
 ### URI 
 
@@ -24,96 +24,86 @@ Authorization: acessToken (optional).
 - `offset?` (number, optional); 
 - `userId?` (string, optional). 
 
-### Body 
+### Request Body 
 
 The request body is empty for GET requests. 
 
-## Tests
+### Tests (CTC)
 
 ### [Get Coments by Post Slug](../../../src/automated-tests/comments/comments-tests2.spec.ts)
 
-CTC021 - Valid slug parameter is provided
+CTC01 - Valid slug parameter
 
-- expected response:
-  - status: 200
-  - body (message): "comments": [
-    {
+- expected/received response:
+  - status: 200 OK
+  - body: "comments": [
+        {
             "postSlug": string,
             "commentId": string,
             "parentCommentId?": string,
             "text": string,
-            "member": MemberDTO,
+            "member": {
+                "reputation": number,
+                "user": {
+                    "username": string
+                }
+            },
             "createdAt": string | Date,
-            "childComments": CommentDTO[],
+            "childComments": array of CommentDTO objects,
             "postTitle": string,
             "points": number,
             "wasUpvotedByMe": boolean,
             "wasDownvotedByMe": boolean
-    }
-  ]
-    
--received response
-  - status: 200
-  - body (message): 
-  "comments": [
-        {
-            "postSlug": "6554114-criar-um-post",
-            "commentId": "0372bafc-01c7-4d6d-9363-afbf539dda2f",
-            "parentCommentId": null,
-            "text": "Testing comment text",
-            "member": {
-                "reputation": 0,
-                "user": {
-                    "username": "anabastos"
-                }
-            },
-            "createdAt": "2024-07-03T15:51:19.000Z",
-            "childComments": [],
-            "postTitle": "criar um post",
-            "points": 1,
-            "wasUpvotedByMe": false,
-            "wasDownvotedByMe": false
         },
   ]
-- A - 200 OK (if the slug parameter is provided, even if it is invalid or empty); 
-- B - 403 Forbiden (if acessToken expired); 
-- C - 500 Internal Server Error (if slug parameter is missing). 
+    
+CTC02 - Invalid slug parameter
 
-### Body 
+- expected response:
+  - status: 404 Not Found
+  - body:"Couldn't find a post by slug {${slug}}"
 
-- A - `comments` (array of `CommentDTO` objects): An array containing comments for the specified slug parameter provided. An empty array `[]` could be returned `[]`, if there are no comments, if the slug does not exist or if the slug parameter is empty.  
-If the array of `CommentDTO` objects is not empty, this includes: 
+- received response:
+  - status: 200 OK
+  - body: "comments": []
 
+CTC03 - Empty slug parameter
 
-  postSlug: string;
-  postTitle: string;
-  commentId: string;
-  parentCommentId?: string;
-  text: string;
-  member: MemberDTO;
-  createdAt: string | Date;
-  childComments: CommentDTO[];
-  points: number;
-  wasUpvotedByMe: boolean;
-  wasDownvotedByMe: boolean;
+- expected response:
+  - status: 400 Bad Request
+  - body (message): "Slug parameter must not be empty"
 
-- B - message: `Token signature expired`; 
-- C - message: `An unexpected error ocurred`.  
+- received response:
+  - status: 200 OK
+  - body: "comments": []
 
-## Remarks
-required parameters
+CTC04 - Missing slug parameter
 
-## Relate the REST API endpoints with User Stories 
+- expected response:
+  - status: 400 Bad Request
+  - body (message): "Slug parameter must be provided"
+
+- received response:
+  - status: 500 Internal Server Error
+  - body: "An unexpected error ocurred"
+
+CTC05 - invalid token
+
+- expected response:
+  - status: 401 Unauthorized
+  - body (message): "User authentication required"
+
+- received response:
+  - status: 403 Forbidden
+  - body: "Token signature expired"
+
+### Remarks
+
+### Relate the REST API endpoints with User Stories 
 
 The `/api/v1/comments/?{slug}`(GET) endpoint is unrelated to any user stories documented in Sprint01. A potential user story related to this endpoint would be: "As a registered user or a visitor, I want to read the comments for a specific post". 
 
-# Tests files
-
-tes
-[get coments by post slug](../../../src/automated-tests/comments/comments-tests2.spec.ts)
-
-
-## 2- Request: POST / Reply To Post 
+## 2 - Reply To Post 
 
 ### URI 
 
@@ -135,42 +125,127 @@ Authorization: acessToken (required).
 
 - `slug` (string, required). 
 
-### Body 
+### Request Body 
 
 - `userId`: (string, required); 
 - `comment` (string, required). 
 
-## Tests
+### Tests (CTC)
 
-### [Get Coments by Post Slug](../../../src/automated-tests/comments/comments-tests2.spec.ts)
+### [Reply To Post](../../../src/automated-tests/comments/comments-tests2.spec.ts)
 
-CTC021 - Valid slug parameter is provided
+CTC06 - comment length >= 20 <= 10000
+
+- expected/received response:
+  - status: 200 OK
+  - body: "OK"
+
+CTC07 - comment length = 20 chars
+
+- expected/received response:
+  - status: 200 OK
+  - body: "OK"
+
+CTC08 - comment = 10000 chars
+
+- expected/received response:
+  - status: 200 OK
+  - body: "OK"
+
+CTC09 - comment length < 20 chars
 
 - expected response:
-  - status: 200
-  - message: ok this message should be more descritive
+  - status: 400 Bad Request
+  - body: "Comment length >= 20 <= 10000"
 
--received response
-  - status: 200
- 
+- received response:
+  - status: 200 OK
+  - body: "OK"
 
-- A - 200 OK (Sucess);
-- B - 403 Forbiden (if acessToken expired or is missing); 
-- C - 404 Not Found (if slug does not exist); 
-- D - 500 Internal Server Error (if slug parameter or the comment are missing or empty). 
+CTC010 - comment length > 10000 chars
 
-### Body 
+- expected response:
+  - status: 400 Bad Request
+  - body: "Comment length >= 20 <= 10000"
 
-- A - message: `OK`; 
-- B - message: `Token signature expired`/`No access token provided`; 
-- C - message: `Couldn't find a post by slug {${slug}}`;
-- D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`.  
+- received response:
+  - status: 500 Internal Server Error 
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
 
-## Relate the REST API endpoints with User Stories 
+CTC011 - missing comment
+
+- expected response:
+  - status: 400 Bad Request
+  - body: "A comment must be provided"
+
+- received response:
+  - status: 500 Internal Server Error 
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC012 - empty comment
+
+- expected response:
+  - status: 400 Bad Request
+  - body: "Comment must not be empty"
+
+- received response:
+  - status: 500 Internal Server Error
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC013 - invalid slug
+
+- expected/received response:
+  - status: 404 Not Found
+  - body: "Couldn't find a post by slug {${slug}}"
+
+CTC014 - missing slug parameter
+
+- expected response:
+  - status: 400 Bad Request
+  - body (message): "Slug parameter must be provided"
+
+- received response:
+  - status: 500 Internal Server Error
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC015 - empty slug parameter
+
+- expected response:
+  - status: 400 Bad Request
+  - body (message): "Slug parameter must not be empty"
+
+- received response:
+  - status: 500 Internal Server Error
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC016 - invalid token
+
+- expected response:
+  - status: 401 Unauthorized
+  - body (message): "User authentication required"
+
+- received response:
+  - status: 403 Forbidden
+  - body: "Token signature expired"
+
+CTC017 - missing token
+
+- expected response:
+  - status: 401 Unauthorized
+  - body (message): "User authentication required"
+
+- received response:
+  - status: 403 Forbidden
+  - body: "No access token provided"
+
+### Remarks
+Certain parameters, like userId s required for the request body but is possible to get a sucess response without including this.
+
+### Relate the REST API endpoints with User Stories 
 
 | US 005 | [Create a comment](/docs/sprint01/us005/readme.md)| 
 
-## 3- Request: POST / Reply To Comment 
+## 3 - Request: Reply To Comment 
 
 ### URI 
 
@@ -192,27 +267,134 @@ Authorization: acessToken (required).
 
 - `slug` (string, required). 
 
-### Body 
+### Request Body 
 
 - `userId` (string, required); 
 - `comment` (string, required); 
 - `parentCommentId`: (string, required). 
 
-## Response 
+### Tests (CTC)
 
-### Status 
+### [Reply to a comment](../../../src/automated-tests/comments/comments-tests2.spec.ts)
 
-- A - 200 OK (Sucess);
-- B - 403 Forbiden (if acessToken expired or is missing); 
-- C - 404 Not Found (if slug and commentId does not exist or is missing); 
-- D - 500 Internal Server Error (if slug parameter or the comment are empty or missing). 
+CTC018 - comment length >= 20 <= 10000
 
-### Body 
+- expected/received response:
+  - status: 200 OK
+  - body: "OK"
 
-- A - message: `OK`; 
-- B - message: `Token signature expired`/`No access token provided`; 
-- C - message: ` Couldn't find a post by slug {${slug}}`/`Couldn't find a comment by commentId {${commentId}}`/ `html message`; 
-- D - message: `TypeError: Cannot read properties of undefined (reading 'toString')`. 
+CTC019 - comment length = 20 chars
+
+- expected/received response:
+  - status: 200 OK
+  - body: "OK"
+
+CTC020 - comment = 10000 chars
+
+- expected/received response:
+  - status: 200 OK
+  - body: "OK"
+
+CTC021 - comment length < 20 chars
+
+- expected response:
+  - status: 400 Bad Request
+  - body: "Comment length >= 20 <= 10000"
+
+- received response:
+  - status: 200 OK
+  - body: "OK"
+
+CTC022 - comment length > 10000 chars
+
+- expected response:
+  - status: 400 Bad Request
+  - body: "Comment length >= 20 <= 10000"
+
+- received response:
+  - status: 500 Internal Server Error 
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC023 - missing comment
+
+- expected response:
+  - status: 400 Bad Request
+  - body: "A comment must be provided"
+
+- received response:
+  - status: 500 Internal Server Error 
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC024 - empty comment
+
+- expected response:
+  - status: 400 Bad Request
+  - body: "Comment must not be empty"
+
+- received response:
+  - status: 500 Internal Server Error
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC025 - invalid slug
+
+- expected/received response:
+  - status: 404 Not Found
+  - body: "Couldn't find a post by slug {${slug}}"
+
+CTC026 - missing slug parameter
+
+- expected response:
+  - status: 400 Bad Request
+  - body (message): "Slug parameter must be provided"
+
+- received response:
+  - status: 500 Internal Server Error
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC027 - empty slug parameter
+
+- expected response:
+  - status: 400 Bad Request
+  - body (message): "Slug parameter must not be empty"
+
+- received response:
+  - status: 500 Internal Server Error
+  - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
+
+CTC028 - invalid commentId
+
+- expected/received response:
+  - status: 404 Not Found
+  - body: "Couldn't find a comment by commentId {${commentId}}"
+
+CTC029 - missing commentId
+
+- expected/received response:
+  - status: 404 Not Found
+  - body: "html message"
+
+CTC030 - invalid token
+
+- expected response:
+  - status: 401 Unauthorized
+  - body (message): "User authentication required"
+
+- received response:
+  - status: 403 Forbidden
+  - body: "Token signature expired"
+
+CTC031 - missing token
+
+- expected response:
+  - status: 401 Unauthorized
+  - body (message): "User authentication required"
+
+- received response:
+  - status: 403 Forbidden
+  - body: "No access token provided"
+
+### Remarks
+Certain parameters, like userId and parentCommentId, are required for the request body but is possible to get a sucess response without including them.
 
 ## Relate the REST API endpoints with User Stories 
 
