@@ -32,7 +32,7 @@ D - message: `TypeError: Cannot read properties of undefined (reading 'toString'
 
 Note:
     While using Postman:
-    - Error 500: 
+    - Error 500:
         * Short password : less than 6 characters --> 500 {"message":"The username tiago was already taken"} --> 400 Bad Request
             "Yeahhhhh, your password should be at least 6 chars 🤠" message doesn't show.
 
