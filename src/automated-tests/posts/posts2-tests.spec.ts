@@ -64,7 +64,7 @@ describe("Posts Endpoints", () => {
   });
 
   describe("GET / Get post by slug", () => {
-    test("CTP23 - should return status 200", async () => {
+    test("CTP29 - should return status 200", async () => {
       const uri = `/api/v1/posts/?slug=${slug}`;
       const expected = 200;
       const res = await request(url).get(uri).set("Authorization", accessToken);
@@ -74,7 +74,7 @@ describe("Posts Endpoints", () => {
       expect(res.body.post.title).toEqual(postData.title);
     });
 
-    test("CTP24 - should return status 404 for invalid slug", async () => {
+    test("CTP30 - should return status 404 for invalid slug", async () => {
       const uri = `/api/v1/posts/?slug=invalid-slug`;
       const expected = 404;
       const res = await request(url).get(uri).set("Authorization", accessToken);
@@ -85,7 +85,7 @@ describe("Posts Endpoints", () => {
       );
     });
 
-    test("CTP25 - should return status 404 for server error", async () => {
+    test("CTP31 - should return status 404 for server error", async () => {
       const uri = `/api/v1/errorRoute/?slug=${slug}`;
       const expected = 404;
       const res = await request(url).get(uri).set("Authorization", accessToken);
@@ -111,7 +111,7 @@ describe("Posts Endpoints", () => {
   }
 
   describe("POST / Downvote Post", () => {
-    test("CTP31 - should return status 200 and decrement points after downvote", async () => {
+    test("CTP32 - should return status 200 and decrement points after downvote", async () => {
       // Get the current points before the upvote
       const previousVotesNumber = await getPostPointsBySlug(slug);
 
@@ -137,7 +137,7 @@ describe("Posts Endpoints", () => {
       expect(updatedVotesNumber).toBeLessThan(previousVotesNumber);
     });
 
-    test("CTP32 - should return status 403 for expired token", async () => {
+    test("CTP33 - should return status 403 for expired token", async () => {
       const uri = "/api/v1/posts/downvote";
       const expected = 403;
       const expiredToken = "expiredAccessToken";
@@ -153,7 +153,7 @@ describe("Posts Endpoints", () => {
       expect(res.body.message).toEqual("Token signature expired.");
     });
 
-    test("CTP33 - should return status 404 for non-existent post", async () => {
+    test("CTP34 - should return status 404 for non-existent post", async () => {
       const uri = "/api/v1/posts/downvote";
       const expected = 404;
       const res = await request(url)

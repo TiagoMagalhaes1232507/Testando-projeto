@@ -1,8 +1,14 @@
-# Micro Test Plan
+# Test Plan
+
+## Test Plan Objectives
+
+The main objective of this test plan is to ensure comprehensive test coverage of the forum application's API endpoints for users, members, posts, and comments. By using blackbox test techniques such as equivalence class partitioning and boundary value analysis, we aim to cover a wide range of scenarios and edge cases to verify the robustness and reliability of the API.
 
 ## Context of the Project
 
-The project is a forum application designed to facilitate discussions among users. The main features include user registration, login, viewing discussions, creating posts and comments, replying to comments, voting on discussions, and viewing discussions sorted by popularity and date. The current sprint focuses on implementing and testing all endpoints and functionalities, ensuring that the API for users, members, posts, and comments is robust, secure, and performs as expected.
+The project is a forum application designed to facilitate discussions among users. The main features include user registration, login, viewing discussions, creating posts and comments, replying to comments, voting on discussions, and viewing discussions sorted by popularity and date. The current sprint, the second iteration, focuses on implementing and testing all endpoints and functionalities, ensuring that the API for users, members, posts, and comments is robust, secure, and performs as expected.
+objectivo
+momento do proj
 
 ## Implementation of Automated Tests
 
@@ -15,64 +21,11 @@ The project is a forum application designed to facilitate discussions among user
 * **Test Coverage**: Overall scenarios, including edge cases
 
 ### Endpoints to Test
-
-#### Users
-- **POST /users**
-  - Create a new user
-- **GET /users/me**
-  - Get current user details
-- **POST /users/login**
-  - Login user
-- **POST /users/logout**
-  - Logout user
-- **POST /users/token/refresh**
-  - Refresh access token
-- **DELETE /users/:userId**
-  - Delete user
-- **GET /users/:username**
-  - Get user by username
-
-#### Members
-- **GET /members/me**
-  - Get current member details
-- **GET /members/:username**
-  - Get member by username
-
-#### Posts
-- **POST /posts**
-  - Create a new post
-- **GET /posts/recent**
-  - Get recent posts
-- **GET /posts/popular**
-  - Get popular posts
-- **GET /posts**
-  - Get post by slug
-- **POST /posts/upvote**
-  - Upvote a post
-- **POST /posts/downvote**
-  - Downvote a post
-
-#### Comments
-- **GET /comments**
-  - Get comments by post slug
-- **POST /comments**
-  - Reply to a post
-- **POST /comments/:commentId/reply**
-  - Reply to a comment
-- **GET /comments/:commentId**
-  - Get comment by ID
-- **POST /comments/:commentId/upvote**
-  - Upvote a comment
-- **POST /comments/:commentId/downvote**
-  - Downvote a comment
+|[Endpoints to Test](./endpoints.md)|
 
 ### Test Techniques
 - **Equivalence Classes**: Identify and test representative values from each class.
 - **Boundary Values**: Identify and test values at the boundaries of equivalence classes.
-
-## Test Plan Objectives
-
-The main objective of this test plan is to ensure comprehensive test coverage of the forum application's API endpoints for users, members, posts, and comments. By using blackbox test techniques such as equivalence class partitioning and boundary value analysis, we aim to cover a wide range of scenarios and edge cases to verify the robustness and reliability of the API.
 
 ### Justification for Blackbox Testing
 
@@ -122,5 +75,3 @@ Blackbox testing focuses on validating the functionality of the application with
     **Practical Example**: 
     - Execute the automated tests and review the results to ensure all test cases pass.
     - Investigate and resolve any failed test cases by identifying the root cause and making necessary adjustments to the code or test cases.
-
-By following this structured approach, we aim to achieve a high level of test coverage and ensure that the forum application's API endpoints are thoroughly tested and reliable.
