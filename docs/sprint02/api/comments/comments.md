@@ -401,7 +401,7 @@ Certain parameters, like userId and parentCommentId, are required for the reques
 | US 006 | [Reply directly to a comment in a Discussion](/docs/sprint01/us006/readme.md)| 
  
 
-## 4- Request: get / Get Comment by CommentId
+## 4- Request: get / Get Comment by CommentId Postman
 
 ### URI
 
@@ -467,6 +467,9 @@ none
 ## Relate the REST API endpoints with User Stories
 none
 
+### Test Cases analysis and conclusions
+  [Test Cases analysis and conclusions](../comments/tests-analysis/get-comment-by-commentId.md)| 
+
 ## 5- Request: post / Upvote to comment
 
 ### URI
@@ -512,6 +515,9 @@ none
 ## Relate the REST API endpoints with User Stories
 
 none
+
+### Test Cases analysis and conclusions
+  [Test Cases analysis and conclusions](../comments/tests-analysis/upvote-comment.md)| 
 
 ## 6- Request: post / Downvote to comment
 
@@ -561,3 +567,5 @@ none
 
 none
 
+### Test Cases analysis and conclusions
+  [Test Cases analysis and conclusions](../comments/tests-analysis/downvote-comment.md)| 
