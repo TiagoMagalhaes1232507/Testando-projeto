@@ -341,21 +341,21 @@ CTC025 - invalid slug
   - status: 404 Not Found
   - body: "Couldn't find a post by slug {invalidslug}."
 
-CTC026 - missing slug parameter
+CTC026 - empty slug parameter
 
 - expected response:
   - status: 400 Bad Request
-  - body (message): "Slug parameter must be provided"
+  - body (message): "Slug parameter must not be empty"
 
 - received response:
   - status: 500 Internal Server Error
   - body: "TypeError: Cannot read properties of undefined (reading 'toString')"
 
-CTC027 - empty slug parameter
+CTC027 - missing slug parameter
 
 - expected response:
   - status: 400 Bad Request
-  - body: "Slug parameter must not be empty"
+  - body: "Slug parameter must be provided"
 
 - received response:
   - status: 500 Internal Server Error
@@ -371,8 +371,7 @@ CTC029 - missing commentId
 
 - expected/received response:
   - status: 404 Not Found
-  - body: "html message"
-
+  
 CTC030 - invalid token
 
 - expected response:
