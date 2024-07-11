@@ -3,7 +3,7 @@ skinparam monochrome false
 skinparam packageStyle rectangle
 skinparam shadowing true
 
-title US 004 - Create a Discussion
+title US 004 - Create Text Post
 
 autonumber
 
@@ -21,7 +21,7 @@ deactivate System
 User -> System : Enter Title, Text and click on "Submit post" 
 activate System
 
-System --> User : Confirm discussion submission and return to all discussions
+System --> User : Confirm text post submission and return to all discussions
 deactivate System
 deactivate User
 
