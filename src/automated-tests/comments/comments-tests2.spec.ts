@@ -105,26 +105,27 @@ describe("Comments API Tests", () => {
     const response = await request(app)
       .get(`${uri}/comments/?slug=${slug}`);
 
-    const firstComment = response.body.comments?.[0]
+    const firstComment = response.body.comments?.[0];
+    const firstCommentKeys = Object.keys(firstComment); // Output: ["postSlug", "postTitle", "commentId" ...]
 
     // Assert 
     expect(response.statusCode).toBe(statusCode200);
     expect(response.body.comments).toBeDefined(); // Check if the comments list is defined 
     expect(response.body.comments.length).toBeGreaterThan(0); // Check if there is at least one comment 
-    expect(Object.keys(firstComment)?.includes("postSlug")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("postTitle")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("commentId")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("parentCommentId")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("text")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("member")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("createdAt")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("childComments")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("points")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("wasUpvotedByMe")).toBe(true);
-    expect(Object.keys(firstComment)?.includes("wasDownvotedByMe")).toBe(true);
+    expect(firstCommentKeys?.includes("postSlug")).toBe(true);
+    expect(firstCommentKeys?.includes("postTitle")).toBe(true);
+    expect(firstCommentKeys?.includes("commentId")).toBe(true);
+    expect(firstCommentKeys?.includes("parentCommentId")).toBe(true);
+    expect(firstCommentKeys?.includes("text")).toBe(true);
+    expect(firstCommentKeys?.includes("member")).toBe(true);
+    expect(firstCommentKeys?.includes("createdAt")).toBe(true);
+    expect(firstCommentKeys?.includes("childComments")).toBe(true);
+    expect(firstCommentKeys?.includes("points")).toBe(true);
+    expect(firstCommentKeys?.includes("wasUpvotedByMe")).toBe(true);
+    expect(firstCommentKeys?.includes("wasDownvotedByMe")).toBe(true);
   });
 
- // CTC02
+  // CTC02
   test("Get Comments by Post Slug (Error - Invalid slug parameter)", async (): Promise<void> => {
     // Act 
     const response = await request(app)
@@ -133,6 +134,7 @@ describe("Comments API Tests", () => {
     // Assert 
     expect(response.statusCode).toBe(statusCode404);
     expect(response.body.message).toBe("Couldn't find a post by slug {${slug}}");
+    // TODO: expect(response.body.message).toBe(`Couldn't find a post by slug {${invalidSlug}}`);
   });
 
   //CTC03
@@ -177,7 +179,7 @@ describe("Comments API Tests", () => {
     const commentData: ReplyToPostDTO = {
       slug,
       userId: "",
-      comment: "This is a test comment"
+      comment: "This is a test comment" // 22 chars
     };
 
     // Act 
@@ -188,7 +190,7 @@ describe("Comments API Tests", () => {
 
     // Assert 
     expect(response.statusCode).toBe(statusCode200);
-    expect(response.text).toBe("OK");
+    expect(response.text).toBe("OK"); // Response could be more detailed
   });
 
   //CTC07
@@ -197,13 +199,13 @@ describe("Comments API Tests", () => {
     const commentData: ReplyToPostDTO = {
       slug,
       userId: username,
-      comment: "Lorem ipsum blandit."
+      comment: "Lorem ipsum blandit." // 20 chars
     };
 
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(commentData);
 
     // Assert 
@@ -237,13 +239,13 @@ describe("Comments API Tests", () => {
     const commentData: ReplyToPostDTO = {
       slug,
       userId: username,
-      comment: "< 20 chars"
+      comment: "< 20 chars" // 10 chars
     };
 
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(commentData);
 
     // Assert 
@@ -263,7 +265,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(commentData);
 
     // Assert 
@@ -277,7 +279,7 @@ describe("Comments API Tests", () => {
     const commentData = {
       slug,
       userId: username,
-      //Missing comment property 
+      // Missing comment property 
     };
     // Act 
     const response = await request(app)
@@ -290,13 +292,13 @@ describe("Comments API Tests", () => {
     expect(response.body.message).toBe("A comment must be provided");
   });
 
- //CTC012 
+  //CTC012 
   test("Reply To Post (Error - empty comment)", async () => {
     //Arrange 
     const commentData: ReplyToPostDTO = {
       slug,
       "userId": username,
-      "comment": ""//Empty comment property,
+      "comment": "" // Empty comment property,
     };
     // Act 
     const response = await request(app)
@@ -320,12 +322,13 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/?slug=${invalidSlug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(commentData);
 
     // Assert 
     expect(response.statusCode).toBe(statusCode404);
     expect(response.body.message).toBe("Couldn't find a post by slug {invalidSlug}.");
+    // TODO: expect(response.body.message).toBe(`Couldn't find a post by slug ${invalidSlug}.`);
   });
 
   //CTC014
@@ -338,8 +341,8 @@ describe("Comments API Tests", () => {
 
     // Act 
     const response = await request(app)
-      .post(`${uri}/comments`)//Missing slug parameter 
-      .set('Authorization', token) // Set Authorization header with token 
+      .post(`${uri}/comments`)// Missing slug parameter 
+      .set('Authorization', token)
       .send(commentData);
 
     // Assert 
@@ -358,7 +361,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/?slug=${emptySlug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(commentData);
 
     // Assert 
@@ -398,7 +401,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/?slug=${slug}`)
-      //Authorization header without token 
+      // Authorization header without token 
       .send(commentData);
 
     // Assert 
@@ -414,14 +417,14 @@ describe("Comments API Tests", () => {
     const replyData: ReplyToCommentDTO = {
       slug,
       userId: "",
-      comment: "This is a reply to the comment",
+      comment: "This is a reply to the comment", // 30 chars
       parentCommentId: ""
     }
 
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -463,7 +466,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -477,7 +480,7 @@ describe("Comments API Tests", () => {
     const replyData: ReplyToCommentDTO = {
       slug,
       userId: username,
-      comment: "< 20 chars",
+      comment: "< 20 chars", // 10 chars
       parentCommentId: ""
     }
 
@@ -505,7 +508,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -519,14 +522,14 @@ describe("Comments API Tests", () => {
     const replyData = {
       slug,
       userId: username,
-      //Missing comment property
+      // Missing comment property
       parentCommentId: ""
     }
 
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -547,7 +550,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -567,7 +570,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${invalidSlug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -587,7 +590,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${emptySlug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -606,8 +609,8 @@ describe("Comments API Tests", () => {
 
     // Act 
     const response = await request(app)
-      .post(`${uri}/comments/${commentId}/reply`) //Missing slug parameter
-      .set('Authorization', token) // Set Authorization header with token 
+      .post(`${uri}/comments/${commentId}/reply`) // Missing slug parameter
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -628,7 +631,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${invalidCommentId}/reply?slug=${slug}`)
-      .set('Authorization', token) // Set Authorization header with token 
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
@@ -647,12 +650,12 @@ describe("Comments API Tests", () => {
 
     // Act 
     const response = await request(app)
-      .post(`${uri}/comments/reply?slug=${slug}`)//Missing commentId parameter
-      .set('Authorization', token) // Set Authorization header with token 
+      .post(`${uri}/comments/reply?slug=${slug}`) // Missing commentId parameter
+      .set('Authorization', token)
       .send(replyData);
 
     // Assert 
-    expect(response.statusCode).toBe(statusCode404);
+    expect(response.statusCode).toBe(statusCode404); // Route doesn't exist
   });
 
   //CTC030
@@ -668,7 +671,7 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${slug}`)
-      .set('Authorization', invalidToken) // Set Authorization header with a invalid token
+      .set('Authorization', invalidToken)
       .send(replyData);
 
     // Assert 
@@ -689,13 +692,11 @@ describe("Comments API Tests", () => {
     // Act 
     const response = await request(app)
       .post(`${uri}/comments/${commentId}/reply?slug=${slug}`)
-      //Authorization header without token 
+      // Authorization header without token 
       .send(replyData);
 
     // Assert 
     expect(response.statusCode).toBe(statusCode401);
     expect(response.body.message).toBe("User authentication required");
   });
-
 });
-
