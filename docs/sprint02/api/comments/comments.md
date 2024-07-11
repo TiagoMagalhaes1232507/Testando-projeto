@@ -202,7 +202,7 @@ CTC014 - missing slug parameter
 
 - expected response:
   - status: 400 Bad Request
-  - body (message): "Slug parameter must be provided"
+  - body: "Slug parameter must be provided"
 
 - received response:
   - status: 500 Internal Server Error
@@ -212,7 +212,7 @@ CTC015 - empty slug parameter
 
 - expected response:
   - status: 400 Bad Request
-  - body (message): "Slug parameter must not be empty"
+  - body: "Slug parameter must not be empty"
 
 - received response:
   - status: 500 Internal Server Error
@@ -222,7 +222,7 @@ CTC016 - invalid token
 
 - expected response:
   - status: 401 Unauthorized
-  - body (message): "User authentication required"
+  - body: "User authentication required"
 
 - received response:
   - status: 403 Forbidden
@@ -355,7 +355,7 @@ CTC027 - empty slug parameter
 
 - expected response:
   - status: 400 Bad Request
-  - body (message): "Slug parameter must not be empty"
+  - body: "Slug parameter must not be empty"
 
 - received response:
   - status: 500 Internal Server Error

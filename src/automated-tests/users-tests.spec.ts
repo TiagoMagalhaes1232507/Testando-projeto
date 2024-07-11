@@ -1,8 +1,7 @@
 
 import request from "supertest";
 
-
-
+const users = require("./users");
 let accessToken: string;
 let refreshToken: string;
 
@@ -294,17 +293,33 @@ describe("Users Endpoint", () => {
     // Arrange
     const uri = "/api/v1/users/login";
     const expectedStatus = 200;
-
-    // Act
+   // Act
     const res = await request(url)
       .post(uri)
       .send({
         username: "testuserbeta",
         password: "testuser"
       });
-
     // Assert
     expect(res.status).toBe(expectedStatus);
     expect(res.body).toHaveProperty('accessToken');
   });
-})
+  test("TCU20 - Testing refresh token should return status 401", async () => {
+    // Arrange - Log in to get an access token and a refresh token
+    const loginResponse = await request(url).post("/api/v1/users/login").send({
+        username: "testuseralpha",
+        password: "testuseralpha",
+    });
+    const refreshToken = loginResponse.body.refreshToken;
+    // Act
+    const uri = "/api/v1/users/tokenrefresh";
+    const res = await request(url)
+        .post(uri)
+        .set("Authorization", "Bearer null") // We can use a null access token (alternatively, simply record a expired token and use it)
+        .send({ refreshToken });
+    // Assert
+    expect(res.status).toEqual(401);
+});
+
+});  
+
