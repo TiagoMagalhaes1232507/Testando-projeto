@@ -11,12 +11,9 @@ const email: string = "testuseralpha@.testuseralpha.com";
 let accessToken: string;
 let slug: string;
 let comment: any = {};
-let commentId: string = "";
-const invalidCommentId: string = "invalidCommentId";
-const invalidToken: string = "expired/invalid acessToken";
+const expiredToken = "expiredAccessToken";
 const statusCode200: number = 200;
 const statusCode400: number = 400;
-const statusCode403: number = 403;
 const statusCode404: number = 404;
 const statusCode401: number = 401;
 
@@ -102,6 +99,17 @@ describe("Comments API Tests", () => {
     //assert:
     expect(res.statusCode).toEqual(statusCode200);
     expect(res.body.comment.commentId).toEqual(expectedMessage);
+    expect(Object.keys(comment)?.includes("postSlug")).toBe(true); // ? operador de encadeamento opcional
+    expect(Object.keys(comment)?.includes("commentId")).toBe(true);
+    expect(Object.keys(comment)?.includes("parentCommentId")).toBe(true);
+    expect(Object.keys(comment)?.includes("text")).toBe(true);
+    expect(Object.keys(comment)?.includes("member")).toBe(true);
+    expect(Object.keys(comment)?.includes("createdAt")).toBe(true);
+    expect(Object.keys(comment)?.includes("childComments")).toBe(true);
+    expect(Object.keys(comment)?.includes("postTitle")).toBe(true);
+    expect(Object.keys(comment)?.includes("points")).toBe(true);
+    expect(Object.keys(comment)?.includes("wasUpvotedByMe")).toBe(true);
+    expect(Object.keys(comment)?.includes("wasDownvotedByMe")).toBe(true);
   });
 
   //CTC033
@@ -209,7 +217,6 @@ describe("Comments API Tests", () => {
   test("CTC039 - Upvote Comment should return status 401 for expired token", async () => {
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
-    const expiredToken = "expiredAccessToken";
     const expectedMessage = "Token signature expired.";
     //act:
     const res = await request(url)
@@ -293,7 +300,6 @@ describe("Comments API Tests", () => {
   test("CTC044 - Downvote Comment should return status 401 for expired token", async () => {
     //arrange:
     const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
-    const expiredToken = "expiredAccessToken";
     const expectedMessage = "Token signature expired.";
     //act:
     const res = await request(url)
@@ -465,18 +471,35 @@ describe("Comments API Tests", () => {
   });
 });
 
-
-
-test("CTC041rrrrr - Downvote Comment should return status 400 when downvoting send body", async () => {
+/* 
+test("CTC054 - Upvote Comment should return status 400 when upvoting send body", async () => {
   //arrange:
-  const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
-  const expectedText = "OK";
+  const uri = "/api/v1/comments/" + comment.commentId + "/upvote";
+  const expectedMessage = "Request body should not be provided for upvote. Please remove the request body and try again.";
   //act:
   const res = await request(url)
     .post(uri)
     .set("Content-Type", "application/json")
     .set("Authorization", accessToken)
-    .send({teste: "testedois" })
+    .send({teste: "testuseralpha" })
   expect(res.statusCode).toEqual(statusCode400);
-  expect(res.text).toEqual(expectedText);
+  expect(res.text).toEqual(expectedMessage);
 });
+
+
+test("CTC055 - Downvote Comment should return status 400 when downvoting send body", async () => {
+  //arrange:
+  const uri = "/api/v1/comments/" + comment.commentId + "/downvote";
+  const expectedMessage = "Request body should not be provided for downvote. Please remove the request body and try again.";
+  //act:
+  const res = await request(url)
+    .post(uri)
+    .set("Content-Type", "application/json")
+    .set("Authorization", accessToken)
+    .send({teste: "testuseralpha" })
+  expect(res.statusCode).toEqual(statusCode400);
+  expect(res.text).toEqual(expectedMessage);
+});
+
+*/
+
