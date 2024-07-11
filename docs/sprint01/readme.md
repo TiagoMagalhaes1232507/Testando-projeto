@@ -1,9 +1,25 @@
-# README for Sprint 01
+# Sprint 01 README
 
-In this folder the team shoud collect and keep up-to-date all the artifacts developed during the Sprint related to the software Development Process activities. In the first semester we will focus on Requirements Engineering  and Tests.
+### Welcome to the Sprint 01 folder! 
+### Here, we’ve compiled and maintained all the artifacts related to software development process activities. Below, you’ll find a breakdown of what’s included:
 
-**In the beginning of each Sprint, the team should copy the last version of all artifacts developed in the previous Sprint. For instance, when starting sprint B the team should copy all the artifacts developed during sprint A. In this way, each sprint folder will show the status of the project at the end of that sprint, and the last sprint has the last version of all artifacts.**
+## *Artifacts*
+### Methodology Used: SCRUM (Agile)
+We followed the SCRUM framework for efficient project management.
+### User Stories and Acceptance Criteria:
+Each user story or use case (1 to 1) is clearly defined, along with its acceptance criteria.
+### FURPS+ and Functional Requirements:
+We’ve identified functional requirements using the FURPS+ model.
+### System Sequence Diagrams (Happy Path):
+For each use story, we’ve created system sequence diagrams, focusing on the happy path.
+### Architecture Documentation:
+Our architecture documentation provides insights into the system’s design and components.
+### Global Requirements Engineering Docs:
+We’ve documented global requirements to ensure alignment with project goals.
+### Glossary:
+A glossary was established and continuously updated to clarify terminology.
+### Exploratory Tests:
+We conducted exploratory tests to gain a deeper understanding of API functions.
 
-The artifacts should be developed in accordance with the [template files](../template).
-
-**It is highly recommend to organize the content of each User Story on a dedicated sub-folder (e.g.: content related with US002 is located on a folder named "US001").**
+_
+## Feel free to explore the contents of this folder, and don’t hesitate to reach out if you have any questions or need further information!
