@@ -63,7 +63,7 @@ was carried out as described in the following table.
 
 **Project:** DDD Forum ISEP
 
-### 3.1 Sprint A
+### 3.1 Sprint 01
 
 **Goal:** To produce the specification of the existing version of the system
 
@@ -73,7 +73,7 @@ The specificcation should follow the templates, as presented here and in the ref
 
 The Specification should include: - User Stories (~Use Cases) - Tests
 
-### 3.2 Sprint B
+### 3.2 Sprint 02
 
 **Goal:** To document the API and implement API tests to the full set of functional endpoints (of the backend)
 
