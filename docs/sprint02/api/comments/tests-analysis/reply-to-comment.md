@@ -302,10 +302,10 @@ The test checks if the API responds correctly to a request without the required 
 **Input:**
 - A request to reply to a comment is sent without the comment ID.
 
-**Result:**
+**Expected:**
 - The API should return a 404 Not Found status code, indicating that the comment ID is missing.
 
-**Received:**
+**Result:**
 - The test passed. This means that the API returned the expected status code.
 
 ### Conclusion
