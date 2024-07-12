@@ -5,7 +5,7 @@
 
 ### 1.1. User Story Description
 
-As a registered user, I want to submit a new post with a link so that I can share content with the community.
+As a registered user, I want to submit a new link post so that I can share content with the community.
 
 ### 1.2. Customer Specifications and Clarifications 
 
