@@ -50,7 +50,7 @@ As a registered user, I want to submit a new link post so that I can share conte
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram](svg/us007-system-sequence-diagram.svg)
+![System Sequence Diagram](./puml/us007-system-sequence-diagram-alternative.puml)
 
 ### 1.7 Other Relevant Remarks
 
