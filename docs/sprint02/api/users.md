@@ -214,7 +214,7 @@ ________________________________________________________________________________
 ## Relate the REST API endpoints with User Stories
     The `api/v1/users/:userId´(DELETE) endpoint is unrelated to any user stories documented in Sprint01. 
 
-
+Note: Function not working.
 ________________________________________________________________________________________
 
 
